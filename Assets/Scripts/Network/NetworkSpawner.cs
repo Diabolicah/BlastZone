@@ -20,18 +20,29 @@ public class NetworkSpawner : MonoBehaviour
 
     public void HandlePlayerJoined(NetworkRunner runner, PlayerRef player)
     {
+        // Spawn the player object on the server
         if (runner.IsServer)
         {
             Vector3 spawnPosition = new Vector3((player.RawEncoded % runner.Config.Simulation.PlayerCount) * 3, 1, 0);
             NetworkObject networkPlayerObject = runner.Spawn(playerPrefab, spawnPosition, Quaternion.identity, player);
             spawnedCharacters.Add(player, networkPlayerObject);
+        }
 
-            if (networkPlayerObject.HasInputAuthority && virtualCamera != null)
+        // Ensure the local player's camera follows their own object
+        if (runner.LocalPlayer == player && virtualCamera != null)
+        {
+            // Find the local player's NetworkObject
+            foreach (var kvp in spawnedCharacters)
             {
-                virtualCamera.Follow = networkPlayerObject.transform;
+                if (kvp.Key == player)
+                {
+                    virtualCamera.Follow = kvp.Value.transform;
+                    break;
+                }
             }
         }
     }
+
 
     public void HandlePlayerLeft(NetworkRunner runner, PlayerRef player)
     {
