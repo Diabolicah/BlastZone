@@ -8,16 +8,19 @@ public static class InputHandler
         var data = new NetworkInputData();
 
         if (Input.GetKey(KeyCode.W))
-            data.direction += Vector3.up;
+            data.direction += Vector3.forward;
 
         if (Input.GetKey(KeyCode.S))
-            data.direction += Vector3.down;
+            data.direction += Vector3.back;
 
         if (Input.GetKey(KeyCode.A))
             data.direction += Vector3.left;
 
         if (Input.GetKey(KeyCode.D))
             data.direction += Vector3.right;
+
+        if (Input.GetKey(KeyCode.Mouse0))
+            data.isShooting = true;
 
         input.Set(data);
     }
