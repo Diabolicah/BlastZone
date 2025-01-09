@@ -24,11 +24,8 @@ public class Player : NetworkBehaviour
             {
                 tryShoot();
             }
-            if (!data.isShooting)
-            {
                 data.direction.Normalize();
                 _cc.Move(5 * data.direction * Runner.DeltaTime);
-            }
         }
     }
 
