@@ -19,11 +19,15 @@ public class Player : NetworkBehaviour
     {
         if (GetInput(out NetworkInputData data))
         {
-            data.direction.Normalize();
-            _cc.Move(5*data.direction*Runner.DeltaTime);
+           
             if (HasInputAuthority && data.isShooting)
             {
                 tryShoot();
+            }
+            if (!data.isShooting)
+            {
+                data.direction.Normalize();
+                _cc.Move(5 * data.direction * Runner.DeltaTime);
             }
         }
     }
