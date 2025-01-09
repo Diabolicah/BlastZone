@@ -40,7 +40,7 @@ public class Player : NetworkBehaviour
             else
             {
                 // Call the RPC to request the server to spawn the bullet
-                ShootBulletRPC(_shootPoint.position, _shootPoint.forward)
+                ShootBulletRPC(_shootPoint.position, _shootPoint.forward);
             }
         }
 
