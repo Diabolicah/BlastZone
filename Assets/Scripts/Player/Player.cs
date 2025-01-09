@@ -7,7 +7,7 @@ public class Player : NetworkBehaviour
     [SerializeField] private NetworkPrefabRef _bulletPrefab;
     [SerializeField] private Transform _shootPoint; // Point from where bullets are spawned
     [SerializeField] private float _shootCooldown = 0.5f; // Cooldown in seconds
-    [Networked] private TickTimer _shootCooldownTimer { get; set; } // Networked timer for cooldown
+    [Networked] private TickTimer ShootCooldownTimer { get; set; } // Networked timer for cooldown
 
 
     private void Awake()
@@ -34,9 +34,9 @@ public class Player : NetworkBehaviour
 
     private void tryShoot()
     {
-        if (_shootCooldownTimer.ExpiredOrNotRunning(Runner))
+        if (ShootCooldownTimer.ExpiredOrNotRunning(Runner))
         {
-            _shootCooldownTimer = TickTimer.CreateFromSeconds(Runner, _shootCooldown); // Reset cooldown timer
+            ShootCooldownTimer = TickTimer.CreateFromSeconds(Runner, _shootCooldown); // Reset cooldown timer
             if (Runner.IsServer)
             {
                 SpawnBullet(_shootPoint.position, _shootPoint.forward);
