@@ -39,7 +39,7 @@ public class Player : NetworkBehaviour
             _shootCooldownTimer = TickTimer.CreateFromSeconds(Runner, _shootCooldown); // Reset cooldown timer
             if (Runner.IsServer)
             {
-                SpawnBullet();
+                SpawnBullet(_shootPoint.position, _shootPoint.forward);
             }
             else
             {
@@ -49,12 +49,13 @@ public class Player : NetworkBehaviour
         }
 
     }
-    private void SpawnBullet()
+    private void SpawnBullet(Vector3 position, Vector3 direction)
     {
+        Quaternion bulletRotation = Quaternion.LookRotation(direction, Vector3.up);
         // Spawn the bullet on the server
-        var bullet = Runner.Spawn(_bulletPrefab, _shootPoint.position, Quaternion.identity);
+        var bullet = Runner.Spawn(_bulletPrefab, position, bulletRotation);
         var bulletScript = bullet.GetComponent<Bullet>();
-        bulletScript.Initialize(_shootPoint.forward);
+        bulletScript.Initialize(direction);
     }
 
     [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
@@ -63,7 +64,7 @@ public class Player : NetworkBehaviour
         // Ensure the bullet is spawned only on the server
         if (Runner.IsServer)
         {
-            SpawnBullet();
+            SpawnBullet(position, direction);
         }
     }
 
