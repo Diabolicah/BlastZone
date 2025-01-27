@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   __direction: {x: 0, y: 0, z: 0}
-  _speed: 20
+  _speed: 50
   _lifeTime: 5
 --- !u!114 &66237898533123991
 MonoBehaviour:

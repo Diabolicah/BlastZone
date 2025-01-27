@@ -17,6 +17,10 @@ public class Player : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
+        if (ShootCooldownTimer.IsRunning)
+        {
+            Debug.Log($"Cooldown active. Remaining time: {ShootCooldownTimer.RemainingTime(Runner)}");
+        }
         if (GetInput(out NetworkInputData data))
         {
            
@@ -31,20 +35,25 @@ public class Player : NetworkBehaviour
 
     private void tryShoot()
     {
-        if (ShootCooldownTimer.ExpiredOrNotRunning(Runner))
+        if (Runner.IsServer)
         {
-            ShootCooldownTimer = TickTimer.CreateFromSeconds(Runner, _shootCooldown); // Reset cooldown timer
-            if (Runner.IsServer)
+            if (ShootCooldownTimer.ExpiredOrNotRunning(Runner))
             {
+                ShootCooldownTimer = TickTimer.CreateFromSeconds(Runner, _shootCooldown); // Reset cooldown timer
                 SpawnBullet(_shootPoint.position, _shootPoint.forward);
+                Debug.Log($"Bullet spawned by server for player {Runner.LocalPlayer}");
             }
             else
             {
-                // Call the RPC to request the server to spawn the bullet
-                ShootBulletRPC(_shootPoint.position, _shootPoint.forward);
+                Debug.Log($"Cooldown still active on server for player {Runner.LocalPlayer}");
             }
         }
-
+        else
+        {
+            // Clients request the server to shoot
+            Debug.Log($"Client requesting to shoot from server: {Runner.LocalPlayer}");
+            ShootBulletRPC(_shootPoint.position, _shootPoint.forward);
+        }
     }
     private void SpawnBullet(Vector3 position, Vector3 direction)
     {
@@ -58,10 +67,15 @@ public class Player : NetworkBehaviour
     [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
     private void ShootBulletRPC(Vector3 position, Vector3 direction)
     {
-        // Ensure the bullet is spawned only on the server
-        if (Runner.IsServer)
+        if (ShootCooldownTimer.ExpiredOrNotRunning(Runner))
         {
+            ShootCooldownTimer = TickTimer.CreateFromSeconds(Runner, _shootCooldown); // Reset cooldown timer
             SpawnBullet(position, direction);
+            Debug.Log($"RPC: Bullet spawned by server for player {Runner.LocalPlayer}");
+        }
+        else
+        {
+            Debug.Log("RPC: Cooldown still active, no bullet spawned");
         }
     }
 
