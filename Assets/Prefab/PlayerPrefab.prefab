@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5840779349211882538}
   - component: {fileID: -7888848812287710610}
   - component: {fileID: 2386721432402869471}
+  - component: {fileID: 3696206436374698935}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -58,6 +59,7 @@ MonoBehaviour:
   - {fileID: 5840779349211882538}
   - {fileID: -7888848812287710610}
   - {fileID: 2386721432402869471}
+  - {fileID: 3696206436374698935}
   ForceRemoteRenderTimeframe: 0
 --- !u!143 &4083394951992882268
 CharacterController:
@@ -115,10 +117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c78530ec0f8c49168e4d21f1853c723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab:
-    RawGuidValue: 0d016aaeb36ee56419e283b40659a7dc
-  _shootPoint: {fileID: 8863468331804098093}
-  _shootCooldown: 0.5
 --- !u!114 &2386721432402869471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +129,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5182dfda30d5143b4fb432f84d9e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3696206436374698935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131662502398076607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53dea732b2b502f44b0c9f100e98af1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shootPoint: {fileID: 8863468331804098093}
+  _weaponConfig: {fileID: 11400000, guid: 1bf2f69bb36f7a0419420cb2ee824560, type: 2}
 --- !u!1 &3525236230207111097
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,12 +8,6 @@ public class Bullet : NetworkBehaviour
     [SerializeField] private float _lifeTime = 5f;
     [SerializeField] private TickTimer _life;
 
-    public void Initialize(Vector3 direction)
-    {
-        _direction = direction;
-        _life = TickTimer.CreateFromSeconds(Runner, _lifeTime);
-    }
-
 
     // FixedUpdateNetwork is called once per server tick
     public override void FixedUpdateNetwork()
@@ -26,6 +20,11 @@ public class Bullet : NetworkBehaviour
                 Runner.Despawn(Object); // Despawn the bullet after its lifetime expires
             }
         }
+    }
 
+    public void Shoot(Vector3 direction)
+    {
+        _direction = direction;
+        _life = TickTimer.CreateFromSeconds(Runner, _lifeTime);
     }
 }
