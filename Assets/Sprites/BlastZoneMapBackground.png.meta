@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BlastZoneMapBackground_0: 466180853202488230
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
