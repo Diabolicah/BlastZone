@@ -82,9 +82,8 @@ namespace UI
             unityObjects["Screen_Options"].SetActive(false);
         if (unityObjects.ContainsKey("Screen_ChooseCard"))
             unityObjects["Screen_ChooseCard"].SetActive(false);
-
-
-
+        if (unityObjects.ContainsKey("Screen_Game"))
+            unityObjects["Screen_Game"].SetActive(false);
     }
 
     public void ChangeScreen(Screens _ToScreen)
