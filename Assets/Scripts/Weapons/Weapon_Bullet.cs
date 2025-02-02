@@ -18,28 +18,14 @@ public class Weapon_Bullet : IWeapon
 
     public void fire(NetworkRunner runner)
     {
-       Debug.Log(runner.ToString());
        if (runner.IsServer)
        {
            if (_cooldownManager.IsCooldownExpired(runner))
            {
                _cooldownManager.ResetCooldown(runner, _config.ShootCooldown); // Reset cooldown timer
                ServerShoot(runner);
-               Debug.Log($"Bullet spawned by server for player {runner.LocalPlayer}");
            }
-           else
-           {
-               Debug.Log($"Cooldown still active on server for player {runner.LocalPlayer}");
-           }
-       }
-       /*
-       else
-       {
-           // Clients request the server to shoot
-           Debug.Log($"Client requesting to shoot from server: {runner.LocalPlayer}");
-           RequestShootRpc(runner);
-       }        
-       */
+       } 
     }
 
     private void ServerShoot(NetworkRunner runner)
@@ -49,29 +35,4 @@ public class Weapon_Bullet : IWeapon
         var bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.Shoot(_shootPoint.forward);
     }
-    /*
-    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
-    private void RequestShootRpc(NetworkRunner runner)
-    {
-        /*
-        if (ShootCooldownTimer.ExpiredOrNotRunning(Runner))
-        {
-            ShootCooldownTimer = TickTimer.CreateFromSeconds(Runner, _shootCooldown); // Reset cooldown timer
-            SpawnBullet(position, direction);
-            Debug.Log($"RPC: Bullet spawned by server for player {Runner.LocalPlayer}");
-        }
-        else
-        {
-            Debug.Log("RPC: Cooldown still active, no bullet spawned");
-        }
-        
-        Debug.Log(runner.IsServer);
-        if (_cooldownManager.IsCooldownExpired(runner))
-        {
-            _cooldownManager.ResetCooldown(runner, _config.ShootCooldown); // Reset cooldown timer
-            ServerShoot(runner);
-            Debug.Log($"Bullet spawned by server for player {runner.LocalPlayer}");
-        }
-    }
-    */
 }

@@ -19,6 +19,7 @@ namespace UI
                 _networkManager.StartGame(GameMode.Host);
                 unityObjects["Screen_Multiplayer"].gameObject.SetActive(false);
                 unityObjects["Img_Background"].gameObject.SetActive(false);
+                unityObjects["Screen_Game"].gameObject.SetActive(true);
             }
             else
             {
@@ -33,6 +34,7 @@ namespace UI
                 _networkManager.StartGame(GameMode.Client);
                 unityObjects["Screen_Multiplayer"].gameObject.SetActive(false);
                 unityObjects["Img_Background"].gameObject.SetActive(false);
+                unityObjects["Screen_Game"].gameObject.SetActive(true);
             }
             else
             {
