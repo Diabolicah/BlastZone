@@ -18,6 +18,29 @@ public class Weapon_TripleBullet : IWeapon
 
     public void fire(NetworkRunner runner)
     {
-        throw new System.NotImplementedException();
+        if (runner.IsServer)
+        {
+            if (_cooldownManager.IsCooldownExpired(runner))
+            {
+                _cooldownManager.ResetCooldown(runner, _config.ShootCooldown); // Reset cooldown timer
+                ServerShoot(runner);
+            }
+        }
+    }
+
+    private void ServerShoot(NetworkRunner runner)
+    {
+        Quaternion bullet1Rotation = Quaternion.LookRotation(_shootPoint.forward, Vector3.up);
+        Quaternion bullet2Rotation = Quaternion.LookRotation(_shootPoint.forward, Vector3.up);
+        Quaternion bullet3Rotation = Quaternion.LookRotation(_shootPoint.forward, Vector3.up);
+        var bullet1 = runner.Spawn(_config.BulletPrefab, _shootPoint.position, bullet1Rotation);
+        var bullet2 = runner.Spawn(_config.BulletPrefab, _shootPoint.position, bullet2Rotation);
+        var bullet3 = runner.Spawn(_config.BulletPrefab, _shootPoint.position, bullet3Rotation);
+        var bullet1Script = bullet1.GetComponent<Bullet>();
+        var bullet2Script = bullet2.GetComponent<Bullet>();
+        var bullet3Script = bullet3.GetComponent<Bullet>();
+        bullet1Script.Shoot(_shootPoint.forward);
+        bullet2Script.Shoot(_shootPoint.forward);
+        bullet3Script.Shoot(_shootPoint.forward);
     }
 }
