@@ -5,11 +5,11 @@ using UnityEngine.UIElements;
 
 public class Weapon_TripleBullet : IWeapon
 {
-    private readonly BulletWeaponConfig _config;
+    private readonly TrippleBulletWeaponConfig _config;
     private readonly Transform _shootPoint;
     private CooldownManager _cooldownManager;
 
-    public Weapon_TripleBullet(BulletWeaponConfig config, Transform shootPoint)
+    public Weapon_TripleBullet(TrippleBulletWeaponConfig config, Transform shootPoint)
     {
         _config = config;
         _shootPoint = shootPoint;
@@ -30,17 +30,25 @@ public class Weapon_TripleBullet : IWeapon
 
     private void ServerShoot(NetworkRunner runner)
     {
-        Quaternion bullet1Rotation = Quaternion.LookRotation(_shootPoint.forward, Vector3.up);
-        Quaternion bullet2Rotation = Quaternion.LookRotation(_shootPoint.forward, Vector3.up);
-        Quaternion bullet3Rotation = Quaternion.LookRotation(_shootPoint.forward, Vector3.up);
+        Debug.Log("Shoot Triple");
+        Vector3 baseDirection = _shootPoint.forward;
+        Vector3 dirRight = Quaternion.Euler(0, _config.SpreadAngle, 0) * baseDirection;
+        Vector3 dirLeft = Quaternion.Euler(0, -_config.SpreadAngle, 0) * baseDirection;
+
+        Quaternion bullet1Rotation = Quaternion.LookRotation(baseDirection, Vector3.up);
+        Quaternion bullet2Rotation = Quaternion.LookRotation(dirRight);
+        Quaternion bullet3Rotation = Quaternion.LookRotation(dirLeft);
+
         var bullet1 = runner.Spawn(_config.BulletPrefab, _shootPoint.position, bullet1Rotation);
         var bullet2 = runner.Spawn(_config.BulletPrefab, _shootPoint.position, bullet2Rotation);
         var bullet3 = runner.Spawn(_config.BulletPrefab, _shootPoint.position, bullet3Rotation);
+
         var bullet1Script = bullet1.GetComponent<Bullet>();
         var bullet2Script = bullet2.GetComponent<Bullet>();
         var bullet3Script = bullet3.GetComponent<Bullet>();
-        bullet1Script.Shoot(_shootPoint.forward);
-        bullet2Script.Shoot(_shootPoint.forward);
-        bullet3Script.Shoot(_shootPoint.forward);
+
+        bullet1Script.Shoot(baseDirection);
+        bullet2Script.Shoot(dirRight);
+        bullet3Script.Shoot(dirLeft);
     }
 }
