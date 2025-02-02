@@ -33,9 +33,9 @@ public class Tank_Weapons : NetworkBehaviour
         }
     }
 
-    public void setTankWeapon(IWeaponFactory _weaponFactory)
+    public void setTankWeapon(IWeaponFactory weaponFactory)
     {
-        _tankWeapon = _weaponFactory.CreateWeapon();
+        _tankWeapon = weaponFactory.CreateWeapon();
     }
     private void ServerFire()
     {
