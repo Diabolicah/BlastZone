@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class WeaponTrippleBulletFactory : IWeaponFactory
 {
-    private readonly BulletWeaponConfig _config;
+    private readonly TrippleBulletWeaponConfig _config;
     private readonly Transform _shootPoint;
 
-    public WeaponTrippleBulletFactory(BulletWeaponConfig config, Transform shootPoint)
+    public WeaponTrippleBulletFactory(TrippleBulletWeaponConfig config, Transform shootPoint)
     {
         _config = config;
         _shootPoint = shootPoint;
