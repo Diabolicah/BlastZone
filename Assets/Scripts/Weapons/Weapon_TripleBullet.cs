@@ -5,11 +5,11 @@ using UnityEngine.UIElements;
 
 public class Weapon_TripleBullet : IWeapon
 {
-    private readonly TrippleBulletWeaponConfig _config;
+    private readonly TripleBulletWeaponConfig _config;
     private readonly Transform _shootPoint;
     private CooldownManager _cooldownManager;
 
-    public Weapon_TripleBullet(TrippleBulletWeaponConfig config, Transform shootPoint)
+    public Weapon_TripleBullet(TripleBulletWeaponConfig config, Transform shootPoint)
     {
         _config = config;
         _shootPoint = shootPoint;
@@ -30,7 +30,6 @@ public class Weapon_TripleBullet : IWeapon
 
     private void ServerShoot(NetworkRunner runner)
     {
-        Debug.Log("Shoot Triple");
         Vector3 baseDirection = _shootPoint.forward;
         Vector3 dirRight = Quaternion.Euler(0, _config.SpreadAngle, 0) * baseDirection;
         Vector3 dirLeft = Quaternion.Euler(0, -_config.SpreadAngle, 0) * baseDirection;

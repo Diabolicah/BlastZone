@@ -1,12 +1,12 @@
 using Fusion;
 using UnityEngine;
 
-public class WeaponTrippleBulletFactory : IWeaponFactory
+public class WeaponTripleBulletFactory : IWeaponFactory
 {
-    private readonly TrippleBulletWeaponConfig _config;
+    private readonly TripleBulletWeaponConfig _config;
     private readonly Transform _shootPoint;
 
-    public WeaponTrippleBulletFactory(TrippleBulletWeaponConfig config, Transform shootPoint)
+    public WeaponTripleBulletFactory(TripleBulletWeaponConfig config, Transform shootPoint)
     {
         _config = config;
         _shootPoint = shootPoint;
