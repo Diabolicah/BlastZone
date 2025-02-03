@@ -2,11 +2,14 @@ using Fusion;
 using UnityEngine;
 using static Unity.Collections.Unicode;
 
-public class Tank_Weapons : NetworkBehaviour
+public class TankWeapons : NetworkBehaviour
 {
     [SerializeField] private Transform _shootPoint; // Assign in inspector
     [SerializeField] private BulletWeaponConfig _weaponConfig; // Assign config asset
     [SerializeField] private TripleBulletWeaponConfig _trippleWeaponConfig; // Test Weapon need to remove later
+
+    PlayerStats _playerStats;
+
     private IWeapon _tankWeapon;
     private IWeaponFactory _weaponFactory;
 
@@ -16,6 +19,7 @@ public class Tank_Weapons : NetworkBehaviour
         //_weaponFactory = new WeaponBulletFactory(_weaponConfig, _shootPoint);
         _weaponFactory = new WeaponTripleBulletFactory(_trippleWeaponConfig, _shootPoint);
         _tankWeapon = _weaponFactory.CreateWeapon();
+        //add the player stats manager
     }
 
     public override void FixedUpdateNetwork()
@@ -24,10 +28,10 @@ public class Tank_Weapons : NetworkBehaviour
         {
             if (HasStateAuthority)
             {
-                ServerFire();
+                ServerFire(_playerStats);//change it to the getPlayerStats from the playerStatManager
             }else
             {
-                RequestFireRpc();
+                RequestFireRpc(_playerStats);//change it to the getPlayerStats from the playerStatManager
             }
         }
     }
@@ -36,15 +40,15 @@ public class Tank_Weapons : NetworkBehaviour
     {
         _tankWeapon = weaponFactory.CreateWeapon();
     }
-    private void ServerFire()
+    private void ServerFire(PlayerStats playerStats)
     {
 
-        _tankWeapon.fire(Runner);
+        _tankWeapon.fire(Runner, playerStats);
     }
 
     [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
-    private void RequestFireRpc()
+    private void RequestFireRpc(PlayerStats playerStats)
     {
-        ServerFire();
+        ServerFire(playerStats);
     }
 }
