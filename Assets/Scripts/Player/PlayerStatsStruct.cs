@@ -2,7 +2,7 @@ using System;
 using Fusion;
 
 [Serializable]
-public struct PlayerStatsStruct
+public struct PlayerStatsStruct : INetworkStruct
 {
     public float Health;
     public float HealthRegen;
