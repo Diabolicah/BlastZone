@@ -10,7 +10,7 @@ public class PlayerStats
     private float _bulletSpeed;
     private float _movementSpeed;
 
-    PlayerStats()
+    public PlayerStats()
     {
         _health = 1;
         _healthRegen = 1;

@@ -8,7 +8,7 @@ public class TankWeapons : NetworkBehaviour
     [SerializeField] private BulletWeaponConfig _weaponConfig; // Assign config asset
     [SerializeField] private TripleBulletWeaponConfig _trippleWeaponConfig; // Test Weapon need to remove later
 
-    PlayerStats _playerStats;
+    PlayerStats _playerStats = new PlayerStats();
 
     private IWeapon _tankWeapon;
     private IWeaponFactory _weaponFactory;
