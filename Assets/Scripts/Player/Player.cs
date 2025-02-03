@@ -1,12 +1,13 @@
 using Fusion;
+using UnityEngine;
 
 public class Player : NetworkBehaviour
 {
-    private NetworkCharacterController _cc;
-
+    private NetworkCharacterController _characterController;
+    
     private void Awake()
     {
-        _cc = GetComponent<NetworkCharacterController>();
+        _characterController = GetComponent<NetworkCharacterController>();
     }
 
     public override void FixedUpdateNetwork()
@@ -14,7 +15,7 @@ public class Player : NetworkBehaviour
         if (GetInput(out NetworkInputData data))
         {
             data.direction.Normalize();
-            _cc.Move(5*data.direction*Runner.DeltaTime);
+            _characterController.Move(5 * data.direction * Runner.DeltaTime);
         }
     }
 }
