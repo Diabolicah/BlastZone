@@ -3,7 +3,7 @@ using UnityEngine;
 using static Unity.Collections.Unicode;
 using UnityEngine.UIElements;
 
-public class Weapon_Bullet : Weapon_Details
+public class Weapon_Bullet : WeaponDetails
 {
     protected Transform _shootPoint;
     protected NetworkPrefabRef _bulletPrefab;
@@ -18,7 +18,7 @@ public class Weapon_Bullet : Weapon_Details
         _cooldownManager = new CooldownManager();
     }
 
-    protected override void ServerShoot(NetworkRunner runner)
+    protected override void ServerShoot(NetworkRunner runner, PlayerStats playerStats)
     {
         Quaternion bulletRotation = Quaternion.LookRotation(_shootPoint.forward, Vector3.up);
         var bullet = runner.Spawn(_bulletPrefab, _shootPoint.position, bulletRotation);

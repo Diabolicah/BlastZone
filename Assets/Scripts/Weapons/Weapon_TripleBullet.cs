@@ -3,7 +3,7 @@ using UnityEngine;
 using static Unity.Collections.Unicode;
 using UnityEngine.UIElements;
 
-public class Weapon_TripleBullet : Weapon_Details
+public class Weapon_TripleBullet : WeaponDetails
 {
     private readonly Transform _shootPoint;
     private readonly NetworkPrefabRef _bulletPrefab;
@@ -21,7 +21,7 @@ public class Weapon_TripleBullet : Weapon_Details
         _cooldownManager = new CooldownManager();
     }
 
-    protected override void ServerShoot(NetworkRunner runner)
+    protected override void ServerShoot(NetworkRunner runner, PlayerStats playerStats)
     {
         Vector3 baseDirection = _shootPoint.forward;
         Vector3 dirRight = Quaternion.Euler(0, _spreadAngle, 0) * baseDirection;
