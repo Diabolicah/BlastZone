@@ -4,9 +4,9 @@ using UnityEngine;
 public class Bullet : NetworkBehaviour
 {
     [Networked] public Vector3 _direction { get; set; } // Networked bullet direction
-    [SerializeField] private float _speed = 10f;
-    [SerializeField] private float _lifeTime = 5f;
     [SerializeField] private TickTimer _life;
+    private float _speed;
+    private float _lifeTime;
 
 
     // FixedUpdateNetwork is called once per server tick
@@ -22,9 +22,11 @@ public class Bullet : NetworkBehaviour
         }
     }
 
-    public void Shoot(Vector3 direction)
+    public void Shoot(Vector3 direction, float speed, float lifeTime)
     {
         _direction = direction;
+        _speed = speed;
+        _lifeTime = lifeTime;
         _life = TickTimer.CreateFromSeconds(Runner, _lifeTime);
     }
 }

@@ -3,36 +3,26 @@ using UnityEngine;
 using static Unity.Collections.Unicode;
 using UnityEngine.UIElements;
 
-public class Weapon_Bullet : IWeapon
+public class Weapon_Bullet : Weapon_Details
 {
-    private readonly BulletWeaponConfig _config;
-    private readonly Transform _shootPoint;
-    private CooldownManager _cooldownManager;
-
+    protected Transform _shootPoint;
+    protected NetworkPrefabRef _bulletPrefab;
+ 
     public Weapon_Bullet(BulletWeaponConfig config, Transform shootPoint)
     {
-        _config = config;
+        _bulletPrefab = config.BulletPrefab;
+        _shootCooldown = config.ShootCooldown;
+        _speed = config.Speed;
+        _bulletLifeTime = config.BulletLifeTime;
         _shootPoint = shootPoint;
         _cooldownManager = new CooldownManager();
     }
 
-    public void fire(NetworkRunner runner)
-    {
-       if (runner.IsServer)
-       {
-           if (_cooldownManager.IsCooldownExpired(runner))
-           {
-               _cooldownManager.ResetCooldown(runner, _config.ShootCooldown); // Reset cooldown timer
-               ServerShoot(runner);
-           }
-       } 
-    }
-
-    private void ServerShoot(NetworkRunner runner)
+    protected override void ServerShoot(NetworkRunner runner)
     {
         Quaternion bulletRotation = Quaternion.LookRotation(_shootPoint.forward, Vector3.up);
-        var bullet = runner.Spawn(_config.BulletPrefab, _shootPoint.position, bulletRotation);
+        var bullet = runner.Spawn(_bulletPrefab, _shootPoint.position, bulletRotation);
         var bulletScript = bullet.GetComponent<Bullet>();
-        bulletScript.Shoot(_shootPoint.forward);
+        bulletScript.Shoot(_shootPoint.forward, _speed, _bulletLifeTime);
     }
 }

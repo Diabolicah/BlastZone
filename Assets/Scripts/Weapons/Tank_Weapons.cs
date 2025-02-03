@@ -22,7 +22,6 @@ public class Tank_Weapons : NetworkBehaviour
     {
         if (GetInput(out NetworkInputData data) && HasInputAuthority && data.isShooting)
         {
-            Debug.Log(HasStateAuthority);
             if (HasStateAuthority)
             {
                 ServerFire();
@@ -39,6 +38,7 @@ public class Tank_Weapons : NetworkBehaviour
     }
     private void ServerFire()
     {
+
         _tankWeapon.fire(Runner);
     }
 
