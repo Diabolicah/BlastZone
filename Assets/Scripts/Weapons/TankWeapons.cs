@@ -8,7 +8,7 @@ public class TankWeapons : NetworkBehaviour
     [SerializeField] private BulletWeaponConfig _weaponConfig; // Assign config asset
     [SerializeField] private TripleBulletWeaponConfig _trippleWeaponConfig; // Test Weapon need to remove later
 
-    PlayerStats _playerStats = new PlayerStats();
+    PlayerStatsStruct _playerStats = new PlayerStatsStruct();
 
     private IWeapon _tankWeapon;
     private IWeaponFactory _weaponFactory;
@@ -31,7 +31,7 @@ public class TankWeapons : NetworkBehaviour
                 ServerFire(_playerStats);//change it to the getPlayerStats from the playerStatManager
             }else
             {
-                RequestFireRpc(_playerStats.Encode());//change it to the getPlayerStats from the playerStatManager
+                RequestFireRpc(_playerStats);//change it to the getPlayerStats from the playerStatManager
             }
         }
     }
@@ -40,15 +40,15 @@ public class TankWeapons : NetworkBehaviour
     {
         _tankWeapon = weaponFactory.CreateWeapon();
     }
-    private void ServerFire(PlayerStats playerStats)
+    private void ServerFire(PlayerStatsStruct playerStats)
     {
 
         _tankWeapon.fire(Runner, playerStats);
     }
 
     [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
-    private void RequestFireRpc(string playerstats)
+    private void RequestFireRpc(PlayerStatsStruct playerstats)
     {
-        ServerFire(PlayerStats.Decode(playerstats));
+        ServerFire(playerstats);
     }
 }

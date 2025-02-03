@@ -12,7 +12,7 @@ public class WeaponTripleBullet : WeaponBullet
         _spreadAngle = config.SpreadAngle;
     }
 
-    protected override void ServerShoot(NetworkRunner runner, PlayerStats playerStats)
+    protected override void ServerShoot(NetworkRunner runner, PlayerStatsStruct playerStats)
     {
         Vector3 baseDirection = _shootPoint.forward;
         Vector3 dirRight = Quaternion.Euler(0, _spreadAngle, 0) * baseDirection;

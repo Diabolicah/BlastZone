@@ -22,7 +22,7 @@ public class WeaponBullet : IWeapon
         _cooldownManager = new CooldownManager();
     }
 
-    public void fire(NetworkRunner runner, PlayerStats playerStats)
+    public void fire(NetworkRunner runner, PlayerStatsStruct playerStats)
     {
         if (runner.IsServer)
         {
@@ -34,7 +34,7 @@ public class WeaponBullet : IWeapon
         }
     }
 
-    protected virtual void ServerShoot(NetworkRunner runner, PlayerStats playerStats) {
+    protected virtual void ServerShoot(NetworkRunner runner, PlayerStatsStruct playerStats) {
         Quaternion bulletRotation = Quaternion.LookRotation(_shootPoint.forward, Vector3.up);
         NetworkObject bullet = runner.Spawn(_bulletPrefab, _shootPoint.position, bulletRotation);
         Bullet bulletScript = bullet.GetComponent<Bullet>();

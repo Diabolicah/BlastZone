@@ -3,5 +3,5 @@ using UnityEngine;
 
 public interface IWeapon
 {
-    void fire(NetworkRunner runner, PlayerStats playerStats);
+    void fire(NetworkRunner runner, PlayerStatsStruct playerStats);
 }
