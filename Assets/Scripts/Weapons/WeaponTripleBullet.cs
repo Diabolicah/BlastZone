@@ -3,22 +3,13 @@ using UnityEngine;
 using static Unity.Collections.Unicode;
 using UnityEngine.UIElements;
 
-public class Weapon_TripleBullet : WeaponDetails
+public class WeaponTripleBullet : WeaponBullet
 {
-    private readonly Transform _shootPoint;
-    private readonly NetworkPrefabRef _bulletPrefab;
     private float _spreadAngle;
- 
 
-    public Weapon_TripleBullet(TripleBulletWeaponConfig config, Transform shootPoint)
+    public WeaponTripleBullet(TripleBulletWeaponConfig config, Transform shootPoint) : base(config, shootPoint)
     {
-        _bulletPrefab = config.BulletPrefab;
-        _shootCooldown = config.ShootCooldown;
         _spreadAngle = config.SpreadAngle;
-        _speed = config.Speed;
-        _bulletLifeTime = config.BulletLifeTime;
-        _shootPoint = shootPoint;
-        _cooldownManager = new CooldownManager();
     }
 
     protected override void ServerShoot(NetworkRunner runner, PlayerStats playerStats)
@@ -31,13 +22,13 @@ public class Weapon_TripleBullet : WeaponDetails
         Quaternion bullet2Rotation = Quaternion.LookRotation(dirRight);
         Quaternion bullet3Rotation = Quaternion.LookRotation(dirLeft);
 
-        var bullet1 = runner.Spawn(_bulletPrefab, _shootPoint.position, bullet1Rotation);
-        var bullet2 = runner.Spawn(_bulletPrefab, _shootPoint.position, bullet2Rotation);
-        var bullet3 = runner.Spawn(_bulletPrefab, _shootPoint.position, bullet3Rotation);
+        NetworkObject bullet1 = runner.Spawn(_bulletPrefab, _shootPoint.position, bullet1Rotation);
+        NetworkObject bullet2 = runner.Spawn(_bulletPrefab, _shootPoint.position, bullet2Rotation);
+        NetworkObject bullet3 = runner.Spawn(_bulletPrefab, _shootPoint.position, bullet3Rotation);
 
-        var bullet1Script = bullet1.GetComponent<Bullet>();
-        var bullet2Script = bullet2.GetComponent<Bullet>();
-        var bullet3Script = bullet3.GetComponent<Bullet>();
+        Bullet bullet1Script = bullet1.GetComponent<Bullet>();
+        Bullet bullet2Script = bullet2.GetComponent<Bullet>();
+        Bullet bullet3Script = bullet3.GetComponent<Bullet>();
 
         bullet1Script.Shoot(baseDirection, _speed, _bulletLifeTime);
         bullet2Script.Shoot(dirRight, _speed, _bulletLifeTime);
