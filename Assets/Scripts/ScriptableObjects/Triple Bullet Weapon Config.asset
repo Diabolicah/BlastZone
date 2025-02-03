@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletPrefab:
     RawGuidValue: 0d016aaeb36ee56419e283b40659a7dc
-  _shootCooldown: 0.5
+  _shootCooldown: 0.9
   _spreadAngle: 15
