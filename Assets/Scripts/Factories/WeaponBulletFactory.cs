@@ -14,6 +14,6 @@ public class WeaponBulletFactory : IWeaponFactory
 
     public IWeapon CreateWeapon()
     {
-        return new Weapon_Bullet(_config, _shootPoint);
+        return new WeaponBullet(_config, _shootPoint);
     }
 }

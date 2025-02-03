@@ -8,6 +8,7 @@ public class WeaponBullet : IWeapon
     protected float _shootCooldown;
     protected float _speed;
     protected float _bulletLifeTime;
+    protected float _damage;
     protected CooldownManager _cooldownManager;
 
     public WeaponBullet(BulletWeaponConfig config, Transform shootPoint)
@@ -17,6 +18,7 @@ public class WeaponBullet : IWeapon
         _speed = config.Speed;
         _bulletLifeTime = config.BulletLifeTime;
         _shootPoint = shootPoint;
+        _damage = config.Damage;
         _cooldownManager = new CooldownManager();
     }
 
@@ -36,6 +38,6 @@ public class WeaponBullet : IWeapon
         Quaternion bulletRotation = Quaternion.LookRotation(_shootPoint.forward, Vector3.up);
         NetworkObject bullet = runner.Spawn(_bulletPrefab, _shootPoint.position, bulletRotation);
         Bullet bulletScript = bullet.GetComponent<Bullet>();
-        bulletScript.Shoot(_shootPoint.forward, _speed, _bulletLifeTime);
+        bulletScript.Shoot(_shootPoint.forward, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage);
     }
 }

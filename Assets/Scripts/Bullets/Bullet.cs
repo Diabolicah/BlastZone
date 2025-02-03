@@ -7,6 +7,7 @@ public class Bullet : NetworkBehaviour
     [SerializeField] private TickTimer _life;
     private float _speed;
     private float _lifeTime;
+    private float _damage;
 
 
     // FixedUpdateNetwork is called once per server tick
@@ -22,11 +23,12 @@ public class Bullet : NetworkBehaviour
         }
     }
 
-    public void Shoot(Vector3 direction, float speed, float lifeTime)
+    public void Shoot(Vector3 direction, float speed, float lifeTime, float damage)
     {
         _direction = direction;
         _speed = speed;
         _lifeTime = lifeTime;
+        _damage = damage;
         _life = TickTimer.CreateFromSeconds(Runner, _lifeTime);
     }
 }

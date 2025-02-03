@@ -8,9 +8,12 @@ public class BulletWeaponConfig : ScriptableObject
     [SerializeField] private float _shootCooldown = 0.5f;
     [SerializeField] private float _speed = 10f;
     [SerializeField] private float _bulletLifeTime = 5f;
+    [SerializeField] private float _damage = 5f;
+
 
     public NetworkPrefabRef BulletPrefab => _bulletPrefab;
     public float ShootCooldown => _shootCooldown;
     public float Speed => _speed;
     public float BulletLifeTime => _bulletLifeTime;
+    public float Damage => _damage;
 }
