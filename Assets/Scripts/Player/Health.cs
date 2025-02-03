@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Health : NetworkBehaviour
 {
+    [SerializeField] private float defaultMaxHealth = 100f;
+    [SerializeField] private float defaultHealthRegenRate = 2f;
+
     [Networked] public float CurrentHealth { get; set; }
     [Networked] public float MaxHealth { get; set; }
     [Networked] public float HealthRegenRate { get; set; }
@@ -15,9 +18,9 @@ public class Health : NetworkBehaviour
     {
         if (Object.HasStateAuthority)
         {
-            MaxHealth = 100f;
+            MaxHealth = defaultMaxHealth;
             CurrentHealth = MaxHealth;
-            HealthRegenRate = 2f;
+            HealthRegenRate = defaultHealthRegenRate;
         }
         _lastHealth = CurrentHealth;
     }
