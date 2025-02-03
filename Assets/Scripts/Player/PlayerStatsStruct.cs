@@ -22,4 +22,6 @@ public struct PlayerStatsStruct : INetworkStruct
         BulletSpeed = bulletSpeed;
         MovementSpeed = movementSpeed;
     }
+
+    public static readonly PlayerStatsStruct Default = new PlayerStatsStruct(1, 1, 1, 1, 1, 1);
 }
