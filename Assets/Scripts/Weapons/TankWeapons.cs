@@ -31,7 +31,7 @@ public class TankWeapons : NetworkBehaviour
                 ServerFire(_playerStats);//change it to the getPlayerStats from the playerStatManager
             }else
             {
-                RequestFireRpc(_playerStats);//change it to the getPlayerStats from the playerStatManager
+                RequestFireRpc(_playerStats.Encode());//change it to the getPlayerStats from the playerStatManager
             }
         }
     }
@@ -47,8 +47,8 @@ public class TankWeapons : NetworkBehaviour
     }
 
     [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
-    private void RequestFireRpc(PlayerStats playerStats)
+    private void RequestFireRpc(string playerstats)
     {
-        ServerFire(playerStats);
+        ServerFire(PlayerStats.Decode(playerstats));
     }
 }
