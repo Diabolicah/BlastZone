@@ -143,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shootPoint: {fileID: 5029444533477575965}
   _weaponConfig: {fileID: 11400000, guid: 1bf2f69bb36f7a0419420cb2ee824560, type: 2}
-  _trippleWeaponConfig: {fileID: 11400000, guid: 376b57ecf08a6774c8b6cf82710dcc77, type: 2}
+  _trippleWeaponConfig: {fileID: 11400000, guid: b7d42aef492614b3f9076c18868d5152, type: 2}
 --- !u!1 &2198870952358858629
 GameObject:
   m_ObjectHideFlags: 0
