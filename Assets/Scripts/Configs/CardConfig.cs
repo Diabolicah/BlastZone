@@ -15,7 +15,7 @@ public class CardConfig : ScriptableObject
     [SerializeField] private string Title;
     [SerializeField] private string Description;
     [SerializeField] private Sprite Image;
-    [SerializeField] private int value;
+    [SerializeField] private int MinimumRank;
     [SerializeField] private CardType type;
 
     public string GetTitle()
@@ -33,9 +33,9 @@ public class CardConfig : ScriptableObject
         return Image;
     }
 
-    public int GetValue()
+    public int GetMinimumRank()
     {
-        return value;
+        return MinimumRank;
     }
 
     public CardType GetCardType()

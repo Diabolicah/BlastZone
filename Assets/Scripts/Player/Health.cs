@@ -54,10 +54,5 @@ public class Health : NetworkBehaviour
         float oldHealth = CurrentHealth;
         CurrentHealth = Mathf.Max(CurrentHealth - damage, 0f);
         OnHealthChanged?.Invoke(oldHealth, CurrentHealth);
-
-        if (CurrentHealth <= 0)
-        {
-            Debug.Log($"{name} has died.");
-        }
     }
 }
