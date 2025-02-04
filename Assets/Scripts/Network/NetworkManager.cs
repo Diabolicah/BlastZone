@@ -5,17 +5,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
+public class NetworkManager : MonoBehaviour
 {
     private NetworkRunner _runner;
-    private NetworkSpawner _spawner;
 
     [SerializeField] private string selectedGameMode = "Deathmatch";
-
-    private void Start()
-    {
-        _spawner = GetComponent<NetworkSpawner>();
-    }
 
     public async void StartMatchmaking(string gameMode)
     {
@@ -24,7 +18,6 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         // Create the Fusion runner if not already created.
         _runner = gameObject.AddComponent<NetworkRunner>();
         _runner.ProvideInput = true;
-        _runner.AddCallbacks(this);
 
         StartGameArgs args = new StartGameArgs
         {
@@ -44,16 +37,6 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         {
             Debug.Log($"Matchmaking started successfully for gamemode: {selectedGameMode}");
         }
-    }
-
-    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
-    {
-        _spawner.HandlePlayerJoined(runner, player);
-    }
-
-    public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
-    {
-        _spawner.HandlePlayerLeft(runner, player);
     }
 
     public void OnInput(NetworkRunner runner, NetworkInput input)

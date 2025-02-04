@@ -20,7 +20,7 @@
         "SimulationUpdateTimeMode": 0,
         "PlayerCount": 16,
         "TickRateSelection": {
-            "Client": 64,
+            "Client": 32,
             "ServerIndex": 0,
             "ClientSendIndex": 1,
             "ServerSendIndex": 1
@@ -33,7 +33,7 @@
     },
     "HostMigration": {
         "EnableAutoUpdate": false,
-        "UpdateDelay": 10
+        "UpdateDelay": 30
     },
     "EncryptionConfig": {
         "EnableEncryption": false
