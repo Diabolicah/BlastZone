@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bullet Weapon Config
   m_EditorClassIdentifier: 
   _bulletPrefab:
-    RawGuidValue: 54827a406631d4df6bbb6683067bcbbd
+    RawGuidValue: b6ba549aadd1d4bbb94ac175a426cfa9
   _shootCooldown: 0.5
   _speed: 1
   _bulletLifeTime: 5
