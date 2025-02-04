@@ -28,27 +28,64 @@ public class Health : BaseStats
         }
     }
 
-    public (bool, bool) ApplyDamage(float damage)
+    public (bool success, bool isDead) ApplyDamage(float damage)
     {
         if (!Object.HasStateAuthority)
-            return (false, false);
-
-        float CurrentHealth = GetStat(CURRENT_HEALTH);
-        SetStat(CURRENT_HEALTH, Mathf.Max(CurrentHealth - damage, 0f));
-
-        if (CurrentHealth - damage <= 0)
         {
-            return (true, true);
+            float currentHealth = GetStat(CURRENT_HEALTH);
+            bool isDead = (currentHealth - damage <= 0f);
+
+            RPC_ApplyDamage(damage);
+            return (true, isDead);
         }
-        return (true, false);
+        else
+        {
+            return ApplyDamageInternal(damage);
+        }
     }
+
+    private (bool, bool) ApplyDamageInternal(float damage)
+    {
+        float currentHealth = GetStat(CURRENT_HEALTH);
+        float newHealth = Mathf.Max(currentHealth - damage, 0f);
+        SetStat(CURRENT_HEALTH, newHealth);
+
+        bool success = true;
+        bool isDead = (currentHealth - damage <= 0f);
+        return (success, isDead);
+    }
+
     public void ApplyHealing(float healing)
     {
         if (!Object.HasStateAuthority)
-            return;
-        float CurrentHealth = GetStat(CURRENT_HEALTH);
-        float MaxHealth = GetStat(MAX_HEALTH);
-        SetStat(CURRENT_HEALTH, Mathf.Min(CurrentHealth + healing, MaxHealth));
+        {
+            RPC_ApplyHealing(healing);
+        }
+        else
+        {
+            float currentHealth = GetStat(CURRENT_HEALTH);
+            float maxHealth = GetStat(MAX_HEALTH);
+            SetStat(CURRENT_HEALTH, Mathf.Min(currentHealth + healing, maxHealth));
+        }
+    }
+
+    private void ApplyHealingInternal(float healing)
+    {
+        float currentHealth = GetStat(CURRENT_HEALTH);
+        float maxHealth = GetStat(MAX_HEALTH);
+        SetStat(CURRENT_HEALTH, Mathf.Min(currentHealth + healing, maxHealth));
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    private void RPC_ApplyDamage(float damage, RpcInfo info = default)
+    {
+        ApplyDamageInternal(damage);
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    private void RPC_ApplyHealing(float healing, RpcInfo info = default)
+    {
+        ApplyHealingInternal(healing);
     }
 
     protected override void OnStatManagerChange(PlayerStatsStruct oldStats, PlayerStatsStruct newStats)
