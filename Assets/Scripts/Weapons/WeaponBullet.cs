@@ -15,7 +15,7 @@ public class WeaponBullet : IWeapon
     {
         _bulletPrefab = config.BulletPrefab;
         _shootCooldown = config.ShootCooldown;
-        _speed = config.Speed;
+        _speed = config.BulletSpeed;
         _bulletLifeTime = config.BulletLifeTime;
         _damage = config.Damage;
         _shootPoint = shootPoint;
