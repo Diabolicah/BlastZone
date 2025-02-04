@@ -10,25 +10,43 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     private NetworkRunner _runner;
     private NetworkSpawner _spawner;
 
+    [SerializeField] private string selectedGameMode = "Deathmatch";
+
     private void Start()
     {
         _spawner = GetComponent<NetworkSpawner>();
     }
 
-    public async void StartGame(GameMode mode)
+    public async void StartMatchmaking(string gameMode)
     {
-        // Create the Fusion runner
+        selectedGameMode = gameMode;
+
+        // Create the Fusion runner if not already created.
         _runner = gameObject.AddComponent<NetworkRunner>();
         _runner.ProvideInput = true;
+        _runner.AddCallbacks(this);
 
-        // Start the game
-        await _runner.StartGame(new StartGameArgs
+        // Use the selected game mode as the SessionName.
+        // Fusion will try to join an existing session with this name,
+        // or if none exists, create a new session.
+        StartGameArgs args = new StartGameArgs
         {
-            GameMode = mode,
-            SessionName = "TestRoom",
+            GameMode = GameMode.AutoHostOrClient,
+            SessionName = selectedGameMode,
             Scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex),
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
-        });
+        };
+
+        var result = await _runner.StartGame(args);
+
+        if (!result.Ok)
+        {
+            Debug.LogError($"Failed to start game: {result.ShutdownReason}");
+        }
+        else
+        {
+            Debug.Log($"Matchmaking started successfully for gamemode: {selectedGameMode}");
+        }
     }
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
