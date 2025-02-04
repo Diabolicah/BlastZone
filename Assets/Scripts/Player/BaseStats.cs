@@ -50,7 +50,7 @@ public abstract class BaseStats : NetworkBehaviour
             statsManager.OnStatsChanged -= OnStatManagerChange;
     }
 
-    public override void FixedUpdateNetwork()
+    public override void Render()
     {
         if (!Object.HasStateAuthority)
         {

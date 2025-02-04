@@ -33,7 +33,6 @@ public class Health : BaseStats
             Image healthBar = healthBarObject.GetComponent<Image>();
             healthBar.fillAmount = currentHealth / maxHealth;
             healthBar.color = Color.Lerp(Color.red, Color.green, currentHealth / maxHealth);
-            Debug.Log($"UpdateHealthbar: stat: {statName}, old: {oldValue}, new: {newValue}, currentHealth: {currentHealth}, maxHealth: {maxHealth}, fill: {currentHealth / maxHealth}");
         }
     }
 
