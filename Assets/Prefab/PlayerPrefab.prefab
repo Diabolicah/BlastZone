@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7888848812287710610}
   - component: {fileID: 2386721432402869471}
   - component: {fileID: 669638107416217757}
-  - component: {fileID: 4695052827456854904}
+  - component: {fileID: -2526664047056180360}
   - component: {fileID: 971756849036023500}
   - component: {fileID: 1395887037798404361}
   - component: {fileID: 181552794897400913}
@@ -64,7 +64,7 @@ MonoBehaviour:
   - {fileID: -7888848812287710610}
   - {fileID: 2386721432402869471}
   - {fileID: 669638107416217757}
-  - {fileID: 4695052827456854904}
+  - {fileID: -2526664047056180360}
   - {fileID: 971756849036023500}
   - {fileID: 1395887037798404361}
   ForceRemoteRenderTimeframe: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
     AttackSpeed: 1
     BulletSpeed: 1
     MovementSpeed: 1
---- !u!114 &4695052827456854904
+--- !u!114 &-2526664047056180360
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,14 +166,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 131662502398076607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62238b582dfdda34183dd8aa88e4d2a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a5be4d7a517dcc40b7664148edfc2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMaxHealth: 100
-  defaultHealthRegenRate: 2
-  _CurrentHealth: 0
-  _MaxHealth: 0
-  _HealthRegenRate: 0
+  _Stats:
+    _items:
+    - Key: Max Health
+      Value: 100
+    - Key: Current Health
+      Value: 100
+    - Key: Health Regen Rate
+      Value: 2
+  statsManager: {fileID: 669638107416217757}
 --- !u!114 &971756849036023500
 MonoBehaviour:
   m_ObjectHideFlags: 0
