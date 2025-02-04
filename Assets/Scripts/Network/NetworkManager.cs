@@ -26,9 +26,6 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         _runner.ProvideInput = true;
         _runner.AddCallbacks(this);
 
-        // Use the selected game mode as the SessionName.
-        // Fusion will try to join an existing session with this name,
-        // or if none exists, create a new session.
         StartGameArgs args = new StartGameArgs
         {
             GameMode = GameMode.AutoHostOrClient,
