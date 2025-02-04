@@ -32,6 +32,7 @@ public class Health : BaseStats
             float maxHealth = GetStat(MAX_HEALTH);
             healthBar.fillAmount = currentHealth / maxHealth;
             healthBar.color = Color.Lerp(Color.red, Color.green, currentHealth / maxHealth);
+            Debug.Log($"UpdateHealthbar: stat: {statName}, old: {oldValue}, new: {newValue}, currentHealth: {currentHealth}, maxHealth: {maxHealth}, fill: {fill}");
         }
     }
 

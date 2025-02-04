@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 
 public abstract class BaseStats : NetworkBehaviour
 {
-    [Networked, Capacity(16)]
+    [Networked, Capacity(16), SerializeField]
     protected NetworkDictionary<string, float> Stats { get; } = default;
 
     [Networked, Capacity(16), SerializeField]
