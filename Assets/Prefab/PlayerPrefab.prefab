@@ -169,6 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5be4d7a517dcc40b7664148edfc2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Stats:
+    _items: []
   _defaultStats:
     _items:
     - Key: MaxHealth
@@ -178,7 +180,7 @@ MonoBehaviour:
     - Key: HealthRegenRate
       Value: 2
   statsManager: {fileID: 669638107416217757}
-  healthBar: {fileID: 4726530260920437534}
+  healthBarObject: {fileID: 3549399448212302878}
 --- !u!114 &971756849036023500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -880,8 +882,8 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3494907568403608313, guid: ec831b46a0374604dbda28e973ca3042, type: 3}
   m_PrefabInstance: {fileID: 3550516162804905826}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4726530260920437534 stripped
+--- !u!1 &3549399448212302878 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 8132926542180842620, guid: ec831b46a0374604dbda28e973ca3042, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1135097074785148, guid: ec831b46a0374604dbda28e973ca3042, type: 3}
   m_PrefabInstance: {fileID: 3550516162804905826}
   m_PrefabAsset: {fileID: 0}
