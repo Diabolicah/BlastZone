@@ -171,11 +171,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Stats:
     _items:
-    - Key: Max Health
+    - Key: MaxHealth
       Value: 100
-    - Key: Current Health
+    - Key: CurrentHealth
       Value: 100
-    - Key: Health Regen Rate
+    - Key: HealthRegenRate
       Value: 2
   statsManager: {fileID: 669638107416217757}
 --- !u!114 &971756849036023500
