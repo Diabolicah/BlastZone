@@ -12,11 +12,11 @@ namespace UI
             _networkManager = FindFirstObjectByType<NetworkManager>();
         }
         
-        public async void HostGame()
+        public async void PlayDeathmatch()
         {
             if (_networkManager != null)
             {
-                await _networkManager.StartMatchmaking("Test");
+                await _networkManager.StartMatchmaking("FreeForeAll");
                 unityObjects["Screen_Multiplayer"].gameObject.SetActive(false);
                 unityObjects["Img_Background"].gameObject.SetActive(false);
                 unityObjects["Screen_Game"].gameObject.SetActive(true);
@@ -27,11 +27,11 @@ namespace UI
             }
         }
         
-        public async void JoinGame()
+        public async void PlayTeamDeathmatch()
         {
             if (_networkManager != null)
             {
-                await _networkManager.StartMatchmaking("Test");
+                await _networkManager.StartMatchmaking("TeamDeathmatch");
                 unityObjects["Screen_Multiplayer"].gameObject.SetActive(false);
                 unityObjects["Img_Background"].gameObject.SetActive(false);
                 unityObjects["Screen_Game"].gameObject.SetActive(true);
