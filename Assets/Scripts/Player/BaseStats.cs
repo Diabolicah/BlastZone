@@ -10,15 +10,22 @@ public abstract class BaseStats : NetworkBehaviour
     [Networked, Capacity(10)]
     public NetworkDictionary<string, float> Stats { get; } = default;
 
-    [SerializeField, Tooltip("Default value for this stat (read-only at runtime).")]
+    [SerializeField, Tooltip("Default value for this stat (read-only at runtime). (Limit is 10!!!!)")]
     private Dictionary<string, float> defaultStats = new Dictionary<string, float>();
 
     public event Action<string, float, float> OnStatChanged;
 
-    public Action<string, float, float> ExternalStatChangedAction;
+    [SerializeField]
+    protected StatsManager statsManager;
 
     public override void Spawned()
     {
+        if (defaultStats.Count > 10)
+        {
+            Debug.LogError("Default stats count is more than 10. Please reduce the count to 10 or less.");
+            return;
+        }
+
         if (Object.HasStateAuthority)
         {
             foreach (var stat in defaultStats)
@@ -33,15 +40,15 @@ public abstract class BaseStats : NetworkBehaviour
                 }
             }
 
-            if (ExternalStatChangedAction != null)
-                ExternalStatChangedAction += OnExternalStatChanged;
+            if (statsManager != null)
+                statsManager.OnStatsChanged += OnExternalStatChanged;
         }
     }
 
     public void OnDisable()
     {
-        if (ExternalStatChangedAction != null)
-            ExternalStatChangedAction -= OnExternalStatChanged;
+        if (statsManager != null)
+            statsManager.OnStatsChanged -= OnExternalStatChanged;
     }
 
     protected void SetStat(string statName, float newValue)
@@ -49,10 +56,7 @@ public abstract class BaseStats : NetworkBehaviour
         if (!Object.HasStateAuthority)
             return;
 
-        float oldValue = Stats[statName];
-        bool exists = Stats.TryGet(statName, out oldValue);
-        if (!exists)
-            return;
+        float oldValue = GetStat(statName);
 
         if (!Mathf.Approximately(oldValue, newValue))
         {
@@ -61,7 +65,16 @@ public abstract class BaseStats : NetworkBehaviour
         }
     }
 
-    protected virtual void OnExternalStatChanged(string statName, float oldValue, float newValue)
+    protected float GetStat(string statName)
+    {
+        if (Stats.TryGet(statName, out float value))
+        {
+            return value;
+        }
+        throw new KeyNotFoundException($"Stat {statName} not found.");
+    }
+
+    protected virtual void OnExternalStatChanged(PlayerStatsStruct oldPlayerStats, PlayerStatsStruct newPlayerStats)
     {
         throw new NotImplementedException();
     }
