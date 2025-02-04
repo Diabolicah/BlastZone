@@ -11,7 +11,7 @@ public class Health : BaseStats
     private string MAX_HEALTH = "MaxHealth";
     private string HEALTH_REGEN_RATE = "HealthRegenRate";
 
-    [SerializeField] private GameObject healthBar;
+    [SerializeField] private Image healthBar;
 
     public override void Spawned()
     {
@@ -30,9 +30,8 @@ public class Health : BaseStats
         {
             float currentHealth = GetStat(CURRENT_HEALTH);
             float maxHealth = GetStat(MAX_HEALTH);
-            RectTransform healthBarTransform = healthBar.GetComponent<RectTransform>();
-            healthBarTransform.transform.localScale = new Vector3(currentHealth / maxHealth, 1, 1);
-            healthBar.GetComponent<Image>().color = Color.Lerp(Color.red, Color.green, currentHealth / maxHealth);
+            healthBar.fillAmount = currentHealth / maxHealth;
+            healthBar.color = Color.Lerp(Color.red, Color.green, currentHealth / maxHealth);
         }
     }
 
