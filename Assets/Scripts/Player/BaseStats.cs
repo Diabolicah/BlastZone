@@ -41,14 +41,14 @@ public abstract class BaseStats : NetworkBehaviour
             }
 
             if (statsManager != null)
-                statsManager.OnStatsChanged += OnExternalStatChanged;
+                statsManager.OnStatsChanged += OnStatManagerChange;
         }
     }
 
     public void OnDisable()
     {
         if (statsManager != null)
-            statsManager.OnStatsChanged -= OnExternalStatChanged;
+            statsManager.OnStatsChanged -= OnStatManagerChange;
     }
 
     protected void SetStat(string statName, float newValue)
@@ -74,7 +74,16 @@ public abstract class BaseStats : NetworkBehaviour
         throw new KeyNotFoundException($"Stat {statName} not found.");
     }
 
-    protected virtual void OnExternalStatChanged(PlayerStatsStruct oldPlayerStats, PlayerStatsStruct newPlayerStats)
+    protected void ApplyMultiplier(string statName, float multiplier)
+    {
+        if (!Object.HasStateAuthority)
+            return;
+        float oldValue = GetStat(statName);
+        float newValue = oldValue * multiplier;
+        Stats.Set(statName, newValue);
+    }
+
+    protected virtual void OnStatManagerChange(PlayerStatsStruct oldPlayerStats, PlayerStatsStruct newPlayerStats)
     {
         throw new NotImplementedException();
     }
