@@ -24,17 +24,19 @@ public class Bullet : NetworkBehaviour
     {
         if (Runner.IsForward)
         {
-            transform.position += _direction * _bulletSpeed * Time.deltaTime;
+            transform.position += _direction * _bulletSpeed * Runner.DeltaTime;
             if (_life.ExpiredOrNotRunning(Runner))
             {
                 Runner.Despawn(Object); // Despawn the bullet after its lifetime expires
             }
         }
     }
-
+   
     private void OnTriggerEnter(Collider other)
     {
+        
         if (!HasStateAuthority) return;
+        Debug.Log("Got HIt");
         if (other.TryGetComponent<NetworkObject>(out NetworkObject obj))
         {
             if (obj.Id == _bulletShooter.Id) return;
