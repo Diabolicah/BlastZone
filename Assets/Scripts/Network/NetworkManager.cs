@@ -2,6 +2,7 @@ using Fusion;
 using Fusion.Sockets;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +12,7 @@ public class NetworkManager : MonoBehaviour
 
     [SerializeField] private string selectedGameMode = "Deathmatch";
 
-    public async void StartMatchmaking(string gameMode)
+    public async Task<bool> StartMatchmaking(string gameMode)
     {
         selectedGameMode = gameMode;
 
@@ -32,10 +33,12 @@ public class NetworkManager : MonoBehaviour
         if (!result.Ok)
         {
             Debug.LogError($"Failed to start game: {result.ShutdownReason}");
+            return false;
         }
         else
         {
             Debug.Log($"Matchmaking started successfully for gamemode: {selectedGameMode}");
+            return true;
         }
     }
 
