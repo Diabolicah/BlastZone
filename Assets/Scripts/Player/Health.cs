@@ -20,14 +20,14 @@ public class Health : BaseStats
         {
             SetStat(CURRENT_HEALTH, GetStat(MAX_HEALTH));
         }
+
+        OnStatChanged += UpdateHealthbar;
     }
 
-    protected override void SetStat(string statName, float newValue)
+    private void UpdateHealthbar(string statName, float oldValue, float newValue)
     {
-        base.SetStat(statName, newValue);
-        if (statName == CURRENT_HEALTH && healthBar)
+        if (healthBar != null && statName == CURRENT_HEALTH)
         {
-            Debug.Log("Setting health bar");
             float currentHealth = GetStat(CURRENT_HEALTH);
             float maxHealth = GetStat(MAX_HEALTH);
             RectTransform healthBarTransform = healthBar.GetComponent<RectTransform>();
