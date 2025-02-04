@@ -5,7 +5,7 @@ using UnityEngine;
 public class StatsManager : NetworkBehaviour
 {
     [Networked]
-    public PlayerStatsStruct Stats { get; set; } = PlayerStatsStruct.Default;
+    public PlayerStatsStruct Stats { get; set; }
 
     public event Action<PlayerStatsStruct, PlayerStatsStruct> OnStatsChanged;
 
@@ -17,6 +17,11 @@ public class StatsManager : NetworkBehaviour
 
     public override void Spawned()
     {
+        if (Object.HasStateAuthority)
+        {
+            Stats = PlayerStatsStruct.Default;
+        }
+
         _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
         _lastStats = Stats;
     }
