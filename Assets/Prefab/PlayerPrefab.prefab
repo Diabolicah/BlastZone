@@ -124,6 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c78530ec0f8c49168e4d21f1853c723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseMaxSpeed: 2
+  baseAcceleration: 10
 --- !u!114 &2386721432402869471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +189,7 @@ MonoBehaviour:
   _shootPoint: {fileID: 5029444533477575965}
   _weaponConfig: {fileID: 11400000, guid: 1bf2f69bb36f7a0419420cb2ee824560, type: 2}
   _trippleWeaponConfig: {fileID: 11400000, guid: 8e5a094859a0daa44a805544b1d8f8cf, type: 2}
+  _playerNetworkObj: {fileID: 6304546695575401311}
 --- !u!114 &1395887037798404361
 MonoBehaviour:
   m_ObjectHideFlags: 0

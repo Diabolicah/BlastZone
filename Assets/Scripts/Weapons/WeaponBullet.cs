@@ -17,27 +17,27 @@ public class WeaponBullet : IWeapon
         _shootCooldown = config.ShootCooldown;
         _speed = config.Speed;
         _bulletLifeTime = config.BulletLifeTime;
-        _shootPoint = shootPoint;
         _damage = config.Damage;
+        _shootPoint = shootPoint;
         _cooldownManager = new CooldownManager();
     }
 
-    public void fire(NetworkRunner runner, PlayerStatsStruct playerStats)
+    public void fire(NetworkRunner runner, PlayerStatsStruct playerStats, NetworkId bulletShooterId)
     {
         if (runner.IsServer)
         {
             if (_cooldownManager.IsCooldownExpired(runner))
             {
                 _cooldownManager.ResetCooldown(runner, _shootCooldown * playerStats.AttackSpeed); // Reset cooldown timer
-                ServerShoot(runner, playerStats);
+                ServerShoot(runner, playerStats, runner.FindObject(bulletShooterId));
             }
         }
     }
 
-    protected virtual void ServerShoot(NetworkRunner runner, PlayerStatsStruct playerStats) {
+    protected virtual void ServerShoot(NetworkRunner runner, PlayerStatsStruct playerStats, NetworkObject bulletShooter) {
         Quaternion bulletRotation = Quaternion.LookRotation(_shootPoint.forward, Vector3.up);
         NetworkObject bullet = runner.Spawn(_bulletPrefab, _shootPoint.position, bulletRotation);
-        Bullet bulletScript = bullet.GetComponent<Bullet>();
-        bulletScript.Shoot(_shootPoint.forward, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage);
+        BulletShoot bulletScript = bullet.GetComponent<BulletShoot>();
+        bulletScript.Shoot(_shootPoint.forward, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage, bulletShooter);
     }
 }
