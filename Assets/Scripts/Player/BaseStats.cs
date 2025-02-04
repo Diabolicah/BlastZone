@@ -45,7 +45,7 @@ public abstract class BaseStats : NetworkBehaviour
             statsManager.OnStatsChanged -= OnStatManagerChange;
     }
 
-    protected void SetStat(string statName, float newValue)
+    protected virtual void SetStat(string statName, float newValue)
     {
         if (!Object.HasStateAuthority)
             return;
