@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 5840779349211882538}
   - component: {fileID: -7888848812287710610}
   - component: {fileID: 2386721432402869471}
+  - component: {fileID: 669638107416217757}
+  - component: {fileID: 4695052827456854904}
   - component: {fileID: 971756849036023500}
   m_Layer: 0
   m_Name: PlayerPrefab
@@ -59,6 +61,8 @@ MonoBehaviour:
   - {fileID: 5840779349211882538}
   - {fileID: -7888848812287710610}
   - {fileID: 2386721432402869471}
+  - {fileID: 669638107416217757}
+  - {fileID: 4695052827456854904}
   - {fileID: 971756849036023500}
   ForceRemoteRenderTimeframe: 0
 --- !u!143 &4083394951992882268
@@ -129,6 +133,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5182dfda30d5143b4fb432f84d9e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &669638107416217757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131662502398076607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ccbccc909cfe94ea208d4e359cd9d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Stats:
+    Health: 1
+    HealthRegen: 1
+    Damage: 1
+    AttackSpeed: 1
+    BulletSpeed: 1
+    MovementSpeed: 1
+--- !u!114 &4695052827456854904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131662502398076607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62238b582dfdda34183dd8aa88e4d2a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaxHealth: 100
+  defaultHealthRegenRate: 2
+  _CurrentHealth: 0
+  _MaxHealth: 0
+  _HealthRegenRate: 0
 --- !u!114 &971756849036023500
 MonoBehaviour:
   m_ObjectHideFlags: 0
