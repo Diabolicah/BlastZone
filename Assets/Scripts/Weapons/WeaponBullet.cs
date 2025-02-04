@@ -37,7 +37,7 @@ public class WeaponBullet : IWeapon
     protected virtual void ServerShoot(NetworkRunner runner, PlayerStatsStruct playerStats, NetworkObject bulletShooter) {
         Quaternion bulletRotation = Quaternion.LookRotation(_shootPoint.forward, Vector3.up);
         NetworkObject bullet = runner.Spawn(_bulletPrefab, _shootPoint.position, bulletRotation);
-        BulletShoot bulletScript = bullet.GetComponent<BulletShoot>();
-        bulletScript.Shoot(_shootPoint.forward, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage, bulletShooter);
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        bulletScript.Init(_shootPoint.forward, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage, bulletShooter);
     }
 }

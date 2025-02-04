@@ -1,7 +1,7 @@
 using Fusion;
 using UnityEngine;
 
-public class BulletShoot : NetworkBehaviour
+public class Bullet : NetworkBehaviour
 {
     [Networked] public Vector3 _direction { get; set; } // Networked bullet direction
     [SerializeField] private TickTimer _life;
@@ -9,9 +9,16 @@ public class BulletShoot : NetworkBehaviour
     private float _lifeTime;
     private float _damage;
     private NetworkObject _bulletShooter;
-    public NetworkObject BulletShooter { get => _bulletShooter;}
-    public float Damage { get => _damage;}
 
+    public void Init(Vector3 direction, float bulletSpeed, float lifeTime, float damage, NetworkObject BulletShooter)
+    {
+        _direction = direction;
+        _bulletSpeed = bulletSpeed;
+        _lifeTime = lifeTime;
+        _damage = damage;
+        _bulletShooter = BulletShooter;
+        _life = TickTimer.CreateFromSeconds(Runner, _lifeTime);
+    }
     // FixedUpdateNetwork is called once per server tick
     public override void FixedUpdateNetwork()
     {
@@ -25,13 +32,4 @@ public class BulletShoot : NetworkBehaviour
         }
     }
 
-    public void Shoot(Vector3 direction, float bulletSpeed, float lifeTime, float damage, NetworkObject BulletShooter)
-    {
-        _direction = direction;
-        _bulletSpeed = bulletSpeed;
-        _lifeTime = lifeTime;
-        _damage = damage;
-        _bulletShooter = BulletShooter;
-        _life = TickTimer.CreateFromSeconds(Runner, _lifeTime);
-    }
 }

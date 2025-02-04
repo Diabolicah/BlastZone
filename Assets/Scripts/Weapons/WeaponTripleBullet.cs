@@ -26,12 +26,12 @@ public class WeaponTripleBullet : WeaponBullet
         NetworkObject bullet2 = runner.Spawn(_bulletPrefab, _shootPoint.position, bullet2Rotation);
         NetworkObject bullet3 = runner.Spawn(_bulletPrefab, _shootPoint.position, bullet3Rotation);
 
-        BulletShoot bullet1Script = bullet1.GetComponent<BulletShoot>();
-        BulletShoot bullet2Script = bullet2.GetComponent<BulletShoot>();
-        BulletShoot bullet3Script = bullet3.GetComponent<BulletShoot>();
+        Bullet bullet1Script = bullet1.GetComponent<Bullet>();
+        Bullet bullet2Script = bullet2.GetComponent<Bullet>();
+        Bullet bullet3Script = bullet3.GetComponent<Bullet>();
 
-        bullet1Script.Shoot(baseDirection, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage, bulletShooter);
-        bullet2Script.Shoot(dirRight, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage, bulletShooter);
-        bullet3Script.Shoot(dirLeft, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage, bulletShooter);
+        bullet1Script.Init(baseDirection, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage, bulletShooter);
+        bullet2Script.Init(dirRight, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage, bulletShooter);
+        bullet3Script.Init(dirLeft, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage, bulletShooter);
     }
 }
