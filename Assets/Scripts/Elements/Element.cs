@@ -1,16 +1,10 @@
+using Fusion;
 using UnityEngine;
 
-public class Element : MonoBehaviour
+public class Element : NetworkBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log(other.gameObject);
     }
 }
