@@ -14,7 +14,11 @@ GameObject:
   - component: {fileID: 5840779349211882538}
   - component: {fileID: -7888848812287710610}
   - component: {fileID: 2386721432402869471}
+  - component: {fileID: 669638107416217757}
+  - component: {fileID: 4695052827456854904}
   - component: {fileID: 971756849036023500}
+  - component: {fileID: 1395887037798404361}
+  - component: {fileID: 181552794897400913}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -60,7 +64,10 @@ MonoBehaviour:
   - {fileID: 5840779349211882538}
   - {fileID: -7888848812287710610}
   - {fileID: 2386721432402869471}
+  - {fileID: 669638107416217757}
+  - {fileID: 4695052827456854904}
   - {fileID: 971756849036023500}
+  - {fileID: 1395887037798404361}
   ForceRemoteRenderTimeframe: 0
 --- !u!143 &4083394951992882268
 CharacterController:
@@ -118,6 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c78530ec0f8c49168e4d21f1853c723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseMaxSpeed: 2
+  baseAcceleration: 10
 --- !u!114 &2386721432402869471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +139,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5182dfda30d5143b4fb432f84d9e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &669638107416217757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131662502398076607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ccbccc909cfe94ea208d4e359cd9d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Stats:
+    Health: 1
+    HealthRegen: 1
+    Damage: 1
+    AttackSpeed: 1
+    BulletSpeed: 1
+    MovementSpeed: 1
+--- !u!114 &4695052827456854904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131662502398076607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62238b582dfdda34183dd8aa88e4d2a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaxHealth: 100
+  defaultHealthRegenRate: 2
+  _CurrentHealth: 0
+  _MaxHealth: 0
+  _HealthRegenRate: 0
 --- !u!114 &971756849036023500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,12 +184,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 131662502398076607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53dea732b2b502f44b0c9f100e98af1e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cb6545b24566604280c728d441fbe02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _shootPoint: {fileID: 5029444533477575965}
   _weaponConfig: {fileID: 11400000, guid: 1bf2f69bb36f7a0419420cb2ee824560, type: 2}
-  _trippleWeaponConfig: {fileID: 11400000, guid: b7d42aef492614b3f9076c18868d5152, type: 2}
+  _trippleWeaponConfig: {fileID: 11400000, guid: 326cae14a1a6944f187a8ae273f958a5, type: 2}
+--- !u!114 &1395887037798404361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131662502398076607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1039544458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Config: 3
+  BroadRadius: 0.8
+  Offset: {x: 0, y: 0, z: 0}
+  GizmosColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  Hitboxes:
+  - {fileID: 181552794897400913}
+--- !u!114 &181552794897400913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131662502398076607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1014831617, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 1
+  SphereRadius: 1
+  CapsuleRadius: 0.7
+  BoxExtents: {x: 0.5, y: 0.5, z: 0.5}
+  CapsuleExtents: 1
+  Offset: {x: 0, y: 0, z: 0}
+  Root: {fileID: 1395887037798404361}
+  GizmosColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &2198870952358858629
 GameObject:
   m_ObjectHideFlags: 0

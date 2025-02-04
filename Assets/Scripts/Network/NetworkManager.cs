@@ -29,8 +29,6 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
             Scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex),
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
         });
-
-        Debug.Log($"Game started in {mode} mode");
     }
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)

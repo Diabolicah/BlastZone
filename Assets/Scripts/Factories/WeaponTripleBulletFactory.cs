@@ -14,6 +14,6 @@ public class WeaponTripleBulletFactory : IWeaponFactory
 
     public IWeapon CreateWeapon()
     {
-        return new Weapon_TripleBullet(_config, _shootPoint);
+        return new WeaponTripleBullet(_config, _shootPoint);
     }
 }
