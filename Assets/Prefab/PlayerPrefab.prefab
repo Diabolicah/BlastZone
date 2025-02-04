@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 669638107416217757}
   - component: {fileID: 4695052827456854904}
   - component: {fileID: 971756849036023500}
+  - component: {fileID: 1395887037798404361}
+  - component: {fileID: 181552794897400913}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -64,6 +66,7 @@ MonoBehaviour:
   - {fileID: 669638107416217757}
   - {fileID: 4695052827456854904}
   - {fileID: 971756849036023500}
+  - {fileID: 1395887037798404361}
   ForceRemoteRenderTimeframe: 0
 --- !u!143 &4083394951992882268
 CharacterController:
@@ -184,6 +187,43 @@ MonoBehaviour:
   _shootPoint: {fileID: 5029444533477575965}
   _weaponConfig: {fileID: 11400000, guid: 1bf2f69bb36f7a0419420cb2ee824560, type: 2}
   _trippleWeaponConfig: {fileID: 11400000, guid: 8e5a094859a0daa44a805544b1d8f8cf, type: 2}
+--- !u!114 &1395887037798404361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131662502398076607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1039544458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Config: 3
+  BroadRadius: 0.7
+  Offset: {x: 0, y: 0, z: 0}
+  GizmosColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  Hitboxes: []
+--- !u!114 &181552794897400913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131662502398076607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1014831617, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 1
+  SphereRadius: 1
+  CapsuleRadius: 0.7
+  BoxExtents: {x: 0.5, y: 0.5, z: 0.5}
+  CapsuleExtents: 1
+  Offset: {x: 0, y: 0, z: 0}
+  Root: {fileID: 0}
+  GizmosColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &2198870952358858629
 GameObject:
   m_ObjectHideFlags: 0
