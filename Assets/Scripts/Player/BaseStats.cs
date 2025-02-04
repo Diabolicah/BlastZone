@@ -52,22 +52,19 @@ public abstract class BaseStats : NetworkBehaviour
 
     public override void Render()
     {
-        if (!Object.HasStateAuthority)
+        foreach (var changedProperty in _changeDetector.DetectChanges(this))
         {
-            foreach (var changedProperty in _changeDetector.DetectChanges(this))
+            if (changedProperty == nameof(Stats))
             {
-                if (changedProperty == nameof(Stats))
+                foreach (var kv in Stats)
                 {
-                    foreach (var kv in Stats)
+                    float cachedValue = 0f;
+                    cachedStats.TryGetValue(kv.Key, out cachedValue);
+                    float newValue = kv.Value;
+                    if (!Mathf.Approximately(cachedValue, newValue))
                     {
-                        float cachedValue = 0f;
-                        cachedStats.TryGetValue(kv.Key, out cachedValue);
-                        float newValue = kv.Value;
-                        if (!Mathf.Approximately(cachedValue, newValue))
-                        {
-                            OnStatChanged?.Invoke(kv.Key, cachedValue, newValue);
-                            cachedStats[kv.Key] = newValue;
-                        }
+                        OnStatChanged?.Invoke(kv.Key, cachedValue, newValue);
+                        cachedStats[kv.Key] = newValue;
                     }
                 }
             }
