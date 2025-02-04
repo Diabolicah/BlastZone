@@ -18,8 +18,13 @@ public abstract class BaseStats : NetworkBehaviour
     [SerializeField]
     protected StatsManager statsManager;
 
+    private Dictionary<string, float> cachedStats = new Dictionary<string, float>();
+    private ChangeDetector _changeDetector;
+
     public override void Spawned()
-    {   
+    {
+        _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
+
         if (Object.HasStateAuthority)
         {
             foreach (var stat in defaultStats)
@@ -45,6 +50,30 @@ public abstract class BaseStats : NetworkBehaviour
             statsManager.OnStatsChanged -= OnStatManagerChange;
     }
 
+    public override void FixedUpdateNetwork()
+    {
+        if (!Object.HasStateAuthority)
+        {
+            foreach (var changedProperty in _changeDetector.DetectChanges(this))
+            {
+                if (changedProperty == nameof(Stats))
+                {
+                    foreach (var kv in Stats)
+                    {
+                        float cachedValue = 0f;
+                        cachedStats.TryGetValue(kv.Key, out cachedValue);
+                        float newValue = kv.Value;
+                        if (!Mathf.Approximately(cachedValue, newValue))
+                        {
+                            OnStatChanged?.Invoke(kv.Key, cachedValue, newValue);
+                            cachedStats[kv.Key] = newValue;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     protected virtual void SetStat(string statName, float newValue)
     {
         if (!Object.HasStateAuthority)
@@ -55,7 +84,6 @@ public abstract class BaseStats : NetworkBehaviour
         if (!Mathf.Approximately(oldValue, newValue))
         {
             Stats.Set(statName, newValue);
-            OnStatChanged?.Invoke(statName, oldValue, newValue);
         }
     }
 
