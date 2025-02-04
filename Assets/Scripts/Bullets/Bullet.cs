@@ -43,7 +43,7 @@ public class Bullet : NetworkBehaviour
         var previousPosition = GetMovePosition(Runner.Tick - 1);
         var nextPosition = GetMovePosition(Runner.Tick);
 
-        transform.position += nextPosition;
+        transform.position = nextPosition;
 
         var direction = nextPosition - previousPosition;
         var _hitMask = LayerMask.GetMask("Default");

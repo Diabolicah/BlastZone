@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 2868261089
   ObjectInterest: 1
-  Flags: 262145
+  Flags: 131073
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: -1757546501894009794}
@@ -173,7 +173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d39788d71633404e998f591acdbc0b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  __direction: {x: 0, y: 0, z: 0}
 --- !u!114 &66237898533123991
 MonoBehaviour:
   m_ObjectHideFlags: 0

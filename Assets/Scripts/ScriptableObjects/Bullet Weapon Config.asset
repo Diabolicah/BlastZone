@@ -15,6 +15,6 @@ MonoBehaviour:
   _bulletPrefab:
     RawGuidValue: 0d016aaeb36ee56419e283b40659a7dc
   _shootCooldown: 0.5
-  _bulletSpeed: 100
+  _bulletSpeed: 25
   _bulletLifeTime: 5
   _damage: 5
