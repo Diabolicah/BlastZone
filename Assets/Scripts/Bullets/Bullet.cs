@@ -44,6 +44,8 @@ public class Bullet : NetworkBehaviour
                 if (playerHealth != null)
                 {
                     (bool success, bool isDead) = playerHealth.ApplyDamage(_damage);
+                    if (!success) return;
+                    if (isDead) Debug.Log(_bulletShooter.ToString() + " Killed a player");
                     Runner.Despawn(Object);
                 }
             }
