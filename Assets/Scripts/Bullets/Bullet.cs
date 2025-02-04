@@ -71,26 +71,4 @@ public class Bullet : NetworkBehaviour
             Runner.Despawn(Object);
         }
     }
-   
-    //private void OnTriggerEnter(Collider other)
-    //{
-        
-    //    if (!HasStateAuthority) return;
-    //    if (other.TryGetComponent<NetworkObject>(out NetworkObject obj))
-    //    {
-    //        if (obj.Id == _bulletShooter.Id) return;
-    //        if (other.TryGetComponent<Hitbox>(out Hitbox hitbox))
-    //        {
-    //            Health playerHealth = hitbox.Root.GetComponent<Health>();
-    //            if (playerHealth != null)
-    //            {
-    //                (bool success, bool isDead) = playerHealth.ApplyDamage(_damage);
-    //                if (!success) return;
-    //                if (isDead) Debug.Log(_bulletShooter.ToString() + " Killed a player");
-    //                Runner.Despawn(Object);
-    //            }
-    //        }
-    //    }
-    //}
-
 }
