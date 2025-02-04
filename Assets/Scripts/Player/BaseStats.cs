@@ -7,10 +7,10 @@ using Unity.VisualScripting;
 
 public abstract class BaseStats : NetworkBehaviour
 {
-    [Networked, Capacity(10)]
+    [Networked, Capacity(16)]
     protected NetworkDictionary<string, float> Stats { get; } = default;
 
-    [Networked, Capacity(10), SerializeField]
+    [Networked, Capacity(16), SerializeField]
     private NetworkDictionary<string, float> defaultStats { get; } = default;
 
     public event Action<string, float, float> OnStatChanged;
@@ -20,18 +20,10 @@ public abstract class BaseStats : NetworkBehaviour
 
     public override void Spawned()
     {   
-        if (defaultStats.Count > 10)
-        {
-            Debug.LogError("Default stats count is more than 10. Please reduce the count to 10 or less.");
-            return;
-        }
-
         if (Object.HasStateAuthority)
         {
             foreach (var stat in defaultStats)
             {
-                Debug.Log($"Setting {stat.Key} to {stat.Value}");
-                Debug.Log(!Stats.ContainsKey(stat.Key));
                 if (!Stats.ContainsKey(stat.Key))
                 {
                     Stats.Add(stat.Key, stat.Value);
