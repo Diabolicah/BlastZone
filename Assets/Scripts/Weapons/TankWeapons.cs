@@ -43,7 +43,6 @@ public class TankWeapons : NetworkBehaviour
     }
     private void ServerFire(PlayerStatsStruct playerStats, NetworkId bulletShooterId)
     {
-
         _tankWeapon.fire(Runner, playerStats, bulletShooterId);
     }
 

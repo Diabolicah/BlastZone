@@ -24,13 +24,10 @@ public class WeaponBullet : IWeapon
 
     public void fire(NetworkRunner runner, PlayerStatsStruct playerStats, NetworkId bulletShooterId)
     {
-        if (runner.IsServer)
+        if (_cooldownManager.IsCooldownExpired(runner))
         {
-            if (_cooldownManager.IsCooldownExpired(runner))
-            {
-                _cooldownManager.ResetCooldown(runner, _shootCooldown * playerStats.AttackSpeed); // Reset cooldown timer
-                ServerShoot(runner, playerStats, runner.FindObject(bulletShooterId));
-            }
+            _cooldownManager.ResetCooldown(runner, _shootCooldown * playerStats.AttackSpeed); // Reset cooldown timer
+            ServerShoot(runner, playerStats, runner.FindObject(bulletShooterId));
         }
     }
 
