@@ -16,10 +16,18 @@ namespace UI
         {
             if (_networkManager != null)
             {
-                await _networkManager.StartMatchmaking("Test");
-                unityObjects["Screen_Multiplayer"].gameObject.SetActive(false);
-                unityObjects["Img_Background"].gameObject.SetActive(false);
-                unityObjects["Screen_Game"].gameObject.SetActive(true);
+                bool success = await _networkManager.StartMatchmaking("Test");
+                if (success)
+                {
+                    unityObjects["Screen_Multiplayer"].gameObject.SetActive(false);
+                    unityObjects["Img_Background"].gameObject.SetActive(false);
+                    unityObjects["Screen_Game"].gameObject.SetActive(true);
+                }
+                else
+                {
+
+                }
+
             }
             else
             {
