@@ -48,18 +48,20 @@ public class Bullet : NetworkBehaviour
         var direction = nextPosition - previousPosition;
         var _hitMask = LayerMask.GetMask("Default");
 
-        if (Runner.LagCompensation.Raycast(previousPosition, direction, direction.magnitude, Object.InputAuthority,
-         out LagCompensatedHit hit, _hitMask, HitOptions.IncludePhysX | HitOptions.IgnoreInputAuthority))
+        if (Physics.Raycast(previousPosition, direction.normalized, out RaycastHit hitInfo, direction.magnitude, _hitMask))
         {
-            if (hit.Hitbox)
+            if (hitInfo.collider.TryGetComponent<NetworkObject>(out NetworkObject obj))
             {
-                Health playerHealth = hit.Hitbox.Root.GetComponent<Health>();
+                if (obj.Id == _bulletShooter.Id) return;
+                Health playerHealth = hitInfo.collider.GetComponentInParent<Health>();
                 if (playerHealth != null)
                 {
                     (bool success, bool isDead) = playerHealth.ApplyDamage(_damage);
-                    if (!success) return;
-                    if (isDead) Debug.Log(_bulletShooter.ToString() + " Killed a player");
-                    Runner.Despawn(Object);
+                    if (success)
+                    {
+                        if (isDead) Debug.Log(_bulletShooter.ToString() + " Killed a player");
+                        Runner.Despawn(Object);
+                    }
                 }
             }
         }
