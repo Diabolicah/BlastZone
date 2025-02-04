@@ -189,7 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shootPoint: {fileID: 5029444533477575965}
   _weaponConfig: {fileID: 11400000, guid: 1bf2f69bb36f7a0419420cb2ee824560, type: 2}
-  _trippleWeaponConfig: {fileID: 11400000, guid: 326cae14a1a6944f187a8ae273f958a5, type: 2}
+  _trippleWeaponConfig: {fileID: 11400000, guid: 383d1fd9a135e498f92e8f5168f791e7, type: 2}
 --- !u!114 &1395887037798404361
 MonoBehaviour:
   m_ObjectHideFlags: 0
