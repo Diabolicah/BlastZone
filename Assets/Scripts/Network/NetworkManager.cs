@@ -28,7 +28,7 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 
         StartGameArgs args = new StartGameArgs
         {
-            GameMode = GameMode.Shared,
+            GameMode = GameMode.AutoHostOrClient,
             SessionName = selectedGameMode,
             Scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex),
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
