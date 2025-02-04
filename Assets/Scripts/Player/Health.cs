@@ -1,58 +1,68 @@
+using System;
 using Fusion;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using static Unity.Collections.Unicode;
 
-public class Health : NetworkBehaviour
+public class Health : BaseStats
 {
-    [SerializeField] private float defaultMaxHealth = 100f;
-    [SerializeField] private float defaultHealthRegenRate = 2f;
-
-    [Networked] public float CurrentHealth { get; set; }
-    [Networked] public float MaxHealth { get; set; }
-    [Networked] public float HealthRegenRate { get; set; }
-
-    public event System.Action<float, float> OnHealthChanged; // (oldHealth, newHealth)
-
-    private float _lastHealth;
-
-    public override void Spawned()
-    {
-        if (Object.HasStateAuthority)
-        {
-            MaxHealth = defaultMaxHealth;
-            CurrentHealth = MaxHealth;
-            HealthRegenRate = defaultHealthRegenRate;
-        }
-        _lastHealth = CurrentHealth;
-    }
-
+    private string CURRENT_HEALTH = "CurrentHealth";
+    private string MAX_HEALTH = "MaxHealth";
+    private string HEALTH_REGEN_RATE = "HealthRegenRate";
     public override void FixedUpdateNetwork()
     {
         if (Object.HasStateAuthority)
         {
+            float CurrentHealth = GetStat(CURRENT_HEALTH);
+            float MaxHealth = GetStat(MAX_HEALTH);
+            float HealthRegenRate = GetStat(HEALTH_REGEN_RATE);
+
             if (CurrentHealth < MaxHealth)
             {
                 float newHealth = Mathf.Min(CurrentHealth + HealthRegenRate * Runner.DeltaTime, MaxHealth);
                 if (!Mathf.Approximately(newHealth, CurrentHealth))
                 {
-                    float oldHealth = CurrentHealth;
-                    CurrentHealth = newHealth;
-                    OnHealthChanged?.Invoke(oldHealth, newHealth);
-                }
-                else
-                {
-                    CurrentHealth = newHealth;
+                    SetStat(CURRENT_HEALTH, newHealth);
                 }
             }
         }
     }
 
-    public void ApplyDamage(float damage)
+    public (bool, bool) ApplyDamage(float damage)
+    {
+        if (!Object.HasStateAuthority)
+            return (false, false);
+
+        float CurrentHealth = GetStat(CURRENT_HEALTH);
+        SetStat(CURRENT_HEALTH, Mathf.Max(CurrentHealth - damage, 0f));
+
+        if (CurrentHealth - damage <= 0)
+        {
+            return (true, true);
+        }
+        return (true, false);
+    }
+    public void ApplyHealing(float healing)
     {
         if (!Object.HasStateAuthority)
             return;
+        float CurrentHealth = GetStat(CURRENT_HEALTH);
+        float MaxHealth = GetStat(MAX_HEALTH);
+        SetStat(CURRENT_HEALTH, Mathf.Min(CurrentHealth + healing, MaxHealth));
+    }
 
-        float oldHealth = CurrentHealth;
-        CurrentHealth = Mathf.Max(CurrentHealth - damage, 0f);
-        OnHealthChanged?.Invoke(oldHealth, CurrentHealth);
+    protected override void OnStatManagerChange(PlayerStatsStruct oldStats, PlayerStatsStruct newStats)
+    {
+        if (oldStats.Health != newStats.Health)
+        {
+            ResetToDefault(CURRENT_HEALTH);
+            ApplyMultiplier(CURRENT_HEALTH, newStats.Health);
+        }
+
+        if (oldStats.HealthRegen != newStats.HealthRegen)
+        {
+            ResetToDefault(HEALTH_REGEN_RATE);
+            ApplyMultiplier(HEALTH_REGEN_RATE, newStats.HealthRegen);
+        }
     }
 }

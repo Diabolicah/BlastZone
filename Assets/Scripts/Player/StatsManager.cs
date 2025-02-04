@@ -12,16 +12,12 @@ public class StatsManager : NetworkBehaviour
     private ChangeDetector _changeDetector;
     private PlayerStatsStruct _lastStats;
 
-
-    private bool _testMovementIncreased = false;
-
     public override void Spawned()
     {
         if (Object.HasStateAuthority)
         {
             Stats = PlayerStatsStruct.Default;
         }
-
         _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
         _lastStats = Stats;
     }
@@ -34,17 +30,6 @@ public class StatsManager : NetworkBehaviour
             {
                 HandleStatsChanged();
             }
-        }
-
-        if (Object.HasStateAuthority && !_testMovementIncreased && Runner.SimulationTime > 5f)
-        {
-            var oldStats = Stats;
-            var newStats = Stats;
-            newStats.MovementSpeed *= 2f; // Increase by 10%
-            Stats = newStats;
-            _testMovementIncreased = true;
-            // Optionally, you could also invoke the event directly here.
-            OnStatsChanged?.Invoke(oldStats, newStats);
         }
     }
 

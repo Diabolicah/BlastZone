@@ -14851,7 +14851,7 @@ GameObject:
   - component: {fileID: 136350987479803286}
   - component: {fileID: 3166255043181664586}
   - component: {fileID: 4707521510317500989}
-  - component: {fileID: -5820988645916139396}
+  - component: {fileID: 5862632492681451142}
   m_Layer: 0
   m_Name: vfx_Projectile_Fireball02Orange
   m_TagString: Untagged
@@ -19868,9 +19868,9 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 3166255043181664586}
-  - {fileID: -5820988645916139396}
+  - {fileID: 5862632492681451142}
   ForceRemoteRenderTimeframe: 0
---- !u!114 &-5820988645916139396
+--- !u!114 &5862632492681451142
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19879,10 +19879,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1707102027251842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90597a9fb9b95a945b82d477321399c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d39788d71633404e998f591acdbc0b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  __direction: {x: 0, y: 0, z: 0}
 --- !u!1 &1739691434595618
 GameObject:
   m_ObjectHideFlags: 0

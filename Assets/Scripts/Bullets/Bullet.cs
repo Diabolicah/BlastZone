@@ -1,34 +1,74 @@
 using Fusion;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Bullet : NetworkBehaviour
 {
-    [Networked] public Vector3 _direction { get; set; } // Networked bullet direction
-    [SerializeField] private TickTimer _life;
-    private float _speed;
+    private TickTimer _life;
     private float _lifeTime;
     private float _damage;
+    private NetworkObject _bulletShooter;
 
+    private int _fireTick;
+    private Vector3 _firePosition;
+    private Vector3 _fireVelocity;
 
-    // FixedUpdateNetwork is called once per server tick
-    public override void FixedUpdateNetwork()
+    public void Init(Vector3 position, Vector3 direction, float bulletSpeed, float lifeTime, float damage, NetworkObject BulletShooter)
     {
-        if (Runner.IsForward)
-        {
-            transform.position += _direction * _speed * Time.deltaTime;
-            if (_life.ExpiredOrNotRunning(Runner))
-            {
-                Runner.Despawn(Object); // Despawn the bullet after its lifetime expires
-            }
-        }
-    }
-
-    public void Shoot(Vector3 direction, float speed, float lifeTime, float damage)
-    {
-        _direction = direction;
-        _speed = speed;
         _lifeTime = lifeTime;
         _damage = damage;
+        _bulletShooter = BulletShooter;
         _life = TickTimer.CreateFromSeconds(Runner, _lifeTime);
+
+        _fireTick = Runner.Tick;
+        _firePosition = position;
+        _fireVelocity = direction * bulletSpeed;
+    }
+
+    private Vector3 GetMovePosition(float currentTick)
+    {
+        float time = (currentTick - _fireTick) * Runner.DeltaTime;
+
+        if (time <= 0f)
+            return _firePosition;
+
+        return _firePosition + _fireVelocity * time;
+    }
+
+    public override void FixedUpdateNetwork()
+    {
+        if (IsProxy == true)
+            return;
+
+        var previousPosition = GetMovePosition(Runner.Tick - 1);
+        var nextPosition = GetMovePosition(Runner.Tick);
+
+        transform.position = nextPosition;
+
+        var direction = nextPosition - previousPosition;
+        var _hitMask = LayerMask.GetMask("Default");
+
+        if (Physics.Raycast(previousPosition, direction.normalized, out RaycastHit hitInfo, direction.magnitude, _hitMask))
+        {
+            if (hitInfo.collider.TryGetComponent<NetworkObject>(out NetworkObject obj))
+            {
+                if (obj.Id == _bulletShooter.Id) return;
+                Health playerHealth = hitInfo.collider.GetComponentInParent<Health>();
+                if (playerHealth != null)
+                {
+                    (bool success, bool isDead) = playerHealth.ApplyDamage(_damage);
+                    if (success)
+                    {
+                        if (isDead) Debug.Log(_bulletShooter.ToString() + " Killed a player");
+                        Runner.Despawn(Object);
+                    }
+                }
+            }
+        }
+
+        if (_life.ExpiredOrNotRunning(Runner))
+        {
+            Runner.Despawn(Object);
+        }
     }
 }

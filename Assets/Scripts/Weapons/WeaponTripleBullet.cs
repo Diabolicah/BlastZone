@@ -12,8 +12,9 @@ public class WeaponTripleBullet : WeaponBullet
         _spreadAngle = config.SpreadAngle;
     }
 
-    protected override void ServerShoot(NetworkRunner runner, PlayerStatsStruct playerStats)
+    protected override void ServerShoot(NetworkRunner runner, PlayerStatsStruct playerStats, NetworkObject bulletShooter)
     {
+        Vector3 basePosition = _shootPoint.position;
         Vector3 baseDirection = _shootPoint.forward;
         Vector3 dirRight = Quaternion.Euler(0, _spreadAngle, 0) * baseDirection;
         Vector3 dirLeft = Quaternion.Euler(0, -_spreadAngle, 0) * baseDirection;
@@ -30,8 +31,8 @@ public class WeaponTripleBullet : WeaponBullet
         Bullet bullet2Script = bullet2.GetComponent<Bullet>();
         Bullet bullet3Script = bullet3.GetComponent<Bullet>();
 
-        bullet1Script.Shoot(baseDirection, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage);
-        bullet2Script.Shoot(dirRight, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage);
-        bullet3Script.Shoot(dirLeft, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage);
+        bullet1Script.Init(basePosition, baseDirection, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage, bulletShooter);
+        bullet2Script.Init(basePosition, dirRight, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage, bulletShooter);
+        bullet3Script.Init(basePosition, dirLeft, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage, bulletShooter);
     }
 }

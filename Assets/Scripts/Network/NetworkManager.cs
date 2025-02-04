@@ -5,40 +5,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
+public class NetworkManager : MonoBehaviour
 {
     private NetworkRunner _runner;
-    private NetworkSpawner _spawner;
 
-    private void Start()
-    {
-        _spawner = GetComponent<NetworkSpawner>();
-    }
+    [SerializeField] private string selectedGameMode = "Deathmatch";
 
-    public async void StartGame(GameMode mode)
+    public async void StartMatchmaking(string gameMode)
     {
-        // Create the Fusion runner
+        selectedGameMode = gameMode;
+
+        // Create the Fusion runner if not already created.
         _runner = gameObject.AddComponent<NetworkRunner>();
         _runner.ProvideInput = true;
 
-        // Start the game
-        await _runner.StartGame(new StartGameArgs
+        StartGameArgs args = new StartGameArgs
         {
-            GameMode = mode,
-            SessionName = "TestRoom",
+            GameMode = GameMode.Shared,
+            SessionName = selectedGameMode,
             Scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex),
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
-        });
-    }
+        };
 
-    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
-    {
-        _spawner.HandlePlayerJoined(runner, player);
-    }
+        var result = await _runner.StartGame(args);
 
-    public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
-    {
-        _spawner.HandlePlayerLeft(runner, player);
+        if (!result.Ok)
+        {
+            Debug.LogError($"Failed to start game: {result.ShutdownReason}");
+        }
+        else
+        {
+            Debug.Log($"Matchmaking started successfully for gamemode: {selectedGameMode}");
+        }
     }
 
     public void OnInput(NetworkRunner runner, NetworkInput input)

@@ -6,8 +6,8 @@ public class Player : NetworkBehaviour
     private NetworkCharacterController _characterController;
     private StatsManager _statsManager;
 
-    [SerializeField] private float baseMaxSpeed = 2f;
-    [SerializeField] private float baseAcceleration = 10f;
+    [SerializeField] private float baseMaxSpeed = 4f;
+    [SerializeField] private float baseAcceleration = 20f;
 
     public override void Spawned()
     {
@@ -36,10 +36,8 @@ public class Player : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        if (GetInput(out NetworkInputData data))
-        {
-            data.direction.Normalize();
-            _characterController.Move(data.direction * _characterController.maxSpeed * Runner.DeltaTime);
-        }
+        Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        moveDirection.Normalize();
+        _characterController.Move(moveDirection * _characterController.maxSpeed * Runner.DeltaTime);
     }
 }
