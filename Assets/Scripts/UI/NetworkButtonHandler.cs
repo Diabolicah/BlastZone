@@ -12,11 +12,11 @@ namespace UI
             _networkManager = FindFirstObjectByType<NetworkManager>();
         }
         
-        public void HostGame()
+        public async void HostGame()
         {
             if (_networkManager != null)
             {
-                _networkManager.StartMatchmaking("Test");
+                await _networkManager.StartMatchmaking("Test");
                 unityObjects["Screen_Multiplayer"].gameObject.SetActive(false);
                 unityObjects["Img_Background"].gameObject.SetActive(false);
                 unityObjects["Screen_Game"].gameObject.SetActive(true);
@@ -27,11 +27,11 @@ namespace UI
             }
         }
         
-        public void JoinGame()
+        public async void JoinGame()
         {
             if (_networkManager != null)
             {
-                _networkManager.StartMatchmaking("Test");
+                await _networkManager.StartMatchmaking("Test");
                 unityObjects["Screen_Multiplayer"].gameObject.SetActive(false);
                 unityObjects["Img_Background"].gameObject.SetActive(false);
                 unityObjects["Screen_Game"].gameObject.SetActive(true);

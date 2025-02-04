@@ -7,6 +7,7 @@ public class Bullet : NetworkBehaviour
     private TickTimer _life;
     private float _lifeTime;
     private float _damage;
+    private bool _isAlive;
     private NetworkObject _bulletShooter;
 
     private int _fireTick;
@@ -19,6 +20,7 @@ public class Bullet : NetworkBehaviour
         _damage = damage;
         _bulletShooter = BulletShooter;
         _life = TickTimer.CreateFromSeconds(Runner, _lifeTime);
+        _isAlive = true;
 
         _fireTick = Runner.Tick;
         _firePosition = position;
@@ -61,12 +63,13 @@ public class Bullet : NetworkBehaviour
                     {
                         if (isDead) Debug.Log(_bulletShooter.ToString() + " Killed a player");
                         Runner.Despawn(Object);
+                        _isAlive = false;
                     }
                 }
             }
         }
 
-        if (_life.ExpiredOrNotRunning(Runner))
+        if (_isAlive && _life.ExpiredOrNotRunning(Runner))
         {
             Runner.Despawn(Object);
         }
