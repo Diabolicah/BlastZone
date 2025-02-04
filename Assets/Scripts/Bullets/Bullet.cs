@@ -35,13 +35,17 @@ public class Bullet : NetworkBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!HasStateAuthority) return;
-        if (other.TryGetComponent<Hitbox>(out Hitbox hitbox))
+        if (other.TryGetComponent<NetworkObject>(out NetworkObject obj))
         {
-            Health playerHealth = hitbox.Root.GetComponent<Health>();
-            if (playerHealth != null)
+            if (obj.Id == _bulletShooter.Id) return;
+            if (other.TryGetComponent<Hitbox>(out Hitbox hitbox))
             {
-                (bool success, bool isDead) = playerHealth.ApplyDamage(_damage);
-                Runner.Despawn(Object);
+                Health playerHealth = hitbox.Root.GetComponent<Health>();
+                if (playerHealth != null)
+                {
+                    (bool success, bool isDead) = playerHealth.ApplyDamage(_damage);
+                    Runner.Despawn(Object);
+                }
             }
         }
     }
