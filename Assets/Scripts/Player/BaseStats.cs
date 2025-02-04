@@ -8,10 +8,10 @@ using Unity.VisualScripting;
 public abstract class BaseStats : NetworkBehaviour
 {
     [Networked, Capacity(10)]
-    public NetworkDictionary<string, float> Stats { get; } = default;
+    protected NetworkDictionary<string, float> Stats { get; } = default;
 
-    [SerializeField, Tooltip("Default value for this stat (read-only at runtime). (Limit is 10!!!!)")]
-    private Dictionary<string, float> defaultStats = new Dictionary<string, float>();
+    [Networked, Capacity(10), SerializeField]
+    private NetworkDictionary<string, float> defaultStats { get; } = default;
 
     public event Action<string, float, float> OnStatChanged;
 
@@ -19,7 +19,7 @@ public abstract class BaseStats : NetworkBehaviour
     protected StatsManager statsManager;
 
     public override void Spawned()
-    {
+    {   
         if (defaultStats.Count > 10)
         {
             Debug.LogError("Default stats count is more than 10. Please reduce the count to 10 or less.");
@@ -30,6 +30,8 @@ public abstract class BaseStats : NetworkBehaviour
         {
             foreach (var stat in defaultStats)
             {
+                Debug.Log($"Setting {stat.Key} to {stat.Value}");
+                Debug.Log(!Stats.ContainsKey(stat.Key));
                 if (!Stats.ContainsKey(stat.Key))
                 {
                     Stats.Add(stat.Key, stat.Value);
@@ -92,7 +94,7 @@ public abstract class BaseStats : NetworkBehaviour
     {
         if (!Object.HasStateAuthority)
             return;
-        if (defaultStats.TryGetValue(statName, out float defaultValue))
+        if (defaultStats.TryGet(statName, out float defaultValue))
         {
             SetStat(statName, defaultValue);
         }
