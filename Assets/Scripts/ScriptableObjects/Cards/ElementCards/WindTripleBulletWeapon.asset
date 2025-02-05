@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WindTripleBulletWeapon
   m_EditorClassIdentifier: 
   Title: Triple Wind Bullet Weapon
-  Description: Swap to Triple Wind Bullet Weapon  (PushBack the target)
+  Description: Swap to Triple Wind Bullet Weapon  (SpeedBoost the user)
   Image: {fileID: -3050506591624099959, guid: 87be21159c17ec648b6c811aa086fff6, type: 3}
   MinimumRank: 0
   type: 2

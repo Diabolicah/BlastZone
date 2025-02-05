@@ -19886,8 +19886,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _aoeRadius: 5
   _isElementAoe: 0
-  _windEffectDuration: 0.5
-  _windPushBackForce: 20.1
+  _windEffectDuration: 0.75
+  _speedBoostPercentage: 0.2
 --- !u!114 &6925632920329964256
 MonoBehaviour:
   m_ObjectHideFlags: 0
