@@ -15,7 +15,7 @@ public class IceEffect : IElement
 
     public void activate(NetworkRunner runner, NetworkObject bulletShooter, Vector3 position, NetworkObject playerHit)
     {
-        if (_iceSlowManager.IsCooldownExpiredOrNutRunning(runner))
+        if (_iceSlowManager.IsCooldownExpiredOrNotRunning(runner))
         {
             MovementSpeed playerMovementSpeed = playerHit.GetComponent<MovementSpeed>();
             if (playerMovementSpeed != null)

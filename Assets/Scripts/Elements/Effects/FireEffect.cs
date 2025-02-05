@@ -19,7 +19,7 @@ public class FireEffect : IElement
 
     public void activate(NetworkRunner runner, NetworkObject bulletShooter, Vector3 position, NetworkObject playerHit)
     {
-        if (_fireTickManager.IsCooldownExpiredOrNutRunning(runner))
+        if (_fireTickManager.IsCooldownExpiredOrNotRunning(runner))
         {
             Debug.Log("Fire Tick");
             Health playerHealth = playerHit.GetComponent<Health>();

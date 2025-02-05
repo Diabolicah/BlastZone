@@ -16,7 +16,7 @@ public class WindEffect : IElement
     }
     public void activate(NetworkRunner runner, NetworkObject bulletShooter, Vector3 position, NetworkObject playerHit)
     {
-        if (_windPushBackManager.IsCooldownExpiredOrNutRunning(runner))
+        if (_windPushBackManager.IsCooldownExpiredOrNotRunning(runner))
         {
             Debug.Log("Wind Tick");
             ApplyExternalForce playerApplyForce = playerHit.GetComponent<ApplyExternalForce>();

@@ -1972,6 +1972,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 946b4a8def8cadc4f829a049e90e6df3, type: 2}
   - {fileID: 11400000, guid: 53fea925574c3bd4ab286d404e5f9450, type: 2}
   - {fileID: 11400000, guid: 97da6e76debcb964cb0d49a518a5c6d0, type: 2}
+  - {fileID: 11400000, guid: 7f89318fe133b4a4eb21581b4bcc9133, type: 2}
+  - {fileID: 11400000, guid: 3c6cc415bccd42a45849e6f1028d6b1e, type: 2}
+  - {fileID: 11400000, guid: 66678bd8e3ffd25419731b7b82e3d7ab, type: 2}
+  - {fileID: 11400000, guid: f21c36ed129845f4283b06ae6c9eab6a, type: 2}
+  - {fileID: 11400000, guid: 9f79a01a0e98c6c4393c07d32984ed33, type: 2}
+  - {fileID: 11400000, guid: d467e5c546e2b414299431bcff2536ad, type: 2}
   CardSelectionUI: {fileID: 1929808579}
   CardFunctions: {fileID: 613957808}
   pendingCardSelections: 
@@ -2426,7 +2432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c9766a72df7e44e9a9b8069e3b7151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedGameMode: Deathmatch
 --- !u!114 &694270836
 MonoBehaviour:
   m_ObjectHideFlags: 0

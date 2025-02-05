@@ -14851,6 +14851,7 @@ GameObject:
   - component: {fileID: 136350987479803286}
   - component: {fileID: 3166255043181664586}
   - component: {fileID: 4707521510317500989}
+  - component: {fileID: 2370871488519262456}
   - component: {fileID: 6925632920329964256}
   m_Layer: 0
   m_Name: WindBullet
@@ -19868,8 +19869,25 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 3166255043181664586}
+  - {fileID: 2370871488519262456}
   - {fileID: 6925632920329964256}
   ForceRemoteRenderTimeframe: 0
+--- !u!114 &2370871488519262456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707102027251842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf62b87ff7c521f4ab39ba0459faa69c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _aoeRadius: 5
+  _isElementAoe: 0
+  _windEffectDuration: 0.5
+  _windPushBackForce: 5
 --- !u!114 &6925632920329964256
 MonoBehaviour:
   m_ObjectHideFlags: 0

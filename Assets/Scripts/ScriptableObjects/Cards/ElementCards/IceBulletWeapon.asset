@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057fc4d48eef06443b0b02bd2385d10e, type: 3}
   m_Name: IceBulletWeapon
   m_EditorClassIdentifier: 
-  Title: Bullet Weapon
-  Description: Swap to Bullet Weapon
-  Image: {fileID: -8021775865167931992, guid: 803653f7aa6f1ea4aa7ab4c0c5ccc63e, type: 3}
+  Title: Ice Bullet Weapon
+  Description: Swap to Ice Bullet Weapon (Slows the target)
+  Image: {fileID: 3011583500638733201, guid: bd5c34a2f4aedbf489bbf95871d19bd9, type: 3}
   MinimumRank: 0
-  type: 1
-  weaponConfig: {fileID: 11400000, guid: 1bf2f69bb36f7a0419420cb2ee824560, type: 2}
+  type: 2
+  weaponConfig: {fileID: 11400000, guid: 62decb8518738b64eb778f7c798929aa, type: 2}
