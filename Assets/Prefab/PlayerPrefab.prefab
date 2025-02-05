@@ -184,6 +184,8 @@ MonoBehaviour:
       Value: 100
     - Key: HealthRegenRate
       Value: 2
+  _baseStats:
+    _items: []
   statsManager: {fileID: 669638107416217757}
   healthBarObject: {fileID: 3549399448212302878}
 --- !u!114 &110546857964575258
@@ -204,10 +206,6 @@ MonoBehaviour:
   expToLevelUp: 100
   _Level: 0
   _Exp: 0
-  availableCards:
-  - {fileID: 11400000, guid: 2f38aa1f17d072848b2829f8d5121053, type: 2}
-  - {fileID: 11400000, guid: 946b4a8def8cadc4f829a049e90e6df3, type: 2}
-  pendingLevelUps: 0
 --- !u!114 &971756849036023500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,7 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shootPoint: {fileID: 5029444533477575965}
   _weaponConfig: {fileID: 11400000, guid: 1bf2f69bb36f7a0419420cb2ee824560, type: 2}
-  _trippleWeaponConfig: {fileID: 11400000, guid: 383d1fd9a135e498f92e8f5168f791e7, type: 2}
+  _trippleWeaponConfig: {fileID: 11400000, guid: 70285d21a6c47da4fa111c3f444c1571, type: 2}
   _playerNetworkObj: {fileID: 6304546695575401311}
 --- !u!114 &753703370284247085
 MonoBehaviour:
