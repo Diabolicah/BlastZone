@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Fusion;
 using TMPro;
 using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SC_LoginLogic : MonoBehaviour
+public class SC_LoginLogic : NetworkBehaviour
 {
     // public Dictionary<string, GameObject> unityObjects;
     private string UserName = string.Empty;
@@ -33,29 +34,11 @@ public class SC_LoginLogic : MonoBehaviour
     private void OnEnable()
     {
         SC_LoginServerApi.OnGeneralResponse += OnGeneralResponse;
-        // SC_WebSocket.OnConnect += OnConnect;
-        // SC_WebSocket.OnDisconnect += OnDisconnect;
-        // SC_WebSocket.OnErrorReceived += OnDisconnect;
-        // SC_WebSocket.OnCancelMatching += OnCancelMatching;
-        // SC_WebSocket.OnSendMessage += OnSendMessage;
-        // SC_WebSocket.OnBroadcastMessage += OnBroadcastMessage;
-        // SC_WebSocket.OnReadyToPlay += OnReadyToPlay;
-        // SC_WebSocket.OnStartGame += OnStartGame;
-        // SC_WebSocket.OnSendMove += OnSendMove; 
     }
 
     private void OnDisable()
     {
         SC_LoginServerApi.OnGeneralResponse -= OnGeneralResponse;
-        // SC_WebSocket.OnConnect -= OnConnect;
-        // SC_WebSocket.OnDisconnect -= OnDisconnect;
-        // SC_WebSocket.OnErrorReceived -= OnDisconnect;
-        // SC_WebSocket.OnCancelMatching -= OnCancelMatching;
-        // SC_WebSocket.OnSendMessage -= OnSendMessage;
-        // SC_WebSocket.OnBroadcastMessage -= OnBroadcastMessage;
-        // SC_WebSocket.OnReadyToPlay -= OnReadyToPlay;
-        // SC_WebSocket.OnStartGame -= OnStartGame;
-        // SC_WebSocket.OnSendMove -= OnSendMove;
     }
 
     private void Start()
@@ -125,15 +108,7 @@ public class SC_LoginLogic : MonoBehaviour
         MainMenu_Logic.unityObjects["InputField_Login_Username"].GetComponent<TMP_InputField>().text = string.Empty;
         MainMenu_Logic.unityObjects["InputField_Login_Password"].GetComponent<TMP_InputField>().text = string.Empty;
     }
-    // public void Btn_Lobby_Logout()
-    // {
-    //     Debug.Log("Btn_Lobby_Logout");
-    //     MainMenu_Logic.unityObjects["Screen_Lobby"].SetActive(false);
-    //     MainMenu_Logic.unityObjects["Screen_Login"].SetActive(true);
-    //     MainMenu_Logic.unityObjects["Txt_Error"].GetComponent<TextMeshProUGUI>().text = string.Empty;
-    //     MainMenu_Logic.unityObjects["InputField_Login_Username"].GetComponent<TMP_InputField>().text = string.Empty;
-    //     MainMenu_Logic.unityObjects["InputField_Login_Password"].GetComponent<TMP_InputField>().text = string.Empty;
-    // }
+    
     public void Btn_Lobby_AddXp()
     {
         string _value = MainMenu_Logic.unityObjects["InputField_Xp"].GetComponent<TMP_InputField>().text;
@@ -147,24 +122,6 @@ public class SC_LoginLogic : MonoBehaviour
         else MainMenu_Logic.unityObjects["Txt_Error"].GetComponent<TextMeshProUGUI>().text = "Xp amount value is empty";
     
     }
-    // public void Btn_Lobby_AddCurrency()
-    // {
-    //     string _value = MainMenu_Logic.unityObjects["InputField_Currency"].GetComponent<TMP_InputField>().text;
-    //     if (_value.Length > 0)
-    //     {
-    //         Dictionary<string, object> _data = new Dictionary<string, object>();
-    //         _data.Add("Email", UserName);
-    //         _data.Add("CurrencyAmount", _value); 
-    //         SC_LoginServerApi.Instance.AddCurrency(_data);
-    //     }
-    //     else MainMenu_Logic.unityObjects["Txt_Error"].GetComponent<TextMeshProUGUI>().text = "Currency amount value is empty";
-    // }
-    // public void Btn_Lobby_Play()
-    // {
-    //     Debug.Log("Btn_Lobby_Play");
-    // //    unityObjects["Btn_Lobby_Play"].GetComponent<Button>().interactable = false;
-    //     SC_LoginServerApi.Instance.SearchingOpponent(userId);
-    // }
     
     #endregion
 
@@ -184,12 +141,6 @@ public class SC_LoginLogic : MonoBehaviour
                 #endregion
                 #region Add Xp
                 case "AddXp": AddXpResponse(_Data); break;
-                #endregion
-                #region Add Currency
-                case "AddCurrency": AddCurrencyResponse(_Data); break;
-                #endregion
-                #region Searching Opponent 
-                // case "SearchingOpponent": SearchingOpponentResponse(_Data); break;
                 #endregion
             }
         }
@@ -304,13 +255,6 @@ public class SC_LoginLogic : MonoBehaviour
             }
             else MainMenu_Logic.unityObjects["Txt_Error"].GetComponent<TextMeshProUGUI>().text = "Failed to log in";
         }
-    }
-
-    private void AddCurrencyResponse(Dictionary<string, object> _Data)
-    {
-        MainMenu_Logic.unityObjects["InputField_Box"].GetComponent<TMP_InputField>().text = string.Empty;
-        foreach (string s in _Data.Keys)
-            MainMenu_Logic.unityObjects["InputField_Box"].GetComponent<TMP_InputField>().text += s + " : " + _Data[s] + System.Environment.NewLine;
     }
 
     private void AddXpResponse(Dictionary<string, object> _Data)
