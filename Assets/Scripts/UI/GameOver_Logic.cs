@@ -9,7 +9,7 @@ using static UI.MainMenu_Logic;
 public class GameOver_Logic : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private NetworkManager _networkManager; // Reference to the Photon Fusion NetworkManager
+    [SerializeField] private NetworkManager _networkManager; // Reference to the Photon Fusion NetworkManager
     private TextMeshProUGUI RestartloadingText;
     private GameObject RestarthButton;
     private GameObject MainMenuButton;
@@ -19,7 +19,6 @@ public class GameOver_Logic : MonoBehaviour
         RestartloadingText = GameObject.Find("Txt_RestartLoading").GetComponent<TextMeshProUGUI>();
         RestarthButton = GameObject.Find("Btn_Restart");
         MainMenuButton = GameObject.Find("Btn_MainMenu");
-        _networkManager = FindFirstObjectByType<NetworkManager>();
     }
 
     public async void Restart()
