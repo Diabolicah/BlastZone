@@ -4,9 +4,9 @@ using UnityEngine;
 public class IceElement : Element
 {
     
-    [SerializeField] private float _slowDuration = 2f;
+    [SerializeField] private float _slowDuration;
     [Range(-5f, -0.1f)]
-    [SerializeField] private float _slowPercentage = -0.5f;
+    [SerializeField] private float _slowPercentage;
 
     public override void ElementEffect(NetworkObject Shooter, NetworkObject target)
     {
