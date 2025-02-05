@@ -24476,7 +24476,6 @@ GameObject:
   - component: {fileID: 135447165041960418}
   - component: {fileID: 6280445494235331604}
   - component: {fileID: 138559068993423362}
-  - component: {fileID: 1611495926403927767}
   - component: {fileID: 1985009574456199290}
   - component: {fileID: 274279042069314491}
   m_Layer: 0
@@ -29376,19 +29375,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &1611495926403927767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846563170864394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90597a9fb9b95a945b82d477321399c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  __direction: {x: 0, y: 0, z: 0}
 --- !u!114 &1985009574456199290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29423,7 +29409,6 @@ MonoBehaviour:
   Flags: 1
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 1611495926403927767}
   - {fileID: 1985009574456199290}
   ForceRemoteRenderTimeframe: 0
 --- !u!1 &1915593564425164

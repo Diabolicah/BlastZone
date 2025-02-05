@@ -30,6 +30,7 @@ namespace UI
             if (_networkManager != null)
             {
                 DeathmatchButton.GetComponent<Button>().interactable = false;
+                TeamDeathmatchButton.GetComponent<Button>().interactable = false;
                 DeathmatchText.color = Color.gray;
                 loadingText.text = "Loading Deathmatch ...";
                 bool success = await _networkManager.StartMatchmaking("Deathmatch");
@@ -42,11 +43,11 @@ namespace UI
                 else
                 {
                     DeathmatchButton.GetComponent<Button>().interactable = true;
+                    TeamDeathmatchButton.GetComponent<Button>().interactable = true;
                     DeathmatchText.color = Color.white;
                     loadingText.text = "Failed to connect to deathmatch";
                     Debug.LogError("Failed to start matchmaking for Deathmatch");
                 }
-
             }
             else
             {
@@ -58,6 +59,7 @@ namespace UI
         {
             if (_networkManager != null)
             {
+                DeathmatchButton.GetComponent<Button>().interactable = false;
                 TeamDeathmatchButton.GetComponent<Button>().interactable = false;
                 TeamDeathmatchText.color = Color.gray;
                 loadingText.text = "Loading Team Deathmatch ...";
@@ -70,6 +72,7 @@ namespace UI
                 }
                 else
                 {
+                    DeathmatchButton.GetComponent<Button>().interactable = true;
                     TeamDeathmatchButton.GetComponent<Button>().interactable = true;
                     TeamDeathmatchText.color = Color.white;
                     loadingText.text = "Failed to connect to team deathmatch";

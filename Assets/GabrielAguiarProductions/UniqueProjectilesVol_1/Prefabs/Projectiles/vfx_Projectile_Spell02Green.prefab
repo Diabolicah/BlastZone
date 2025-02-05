@@ -14766,7 +14766,6 @@ GameObject:
   - component: {fileID: 136757934063241816}
   - component: {fileID: 9089944564282674471}
   - component: {fileID: 82822540689227848}
-  - component: {fileID: 9084972987489164254}
   m_Layer: 0
   m_Name: vfx_Projectile_Spell02Green
   m_TagString: Untagged
@@ -19781,18 +19780,4 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 9089944564282674471}
-  - {fileID: 9084972987489164254}
   ForceRemoteRenderTimeframe: 0
---- !u!114 &9084972987489164254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1746672929845058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90597a9fb9b95a945b82d477321399c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  __direction: {x: 0, y: 0, z: 0}
