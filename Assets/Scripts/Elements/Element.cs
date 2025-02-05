@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Element : NetworkBehaviour
 {
+    [SerializeField]private float _aoeRadius = 2f;
+    [SerializeField]private bool _isElementAoe = true;
     private Bullet _bullet;
-    private float _aoeRadius = 0f;
-    private bool _isElementAoe = false;
     protected List<NetworkId> playersHit = new List<NetworkId>();
 
-    public float AoeRadius { set => _aoeRadius = value; }
+    public float AoeRadius { get => _aoeRadius, set => _aoeRadius = value; }
     public bool IsElementAoe { get => _isElementAoe; set => _isElementAoe = value; }
 
     public override void Spawned()

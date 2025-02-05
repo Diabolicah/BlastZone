@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4406251250941291211}
   - component: {fileID: -1757546501894009794}
   - component: {fileID: 66237898533123991}
+  - component: {fileID: 3195677180399873980}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -160,6 +161,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: -1757546501894009794}
   - {fileID: 66237898533123991}
+  - {fileID: 3195677180399873980}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &-1757546501894009794
 MonoBehaviour:
@@ -190,3 +192,15 @@ MonoBehaviour:
   SyncParent: 0
   _autoAOIOverride: 1
   DisableSharedModeInterpolation: 0
+--- !u!114 &3195677180399873980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532497066223185778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e40c6b6709121b4988b7444d4d058bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
