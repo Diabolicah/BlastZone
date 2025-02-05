@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2386721432402869471}
   - component: {fileID: 669638107416217757}
   - component: {fileID: -2526664047056180360}
+  - component: {fileID: -7359917461957357260}
   - component: {fileID: 110546857964575258}
   - component: {fileID: 971756849036023500}
   - component: {fileID: 753703370284247085}
@@ -68,6 +69,7 @@ MonoBehaviour:
   - {fileID: 2386721432402869471}
   - {fileID: 669638107416217757}
   - {fileID: -2526664047056180360}
+  - {fileID: -7359917461957357260}
   - {fileID: 110546857964575258}
   - {fileID: 971756849036023500}
   - {fileID: 753703370284247085}
@@ -188,6 +190,30 @@ MonoBehaviour:
     _items: []
   statsManager: {fileID: 669638107416217757}
   healthBarObject: {fileID: 3549399448212302878}
+--- !u!114 &-7359917461957357260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131662502398076607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f70cbe1878ba8b40af7dac1389de338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Stats:
+    _items: []
+  _defaultStats:
+    _items:
+    - Key: Acceleration
+      Value: 20
+    - Key: MaxSpeed
+      Value: 4
+  _baseStats:
+    _items: []
+  statsManager: {fileID: 669638107416217757}
+  healthBarObject: {fileID: 0}
 --- !u!114 &110546857964575258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +246,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shootPoint: {fileID: 5029444533477575965}
   _weaponConfig: {fileID: 11400000, guid: 1bf2f69bb36f7a0419420cb2ee824560, type: 2}
-  _trippleWeaponConfig: {fileID: 11400000, guid: 70285d21a6c47da4fa111c3f444c1571, type: 2}
   _playerNetworkObj: {fileID: 6304546695575401311}
 --- !u!114 &753703370284247085
 MonoBehaviour:

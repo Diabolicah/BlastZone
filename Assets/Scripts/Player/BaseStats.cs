@@ -125,7 +125,7 @@ public abstract class BaseStats : NetworkBehaviour
 
     }
 
-    protected float GetStat(string statName)
+    public float GetStat(string statName)
     {
         if (Stats.TryGet(statName, out float value))
         {
@@ -134,7 +134,7 @@ public abstract class BaseStats : NetworkBehaviour
         throw new KeyNotFoundException($"Stat {statName} not found.");
     }
 
-    protected void ApplyTemporaryMultiplier(string statName, float multiplier, float duration)
+    public void ApplyTemporaryMultiplier(string statName, float multiplier, float duration)
     {
         if (!Object.HasStateAuthority)
             return;

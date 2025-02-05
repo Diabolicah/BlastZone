@@ -4,34 +4,37 @@ using UnityEngine;
 public class Player : NetworkBehaviour
 {
     private NetworkCharacterController _characterController;
-    private StatsManager _statsManager;
-
-    [SerializeField] private float baseMaxSpeed = 4f;
-    [SerializeField] private float baseAcceleration = 20f;
-
+    private MovementSpeed _movementSpeed;
+ 
     public override void Spawned()
     {
         _characterController = GetComponent<NetworkCharacterController>();
-        _statsManager = GetComponent<StatsManager>();
+        _movementSpeed = GetComponent<MovementSpeed>();
 
-        if (_statsManager != null)
+        if (_movementSpeed != null)
         {
-            _statsManager.OnStatsChanged += HandleStatsChanged;
-            HandleStatsChanged(_statsManager.Stats, _statsManager.Stats);
+            _movementSpeed.OnStatChanged += HandleStatsChanged;
+            HandleStatsChanged("MaxSpeed", 0, _movementSpeed.GetStat("MaxSpeed"));
+            HandleStatsChanged("Acceleration", 0, _movementSpeed.GetStat("Acceleration"));
         }
     }
 
     private void OnDisable()
     {
-        if (_statsManager != null)
-            _statsManager.OnStatsChanged -= HandleStatsChanged;
+        if (_movementSpeed != null)
+            _movementSpeed.OnStatChanged -= HandleStatsChanged;
     }
 
-    private void HandleStatsChanged(PlayerStatsStruct oldStats, PlayerStatsStruct newStats)
+    private void HandleStatsChanged(string StatName, float oldStat, float newStat)
     {
-        float multiplier = newStats.MovementSpeed;
-        _characterController.maxSpeed = baseMaxSpeed * multiplier;
-        _characterController.acceleration = baseAcceleration * multiplier;
+        if (StatName == "MaxSpeed")
+        {
+            _characterController.maxSpeed = newStat;
+        }
+        else if (StatName == "Acceleration")
+        {
+            _characterController.acceleration = newStat;
+        }
     }
 
     public override void FixedUpdateNetwork()
