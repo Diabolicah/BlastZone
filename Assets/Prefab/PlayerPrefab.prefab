@@ -184,7 +184,7 @@ MonoBehaviour:
     - Key: CurrentHealth
       Value: 100
     - Key: HealthRegenRate
-      Value: 2
+      Value: 0.5
   _baseStats:
     _items: []
   statsManager: {fileID: 669638107416217757}
