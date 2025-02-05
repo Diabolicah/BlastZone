@@ -24,7 +24,7 @@ public class LevelingManager : NetworkBehaviour
         }
     }
 
-    public void AddExp(float amount) => RPC_AddExp(amount);
+    public void AddExp(float amount = 5) => RPC_AddExp(amount);
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     private void RPC_AddExp(float amount, RpcInfo info = default)

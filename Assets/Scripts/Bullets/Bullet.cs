@@ -68,9 +68,12 @@ public class Bullet : NetworkBehaviour
                     (bool success, bool isDead) = playerHealth.ApplyDamage(_damage);
                     if (success)
                     {
-                        if (isDead) { 
-                            Debug.Log(_bulletShooter.ToString() + " Killed a player");
-                        }else
+                        if (isDead) {
+                            LevelingManager LM = _bulletShooter.GetComponent<LevelingManager>();
+                            DeathXpValue dxv = hitInfo.collider.GetComponent<DeathXpValue>();
+                            LM.AddExp(dxv.XpValue);
+                        }
+                        else
                         {
                             OnTargetHit?.Invoke(_bulletShooter, networkObj);
                         }
