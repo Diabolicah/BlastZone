@@ -94,6 +94,7 @@ public abstract class BaseStats : NetworkBehaviour
 
         if (!Mathf.Approximately(oldValue, newValue))
         {
+            float newEffectiveValue = Mathf.Max(newValue, 0.1f);
             Stats.Set(statName, newValue);
         }
     }
@@ -186,7 +187,7 @@ public abstract class BaseStats : NetworkBehaviour
             }
             
             float baseValue = baseStats.TryGet(statName, out float defVal) ? defVal : GetStat(statName);
-            float newEffectiveValue = baseValue * effectiveMultiplier;
+            float newEffectiveValue =  baseValue * effectiveMultiplier;
             SetStat(statName, newEffectiveValue);
         }
     }
