@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class WindElement : Element
 {
-    [SerializeField] private float _windEffectDuration = 5f;
+    [Range(0.1f, 1f)]
+    [SerializeField] private float _windEffectDuration = 0.5f;
     [Range(1f, 5f)]
     [SerializeField] private float _windPushBackForce = 2f;
 
@@ -11,7 +12,7 @@ public class WindElement : Element
     {
         if (Shooter.TryGetComponent<PlayerElement>(out PlayerElement playerElement))
         {
-            playerElement.useElement(new WindEffect(_windPushBackForce), _windEffectDuration, Shooter, transform.position, target);
+            playerElement.useElement(new WindEffect(_windPushBackForce, _windEffectDuration), _windEffectDuration, Shooter, transform.position, target);
         }
     }
 }
