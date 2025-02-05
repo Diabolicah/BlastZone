@@ -33,6 +33,7 @@ public class Element : NetworkBehaviour
 
     private void OnTargetHit(NetworkObject target)
     {
+        playersHit.Clear();
         playersHit.Add(target.Id);
     }
 
