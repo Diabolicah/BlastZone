@@ -56,7 +56,7 @@ public class Bullet : NetworkBehaviour
         var direction = nextPosition - previousPosition;
         var _hitMask = LayerMask.GetMask("Default");
 
-        if (_isBulletAlive && Physics.SphereCast(previousPosition, 0.5f, direction.normalized, out RaycastHit hitInfo, direction.magnitude, _hitMask))
+        if (_isBulletAlive && Physics.SphereCast(previousPosition, 0.8f, direction.normalized, out RaycastHit hitInfo, direction.magnitude, _hitMask))
         {
             if (hitInfo.collider.TryGetComponent<NetworkObject>(out NetworkObject networkObj))
             {
