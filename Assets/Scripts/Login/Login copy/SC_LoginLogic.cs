@@ -163,7 +163,7 @@ public class SC_LoginLogic : NetworkBehaviour
         var trimmedUsername = username.Trim();
 
         // Check length (3-20 characters)
-        if (trimmedUsername.Length < 2 || trimmedUsername.Length > 15)
+        if (trimmedUsername.Length < 1 || trimmedUsername.Length > 15)
             return false;
 
         // Ensure it starts and ends with a valid character (letter or digit)
