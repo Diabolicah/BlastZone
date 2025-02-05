@@ -76,6 +76,8 @@ public class Element : NetworkBehaviour
     }
 
     protected virtual void OnHitOrExpiredElement() {
+        if (IsProxy == true) return;
+        if (Runner == null || !Runner.IsRunning) return;
         foreach (NetworkId playerObject in _playersHit)
         {
             Debug.Log(playerObject.ToString() + " Got Hit!!");
