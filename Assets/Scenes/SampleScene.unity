@@ -1850,6 +1850,7 @@ MonoBehaviour:
   playerPrefab:
     RawGuidValue: 6bf00b90a2bac44dc8cffbdef4bb87a6
   CardManager: {fileID: 613957807}
+  StatsUIHandler: {fileID: 1341913196}
 --- !u!1 &694775148
 GameObject:
   m_ObjectHideFlags: 0
@@ -3520,6 +3521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1341913194}
   - component: {fileID: 1341913195}
+  - component: {fileID: 1341913196}
   m_Layer: 0
   m_Name: SC_StatsUI
   m_TagString: Untagged
@@ -3560,6 +3562,25 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours: []
   ForceRemoteRenderTimeframe: 0
+--- !u!114 &1341913196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341913193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6836f6eff988c52448ccd2d7c2e7ed97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthText: {fileID: 567247322}
+  HealthRegenText: {fileID: 1264776836}
+  DamageText: {fileID: 1943468017}
+  AttackSpeedText: {fileID: 1892959232}
+  BulletSpeedText: {fileID: 525744818}
+  MoveSpeedText: {fileID: 1568392524}
+  statsManager: {fileID: 0}
 --- !u!1 &1365411931
 GameObject:
   m_ObjectHideFlags: 0
