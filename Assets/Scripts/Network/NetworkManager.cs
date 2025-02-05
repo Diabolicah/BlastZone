@@ -18,7 +18,6 @@ public class NetworkManager : MonoBehaviour
 
         // Create the Fusion runner if not already created.
         _runner = gameObject.AddComponent<NetworkRunner>();
-        _runner.ProvideInput = true;
 
         StartGameArgs args = new StartGameArgs
         {
