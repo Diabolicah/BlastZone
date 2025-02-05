@@ -19887,7 +19887,7 @@ MonoBehaviour:
   _aoeRadius: 5
   _isElementAoe: 0
   _slowDuration: 2
-  _slowPercentage: 2
+  _slowPercentage: -0.1
 --- !u!114 &7719497222368892623
 MonoBehaviour:
   m_ObjectHideFlags: 0
