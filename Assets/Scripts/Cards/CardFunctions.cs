@@ -80,12 +80,14 @@ public class CardFunctions : MonoBehaviour
     public void ActivateBulletWeaponCard(CardConfig card, TankWeapons tankWeapons)
     {
         IWeapon bulletWeapon = new WeaponBullet(card.GetWeaponConfig(), tankWeapons._shootPoint);
+        tankWeapons.WeaponIcon.sprite = card.GetImage();
         tankWeapons.setTankWeapon(bulletWeapon);
     }
 
     public void ActivateTripleBulletWeaponCard(CardConfig card, TankWeapons tankWeapons)
     {
         IWeapon tripleBulletWeapon = new WeaponTripleBullet((TripleBulletWeaponConfig) card.GetWeaponConfig(), tankWeapons._shootPoint);
+        tankWeapons.WeaponIcon.sprite = card.GetImage();
         tankWeapons.setTankWeapon(tripleBulletWeapon);
     }
 }
