@@ -23,10 +23,11 @@ public class Element : NetworkBehaviour
     {
         Debug.Log("Activated Element");
         if (_isElementAoe)
-        {
             GetPlayersInRadius();
+        
+        if (playersHit.Count > 0)
             onHitOrExpiredElement();
-        }
+        
         base.Despawned(runner, hasState);
     }
 
@@ -58,6 +59,7 @@ public class Element : NetworkBehaviour
         {
             if (Runner.TryGetPlayerObject(playerRef, out NetworkObject playerObject))
             {
+                if (playerObject.Id == _bullet.BulletShooter.Id) continue;
                 if ((playerObject.transform.position - transform.position).sqrMagnitude <= radiusSqr)
                 {
                     if (!playersHit.Contains(playerObject.Id))
@@ -69,5 +71,10 @@ public class Element : NetworkBehaviour
         }
     }
 
-    protected virtual void onHitOrExpiredElement() { }
+    protected virtual void onHitOrExpiredElement() {
+        foreach (NetworkId playerObjec in playersHit)
+        {
+            Debug.Log(playerObjec.ToString() + " Got Hit!!");
+        }
+    }
 }
