@@ -14,7 +14,8 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined, IPlayerLeft
     {
         if (player == Runner.LocalPlayer)
         {
-            Vector3 spawnPosition = new Vector3((player.RawEncoded % Runner.Config.Simulation.PlayerCount) * 3, 1, 0);
+            Vector2 randomPoint = Random.insideUnitCircle * 100f;
+            Vector3 spawnPosition = new Vector3(randomPoint.x, 1, randomPoint.y);
             NetworkObject networkPlayerObject = Runner.Spawn(playerPrefab, spawnPosition, Quaternion.identity, player);
             Runner.SetPlayerObject(player, networkPlayerObject);
             localPlayerObject = networkPlayerObject;
