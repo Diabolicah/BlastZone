@@ -18,4 +18,4 @@ MonoBehaviour:
   _bulletSpeed: 25
   _bulletLifeTime: 5
   _damage: 5
-  _spreadAngle: 25
+  _spreadAngle: 15
