@@ -13,7 +13,8 @@ public class SC_LoginLogic : MonoBehaviour
     private string UserName = string.Empty;
     private string userId = string.Empty;
     private string tempMatchId = "";
-
+    public static string PLayerName = "";
+    public static string PLayerRank = "";
     #region Singleton
     static SC_LoginLogic instance;
     public static SC_LoginLogic Instance
@@ -59,15 +60,7 @@ public class SC_LoginLogic : MonoBehaviour
 
     private void Start()
     {
-        MainMenu_Logic.unityObjects = new Dictionary<string, GameObject>();
-        GameObject[] _objects = GameObject.FindGameObjectsWithTag("UnityObject");
-        foreach (GameObject g in _objects)
-            MainMenu_Logic.unityObjects.Add(g.name, g);
-        
         MainMenu_Logic.unityObjects["Screen_Register"].SetActive(false);
-        // unityObjects["Screen_Lobby"].SetActive(false);
-        //unityObjects["Screen_SearchingOpponent"].SetActive(false);
-        //unityObjects["Game"].SetActive(false);
     }
     #endregion
 
@@ -114,7 +107,7 @@ public class SC_LoginLogic : MonoBehaviour
             if(IsValidUsername(_username))
             {
                 Dictionary<string, object> _data = new Dictionary<string, object>();
-                _data.Add("Username", _username);
+                _data.Add("Email", _username);
                 _data.Add("Password", _password);
                 SC_LoginServerApi.Instance.Register(_data);
                 MainMenu_Logic.unityObjects["Txt_Error"].GetComponent<TextMeshProUGUI>().text = "Sent...";
@@ -141,19 +134,19 @@ public class SC_LoginLogic : MonoBehaviour
     //     MainMenu_Logic.unityObjects["InputField_Login_Username"].GetComponent<TMP_InputField>().text = string.Empty;
     //     MainMenu_Logic.unityObjects["InputField_Login_Password"].GetComponent<TMP_InputField>().text = string.Empty;
     // }
-    // public void Btn_Lobby_AddXp()
-    // {
-    //     string _value = MainMenu_Logic.unityObjects["InputField_Xp"].GetComponent<TMP_InputField>().text;
-    //     if (_value.Length > 0)
-    //     {
-    //         Dictionary<string, object> _data = new Dictionary<string, object>();
-    //         _data.Add("Email", UserName);
-    //         _data.Add("XpAmount", _value);
-    //         SC_LoginServerApi.Instance.AddXp(_data);
-    //     }
-    //     else MainMenu_Logic.unityObjects["Txt_Error"].GetComponent<TextMeshProUGUI>().text = "Xp amount value is empty";
-    //
-    // }
+    public void Btn_Lobby_AddXp()
+    {
+        string _value = MainMenu_Logic.unityObjects["InputField_Xp"].GetComponent<TMP_InputField>().text;
+        if (_value.Length > 0)
+        {
+            Dictionary<string, object> _data = new Dictionary<string, object>();
+            _data.Add("Email", UserName);
+            _data.Add("XpAmount", _value);
+            SC_LoginServerApi.Instance.AddXp(_data);
+        }
+        else MainMenu_Logic.unityObjects["Txt_Error"].GetComponent<TextMeshProUGUI>().text = "Xp amount value is empty";
+    
+    }
     // public void Btn_Lobby_AddCurrency()
     // {
     //     string _value = MainMenu_Logic.unityObjects["InputField_Currency"].GetComponent<TMP_InputField>().text;
@@ -306,6 +299,8 @@ public class SC_LoginLogic : MonoBehaviour
                 MainMenu_Logic.unityObjects["Screen_Login"].SetActive(false);
                 MainMenu_Logic.unityObjects["Screen_MainMenu"].SetActive(true);
                 MainMenu_Logic.unityObjects["Txt_Error"].GetComponent<TextMeshProUGUI>().text = "Logged in";
+                PLayerName = UserName;
+                
             }
             else MainMenu_Logic.unityObjects["Txt_Error"].GetComponent<TextMeshProUGUI>().text = "Failed to log in";
         }

@@ -2202,7 +2202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &520351467
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6393,7 +6393,7 @@ GameObject:
   - component: {fileID: 1127843154}
   m_Layer: 5
   m_Name: Img_Background
-  m_TagString: Screen
+  m_TagString: UnityObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
