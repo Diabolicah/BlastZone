@@ -5,26 +5,25 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class WindEffect : IElement
 {
-    private float _pushBackForce;
-    private float _pushBackDuration;
-    private CooldownManager _windPushBackManager;
-    public WindEffect(float pushBackForce, float pushBackDuration) { 
-        _pushBackForce = pushBackForce;
-        _pushBackDuration = pushBackDuration;
-        _windPushBackManager = new CooldownManager();
+    private float _speedBoostPercentage;
+    private float _speedBoostDuration;
+    private CooldownManager _windspeedBoost;
+    public WindEffect(float pushBackForce, float pushBackDuration) {
+        _speedBoostPercentage = pushBackForce;
+        _speedBoostDuration = pushBackDuration;
+        _windspeedBoost = new CooldownManager();
 
     }
     public void activate(NetworkRunner runner, NetworkObject bulletShooter, Vector3 position, NetworkObject playerHit)
     {
-        if (_windPushBackManager.IsCooldownExpiredOrNotRunning(runner))
+        if (_windspeedBoost.IsCooldownExpiredOrNotRunning(runner))
         {
-            ApplyExternalForce playerApplyForce = playerHit.GetComponent<ApplyExternalForce>();
-            if (playerApplyForce != null)
+            MovementSpeed playerMovementSpeed = bulletShooter.GetComponent<MovementSpeed>();
+            if (playerMovementSpeed != null)
             {
-                Vector3 forceDirection = Vector3.Normalize(playerHit.transform.position - position);
-                playerApplyForce.RPC_ApplyForce(forceDirection * _pushBackForce, _pushBackDuration);
+                playerMovementSpeed.ApplyTemporaryModifier(_speedBoostPercentage, _speedBoostDuration);
             }
-            _windPushBackManager.ResetCooldown(runner, _pushBackDuration);
+            _windspeedBoost.ResetCooldown(runner, _speedBoostDuration);
         }
     }
 }

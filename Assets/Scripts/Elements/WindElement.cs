@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class WindElement : Element
 {
-    [Range(0.1f, 1f)]
+    [Range(0.1f, 2f)]
     [SerializeField] private float _windEffectDuration = 0.5f;
-    [Range(1f, 25f)]
-    [SerializeField] private float _windPushBackForce = 2f;
+    [Range(0.1f, 0.5f)]
+    [SerializeField] private float _speedBoostPercentage = 0.3f;
 
     public override void ElementEffect(NetworkObject Shooter, NetworkObject target)
     {
         if (Shooter.TryGetComponent<PlayerElement>(out PlayerElement playerElement))
         {
-            playerElement.useElement(new WindEffect(_windPushBackForce, _windEffectDuration), _windEffectDuration, Shooter, transform.position, target);
+            playerElement.useElement(new WindEffect(_speedBoostPercentage, _windEffectDuration), _windEffectDuration, Shooter, transform.position, target);
         }
     }
 }
