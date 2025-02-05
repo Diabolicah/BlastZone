@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057fc4d48eef06443b0b02bd2385d10e, type: 3}
   m_Name: Health
   m_EditorClassIdentifier: 
-  Title: 
-  Description: 
+  Title: Health
+  Description: Gain 10% extra health
   Image: {fileID: 0}
   MinimumRank: 0
   type: 0

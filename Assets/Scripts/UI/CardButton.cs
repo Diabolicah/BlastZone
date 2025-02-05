@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public class CardButton : MonoBehaviour
 {
-    [SerializeField] private GameObject titleText;
-    [SerializeField] private GameObject cardImage;
-    [SerializeField] private GameObject descriptionText;
-    [SerializeField] private GameObject type;
+    [SerializeField] private TextMeshProUGUI titleText;
+    [SerializeField] private Image cardImage;
+    [SerializeField] private TextMeshProUGUI descriptionText;
+    [SerializeField] private TextMeshProUGUI type;
     private CardConfig cardConfig;
     private System.Action<CardConfig> onCardSelected;
 
@@ -15,10 +15,10 @@ public class CardButton : MonoBehaviour
     {
         cardConfig = config;
         onCardSelected = callback;
-        if (titleText != null) titleText.GetComponent<TextMeshPro>().text = config.GetTitle();
-        if (cardImage != null) cardImage.GetComponent<Image>().sprite = config.GetImage();
-        if (descriptionText != null) descriptionText.GetComponent<TextMeshPro>().text = config.GetDescription();
-        if (type != null) type.GetComponent<TextMeshPro>().text = config.GetCardType().ToString();
+        if (titleText != null) titleText.text = config.GetTitle();
+        if (cardImage != null) cardImage.sprite = config.GetImage();
+        if (descriptionText != null) descriptionText.text = config.GetDescription();
+        if (type != null) type.text = config.GetCardType().ToString();
     }
 
     public void OnButtonClicked()
