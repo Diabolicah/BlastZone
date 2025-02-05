@@ -12,6 +12,19 @@ public class CardFunctions : MonoBehaviour
             case "Movement Speed":
                 ActivateMovementSpeedCard(card, statsManager);
                 break;
+            case "Damage":
+                ActivateDamageCard(card, statsManager);
+                break;
+            case "Attack Speed":
+                ActivateAttackSpeedCard(card, statsManager);
+                break;
+            case "Bullet Speed":
+                ActivateBulletSpeedCard(card, statsManager);
+                break;
+            case "Health Regen":
+                ActivateHealthRegenCard(card, statsManager);
+                break;
+
         }
     }
 
@@ -26,6 +39,34 @@ public class CardFunctions : MonoBehaviour
     {
         PlayerStatsStruct currentStats = statsManager.Stats;
         currentStats.MovementSpeed += 0.1f;
+        statsManager.UpdateStats(currentStats);
+    }
+
+    public void ActivateDamageCard(CardConfig card, StatsManager statsManager)
+    {
+        PlayerStatsStruct currentStats = statsManager.Stats;
+        currentStats.Damage += 0.1f;
+        statsManager.UpdateStats(currentStats);
+    }
+
+    public void ActivateAttackSpeedCard(CardConfig card, StatsManager statsManager)
+    {
+        PlayerStatsStruct currentStats = statsManager.Stats;
+        currentStats.AttackSpeed += 0.1f;
+        statsManager.UpdateStats(currentStats);
+    }
+
+    public void ActivateBulletSpeedCard(CardConfig card, StatsManager statsManager)
+    {
+        PlayerStatsStruct currentStats = statsManager.Stats;
+        currentStats.BulletSpeed += 0.1f;
+        statsManager.UpdateStats(currentStats);
+    }
+
+    public void ActivateHealthRegenCard(CardConfig card, StatsManager statsManager)
+    {
+        PlayerStatsStruct currentStats = statsManager.Stats;
+        currentStats.HealthRegen += 0.1f;
         statsManager.UpdateStats(currentStats);
     }
 }

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 057fc4d48eef06443b0b02bd2385d10e, type: 3}
-  m_Name: Health
+  m_Name: AttackSpeed
   m_EditorClassIdentifier: 
-  Title: Health
-  Description: Gain 10% extra health
-  Image: {fileID: -5682809686868360691, guid: 338b081ed6796c846a09d72a85e29111, type: 3}
+  Title: Attack Speed
+  Description: Gain 10% Attack Speed
+  Image: {fileID: -3085972332808833774, guid: dc41981c28faf704b97a464caf4c580c, type: 3}
   MinimumRank: 0
   type: 0

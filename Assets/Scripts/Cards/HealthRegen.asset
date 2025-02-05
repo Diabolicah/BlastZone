@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 057fc4d48eef06443b0b02bd2385d10e, type: 3}
-  m_Name: Health
+  m_Name: HealthRegen
   m_EditorClassIdentifier: 
-  Title: Health
-  Description: Gain 10% extra health
-  Image: {fileID: -5682809686868360691, guid: 338b081ed6796c846a09d72a85e29111, type: 3}
+  Title: Health Regen
+  Description: Gain 10% Health Regen
+  Image: {fileID: -3607980786603053648, guid: 45d820694ac7b7343bfc910f6b1a0387, type: 3}
   MinimumRank: 0
   type: 0

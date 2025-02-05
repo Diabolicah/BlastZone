@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 834528669099a43c9a289dc597c79e0f
+guid: 18e4c02953def9647847569087068879
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 690304814892411733
-    second: pirates_50_0
+      213: 3158603872271782175
+    second: WindElementIcon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,24 +109,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pirates_50_0
+      name: WindElementIcon_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 55b676e5294749900800000000000000
-      internalID: 690304814892411733
+      spriteID: f11dee0ac7d95db20800000000000000
+      internalID: 3158603872271782175
       vertices: []
       indices: 
       edges: []
@@ -161,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      pirates_50_0: 690304814892411733
+      WindElementIcon_0: 3158603872271782175
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
