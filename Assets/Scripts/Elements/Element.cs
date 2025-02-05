@@ -26,14 +26,16 @@ public class Element : NetworkBehaviour
             GetPlayersInRadius();
         
         if (playersHit.Count > 0)
+        {
             onHitOrExpiredElement();
-        
+            playersHit.Clear();
+        }
+
         base.Despawned(runner, hasState);
     }
 
     private void OnTargetHit(NetworkObject target)
     {
-        playersHit.Clear();
         playersHit.Add(target.Id);
     }
 
