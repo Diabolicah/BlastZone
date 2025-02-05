@@ -22,7 +22,7 @@ public class IceEffect : IElement
             if (playerMovementSpeed != null)
             {
                 Debug.Log("Ice Slow Applied");
-
+                playerMovementSpeed.ApplyTemporaryModifier(_slowPercentage, _slowDuration);
             }
             _iceSlowManager.ResetCooldown(runner, _slowDuration);
         }

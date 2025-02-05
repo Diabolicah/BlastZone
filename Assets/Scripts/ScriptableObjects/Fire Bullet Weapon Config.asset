@@ -17,4 +17,4 @@ MonoBehaviour:
   _shootCooldown: 0.7
   _bulletSpeed: 25
   _bulletLifeTime: 3
-  _damage: 7
+  _damage: 8
