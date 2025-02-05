@@ -119,7 +119,7 @@ public class Health : BaseStats
     {
         if (oldStats.Health != newStats.Health)
         {
-            ApplyDefaultMultiplierAndReset(CURRENT_HEALTH, newStats.Health);
+            ApplyDefaultMultiplierAndReset(MAX_HEALTH, newStats.Health);
         }
 
         if (oldStats.HealthRegen != newStats.HealthRegen)
