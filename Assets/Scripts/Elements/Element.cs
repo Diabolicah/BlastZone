@@ -6,7 +6,7 @@ public class Element : NetworkBehaviour
 {
     [SerializeField] private float _aoeRadius = 2f;
     [SerializeField] private bool _isElementAoe = true;
-    private Bullet _bullet;
+    private NetworkObject _bulletShooter;
     protected List<NetworkId> playersHit = new List<NetworkId>();
 
     public float AoeRadius { get => _aoeRadius; set => _aoeRadius = value; }
@@ -14,14 +14,14 @@ public class Element : NetworkBehaviour
 
     public override void Spawned()
     {
-        TryGetComponent<Bullet>(out Bullet _bullet);
-        _bullet.OnTargetHit += OnTargetHit;
+        TryGetComponent<Bullet>(out Bullet bullet);
+        bullet.OnTargetHit += OnTargetHit;
+        bullet.OnBulletDespawn += OnBulletDespawn;
         base.Spawned();
     }
 
     public override void Despawned(NetworkRunner runner, bool hasState)
     {
-        Debug.Log("Activated Element");
         if (_isElementAoe)
             GetPlayersInRadius();
         
@@ -34,9 +34,14 @@ public class Element : NetworkBehaviour
         base.Despawned(runner, hasState);
     }
 
-    private void OnTargetHit(NetworkObject target)
+    private void OnTargetHit(NetworkObject shooter, NetworkObject target)
     {
+        _bulletShooter = shooter;
         playersHit.Add(target.Id);
+    }
+    private void OnBulletDespawn(NetworkObject shooter)
+    {
+        _bulletShooter = shooter;
     }
 
     //private void OnTriggerEnter(Collider other)
@@ -53,7 +58,6 @@ public class Element : NetworkBehaviour
     private void GetPlayersInRadius()
     {
         playersHit.Clear();
-
         if (Runner == null || !Runner.IsRunning) return;
 
         float radiusSqr = _aoeRadius * _aoeRadius;
@@ -62,7 +66,7 @@ public class Element : NetworkBehaviour
         {
             if (Runner.TryGetPlayerObject(playerRef, out NetworkObject playerObject))
             {
-                if (playerObject.Id == _bullet.BulletShooter.Id) continue;
+                if (playerObject.Id == _bulletShooter.Id) continue;
                 if ((playerObject.transform.position - transform.position).sqrMagnitude <= radiusSqr)
                 {
                     if (!playersHit.Contains(playerObject.Id))
@@ -75,6 +79,7 @@ public class Element : NetworkBehaviour
     }
 
     protected virtual void onHitOrExpiredElement() {
+        Debug.Log(playersHit.ToString());
         foreach (NetworkId playerObjec in playersHit)
         {
             Debug.Log(playerObjec.ToString() + " Got Hit!!");

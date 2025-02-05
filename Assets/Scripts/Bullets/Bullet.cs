@@ -5,7 +5,8 @@ using UnityEngine.UIElements;
 
 public class Bullet : NetworkBehaviour
 {
-    public event Action<NetworkObject> OnTargetHit;
+    public event Action<NetworkObject, NetworkObject> OnTargetHit;
+    public event Action<NetworkObject> OnBulletDespawn;
 
     private TickTimer _life;
     private float _lifeTime;
@@ -68,7 +69,7 @@ public class Bullet : NetworkBehaviour
                     {
                         if (isDead) Debug.Log(_bulletShooter.ToString() + " Killed a player");
                         _isAlive = false;
-                        OnTargetHit?.Invoke(networkObj);
+                        OnTargetHit?.Invoke(_bulletShooter, networkObj);
                         Runner.Despawn(Object);
                     }
                 }
@@ -77,6 +78,7 @@ public class Bullet : NetworkBehaviour
 
         if (_isAlive && _life.ExpiredOrNotRunning(Runner))
         {
+            OnBulletDespawn?.Invoke(_bulletShooter);
             Runner.Despawn(Object);
         }
     }
