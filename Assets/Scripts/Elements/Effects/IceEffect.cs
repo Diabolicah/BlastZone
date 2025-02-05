@@ -17,11 +17,9 @@ public class IceEffect : IElement
     {
         if (_iceSlowManager.IsCooldownExpiredOrNutRunning(runner))
         {
-            Debug.Log("Ice Tick");
             MovementSpeed playerMovementSpeed = playerHit.GetComponent<MovementSpeed>();
             if (playerMovementSpeed != null)
             {
-                Debug.Log("Ice Slow Applied");
                 playerMovementSpeed.ApplyTemporaryModifier(_slowPercentage, _slowDuration);
             }
             _iceSlowManager.ResetCooldown(runner, _slowDuration);
