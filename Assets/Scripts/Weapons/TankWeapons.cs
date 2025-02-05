@@ -1,5 +1,6 @@
 using Fusion;
 using UnityEngine;
+using UnityEngine.UI;
 using static Unity.Collections.Unicode;
 
 public class TankWeapons : NetworkBehaviour
@@ -7,6 +8,7 @@ public class TankWeapons : NetworkBehaviour
     [SerializeField] public Transform _shootPoint; // Assign in inspector
     [SerializeField] private BulletWeaponConfig _weaponConfig; // Assign config asset
     [SerializeField] private NetworkObject _playerNetworkObj; // Test Weapon need to remove later
+    [SerializeField] public Image WeaponIcon;
 
     PlayerStatsStruct _playerStats = PlayerStatsStruct.Default;
 
