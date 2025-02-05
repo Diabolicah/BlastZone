@@ -42,13 +42,13 @@ public abstract class BaseStats : NetworkBehaviour
             {
                 if (!Stats.ContainsKey(stat.Key))
                 {
-                    Stats.Add(stat.Key, stat.Value);
                     baseStats.Add(stat.Key, stat.Value);
+                    Stats.Add(stat.Key, stat.Value);
                 }
                 else
                 {
-                    Stats.Set(stat.Key, stat.Value);
                     baseStats.Set(stat.Key, stat.Value);
+                    Stats.Set(stat.Key, stat.Value);
                 }
             }
 
