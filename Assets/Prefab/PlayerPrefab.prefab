@@ -170,6 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5be4d7a517dcc40b7664148edfc2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Stats:
+    _items: []
   _defaultStats:
     _items:
     - Key: MaxHealth
@@ -179,6 +181,7 @@ MonoBehaviour:
     - Key: HealthRegenRate
       Value: 2
   statsManager: {fileID: 669638107416217757}
+  healthBarObject: {fileID: 3549399448212302878}
 --- !u!114 &971756849036023500
 MonoBehaviour:
   m_ObjectHideFlags: 0
