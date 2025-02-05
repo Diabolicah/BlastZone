@@ -19,6 +19,8 @@ public abstract class BaseStats : NetworkBehaviour
 
     [Networked, Capacity(16), SerializeField]
     private NetworkDictionary<string, float> defaultStats { get; } = default;
+    [Networked, Capacity(16), SerializeField]
+    private NetworkDictionary<string, float> baseStats { get; } = default;
 
     public event Action<string, float, float> OnStatChanged;
 
@@ -41,10 +43,12 @@ public abstract class BaseStats : NetworkBehaviour
             {
                 if (!Stats.ContainsKey(stat.Key))
                 {
+                    baseStats.Add(stat.Key, stat.Value);
                     Stats.Add(stat.Key, stat.Value);
                 }
                 else
                 {
+                    baseStats.Set(stat.Key, stat.Value);
                     Stats.Set(stat.Key, stat.Value);
                 }
             }
@@ -98,9 +102,9 @@ public abstract class BaseStats : NetworkBehaviour
     {
         if (!Object.HasStateAuthority)
             return;
-        if (defaultStats.ContainsKey(statName))
+        if (baseStats.ContainsKey(statName))
         {
-            defaultStats.Set(statName, value);
+            baseStats.Set(statName, value);
         }
     }
 
@@ -152,7 +156,7 @@ public abstract class BaseStats : NetworkBehaviour
             effectiveMultiplier *= entry.multiplier;
         }
 
-        float baseValue = defaultStats.TryGet(statName, out float defVal) ? defVal : GetStat(statName);
+        float baseValue = baseStats.TryGet(statName, out float defVal) ? defVal : GetStat(statName);
         float newEffectiveValue = baseValue * effectiveMultiplier;
         SetStat(statName, newEffectiveValue);
 
@@ -181,7 +185,7 @@ public abstract class BaseStats : NetworkBehaviour
                 effectiveMultiplier *= e.multiplier;
             }
 
-            float baseValue = defaultStats.TryGet(statName, out float defVal) ? defVal : GetStat(statName);
+            float baseValue = baseStats.TryGet(statName, out float defVal) ? defVal : GetStat(statName);
             float newEffectiveValue = baseValue * effectiveMultiplier;
             SetStat(statName, newEffectiveValue);
         }
@@ -198,7 +202,7 @@ public abstract class BaseStats : NetworkBehaviour
     {
         if (!Object.HasStateAuthority)
             return;
-        if (defaultStats.TryGet(statName, out float defaultValue))
+        if (baseStats.TryGet(statName, out float defaultValue))
         {
             SetStat(statName, defaultValue);
         }
@@ -208,7 +212,7 @@ public abstract class BaseStats : NetworkBehaviour
     {
         if (!Object.HasStateAuthority)
             return;
-        foreach (var stat in defaultStats)
+        foreach (var stat in baseStats)
         {
             SetStat(stat.Key, stat.Value);
         }
