@@ -131,8 +131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c78530ec0f8c49168e4d21f1853c723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMaxSpeed: 4
-  baseAcceleration: 20
 --- !u!114 &2386721432402869471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,7 +211,6 @@ MonoBehaviour:
   _baseStats:
     _items: []
   statsManager: {fileID: 669638107416217757}
-  healthBarObject: {fileID: 0}
 --- !u!114 &110546857964575258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootPoint: {fileID: 5029444533477575965}
-  _weaponConfig: {fileID: 11400000, guid: 1bf2f69bb36f7a0419420cb2ee824560, type: 2}
+  _weaponConfig: {fileID: 11400000, guid: 62decb8518738b64eb778f7c798929aa, type: 2}
   _playerNetworkObj: {fileID: 6304546695575401311}
 --- !u!114 &753703370284247085
 MonoBehaviour:
