@@ -306,7 +306,7 @@ MonoBehaviour:
   Type: 1
   SphereRadius: 1
   CapsuleRadius: 0.7
-  BoxExtents: {x: 0.8, y: 0.8, z: 0.7}
+  BoxExtents: {x: 0.9, y: 0.9, z: 0.9}
   CapsuleExtents: 1
   Offset: {x: 0, y: 0.2, z: 0}
   Root: {fileID: 1395887037798404361}
