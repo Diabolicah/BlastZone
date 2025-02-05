@@ -7,7 +7,7 @@ public class CardConfig : ScriptableObject
     public enum CardType
     {
         Stat,
-        Ability,
+        Weapon,
         Element,
         Temporary
     }
@@ -17,6 +17,7 @@ public class CardConfig : ScriptableObject
     [SerializeField] private Sprite Image;
     [SerializeField] private int MinimumRank;
     [SerializeField] private CardType type;
+    [SerializeField] private BulletWeaponConfig weaponConfig;
 
     public string GetTitle()
     {
@@ -41,5 +42,10 @@ public class CardConfig : ScriptableObject
     public CardType GetCardType()
     {
         return type;
+    }
+
+    public BulletWeaponConfig GetWeaponConfig()
+    {
+        return weaponConfig;
     }
 }

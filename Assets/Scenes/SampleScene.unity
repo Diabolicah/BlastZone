@@ -1970,6 +1970,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 999ee9401b8ed90488fc4db2ef3960ad, type: 2}
   - {fileID: 11400000, guid: 5d0761de03cbe0f47ad58aa049e68c1f, type: 2}
   - {fileID: 11400000, guid: 946b4a8def8cadc4f829a049e90e6df3, type: 2}
+  - {fileID: 11400000, guid: 53fea925574c3bd4ab286d404e5f9450, type: 2}
+  - {fileID: 11400000, guid: 53fea925574c3bd4ab286d404e5f9450, type: 2}
   CardSelectionUI: {fileID: 1929808579}
   CardFunctions: {fileID: 613957808}
   pendingCardSelections: 
