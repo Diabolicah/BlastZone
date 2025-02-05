@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Fusion;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using static Unity.Collections.Unicode;
 
@@ -21,17 +22,17 @@ public class FireEffect : IElement
     {
         if (_fireTickManager.IsCooldownExpiredOrNotRunning(runner))
         {
-            Debug.Log("Fire Tick");
             Health playerHealth = playerHit.GetComponent<Health>();
             if (playerHealth != null)
             {
-                Debug.Log("Fire Damage Applied");
                 (bool success, bool isDead) = playerHealth.ApplyDamage(_fireDamage);
                 if (success)
                 {
                     if (isDead)
                     {
-                        Debug.Log(bulletShooter.ToString() + " Killed a player");
+                        LevelingManager LM = bulletShooter.GetComponent<LevelingManager>();
+                        DeathXpValue dxv = playerHit.GetComponent<DeathXpValue>();
+                        LM.AddExp(dxv.XpValue);
                     }
                 }
             }
