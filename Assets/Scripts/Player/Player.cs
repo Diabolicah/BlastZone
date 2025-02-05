@@ -42,8 +42,9 @@ public class Player : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.G))
         {
+            Debug.Log("G key was pressed.");
             LevelingManager LM = GetComponent<LevelingManager>();
-            LM.AddExp(25f);
+            LM.AddExp(100f);
         }
     }
 }

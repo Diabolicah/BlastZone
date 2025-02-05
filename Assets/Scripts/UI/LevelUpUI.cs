@@ -1,22 +1,24 @@
 using System.Collections.Generic;
+using Fusion;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelUpUI : MonoBehaviour
+public class LevelUpUI : NetworkBehaviour
 {
     [SerializeField] private GameObject cardButtonPrefab;
     [SerializeField] private Transform cardContainer;
-    private LevelingManager levelingManager;
+    [SerializeField] private Transform LevelUpUIContainer;
+    public LevelingManager levelingManager;
 
     private void Awake()
     {
-        gameObject.SetActive(false);
+        LevelUpUIContainer.gameObject.SetActive(false);
     }
 
     public void ShowLevelUpOptions(List<CardConfig> cardOptions)
     {
-        gameObject.SetActive(true);
+        LevelUpUIContainer.gameObject.SetActive(true);
         foreach (Transform child in cardContainer)
         {
             Destroy(child.gameObject);
@@ -36,6 +38,6 @@ public class LevelUpUI : MonoBehaviour
     private void OnCardSelected(CardConfig selectedCard)
     {
         levelingManager.ApplyCardEffect(selectedCard);
-        gameObject.SetActive(false);
+        LevelUpUIContainer.gameObject.SetActive(false);
     }
 }
