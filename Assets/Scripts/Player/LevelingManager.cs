@@ -91,6 +91,9 @@ public class LevelingManager : NetworkBehaviour
                         case "Health":
                             currentStats.Health += 0.1f;
                             break;
+                        case "Movement Speed":
+                            currentStats.MovementSpeed += 0.1f;
+                            break;
                     }
                     stats.UpdateStats(currentStats);
                 }
