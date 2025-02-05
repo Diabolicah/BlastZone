@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CardFunctions : MonoBehaviour
 {
-    public void ActivateCard(CardConfig card, StatsManager statsManager)
+    public void ActivateCard(CardConfig card, StatsManager statsManager, TankWeapons tankWeapons)
     {
         switch (card.GetTitle())
         {
@@ -25,6 +25,13 @@ public class CardFunctions : MonoBehaviour
                 ActivateHealthRegenCard(card, statsManager);
                 break;
 
+
+            case "Bullet Weapon":
+                ActivateBulletWeaponCard(card, tankWeapons);
+                break;
+            case "Triple Bullet Weapon":
+                ActivateTripleBulletWeaponCard(card, tankWeapons);
+                break;
         }
     }
 
@@ -68,5 +75,17 @@ public class CardFunctions : MonoBehaviour
         PlayerStatsStruct currentStats = statsManager.Stats;
         currentStats.HealthRegen += 0.1f;
         statsManager.UpdateStats(currentStats);
+    }
+
+    public void ActivateBulletWeaponCard(CardConfig card, TankWeapons tankWeapons)
+    {
+        IWeapon bulletWeapon = new WeaponBullet(card.GetWeaponConfig(), tankWeapons._shootPoint);
+        tankWeapons.setTankWeapon(bulletWeapon);
+    }
+
+    public void ActivateTripleBulletWeaponCard(CardConfig card, TankWeapons tankWeapons)
+    {
+        IWeapon tripleBulletWeapon = new WeaponTripleBullet((TripleBulletWeaponConfig) card.GetWeaponConfig(), tankWeapons._shootPoint);
+        tankWeapons.setTankWeapon(tripleBulletWeapon);
     }
 }

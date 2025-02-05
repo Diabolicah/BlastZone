@@ -63,8 +63,9 @@ public class CardManager : NetworkBehaviour
     public void OnCardSelected(CardConfig selectedCard)
     {
         StatsManager statsManager = Runner.GetPlayerObject(Runner.LocalPlayer).GetComponent<StatsManager>();
+        TankWeapons tankWeapons = Runner.GetPlayerObject(Runner.LocalPlayer).GetComponent<TankWeapons>();
 
-        CardFunctions.ActivateCard(selectedCard, statsManager);
+        CardFunctions.ActivateCard(selectedCard, statsManager, tankWeapons);
         pendingCardSelections.RemoveAt(0);
         if (pendingCardSelections.Count > 0)
             ShowLevelUpOptionsForNextLevel();
