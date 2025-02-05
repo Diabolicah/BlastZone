@@ -1,5 +1,8 @@
+using System;
 using Fusion;
+using TMPro;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class Player : NetworkBehaviour
 {
@@ -8,6 +11,8 @@ public class Player : NetworkBehaviour
 
     [SerializeField] private float baseMaxSpeed = 4f;
     [SerializeField] private float baseAcceleration = 20f;
+    [SerializeField] private TextMeshProUGUI _Playerusername;
+    [Networked] public string Username { get; set; }
 
     public override void Spawned()
     {
@@ -19,6 +24,12 @@ public class Player : NetworkBehaviour
             _statsManager.OnStatsChanged += HandleStatsChanged;
             HandleStatsChanged(_statsManager.Stats, _statsManager.Stats);
         }
+        
+    }
+    
+    private void FixedUpdate()
+    {
+        _Playerusername.text = Username;
     }
 
     private void OnDisable()

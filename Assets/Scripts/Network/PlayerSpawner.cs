@@ -20,6 +20,7 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined, IPlayerLeft
             localPlayerObject.GetComponent<LevelingManager>().cardManager = CardManager;
 
             StatsUIHandler.Activate(localPlayerObject.GetComponent<StatsManager>());
+            localPlayerObject.GetComponent<Player>().Username = SC_LoginLogic.PLayerName;
         }
     }
 

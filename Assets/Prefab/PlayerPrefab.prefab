@@ -131,6 +131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseMaxSpeed: 4
   baseAcceleration: 20
+  _Playerusername: {fileID: 1841535213239932803}
+  _Username: 
 --- !u!114 &2386721432402869471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +222,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shootPoint: {fileID: 5029444533477575965}
   _weaponConfig: {fileID: 11400000, guid: 1bf2f69bb36f7a0419420cb2ee824560, type: 2}
-  _trippleWeaponConfig: {fileID: 11400000, guid: 70285d21a6c47da4fa111c3f444c1571, type: 2}
   _playerNetworkObj: {fileID: 6304546695575401311}
 --- !u!114 &753703370284247085
 MonoBehaviour:
