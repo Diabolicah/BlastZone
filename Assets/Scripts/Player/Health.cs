@@ -2,6 +2,7 @@ using System;
 using Fusion;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.UI;
 using static Unity.Collections.Unicode;
 
 public class Health : BaseStats
@@ -9,6 +10,32 @@ public class Health : BaseStats
     private string CURRENT_HEALTH = "CurrentHealth";
     private string MAX_HEALTH = "MaxHealth";
     private string HEALTH_REGEN_RATE = "HealthRegenRate";
+
+    [SerializeField] private GameObject healthBarObject;
+
+    public override void Spawned()
+    {
+        base.Spawned();
+        if (Object.HasStateAuthority)
+        {
+            SetStat(CURRENT_HEALTH, GetStat(MAX_HEALTH));
+        }
+
+        OnStatChanged += UpdateHealthbar;
+    }
+
+    private void UpdateHealthbar(string statName, float oldValue, float newValue)
+    {
+        if (healthBarObject != null && statName == CURRENT_HEALTH)
+        {
+            float currentHealth = GetStat(CURRENT_HEALTH);
+            float maxHealth = GetStat(MAX_HEALTH);
+            Image healthBar = healthBarObject.GetComponent<Image>();
+            healthBar.fillAmount = currentHealth / maxHealth;
+            healthBar.color = Color.Lerp(Color.red, Color.green, currentHealth / maxHealth);
+        }
+    }
+
     public override void FixedUpdateNetwork()
     {
         if (Object.HasStateAuthority)

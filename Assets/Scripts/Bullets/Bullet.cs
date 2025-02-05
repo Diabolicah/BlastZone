@@ -8,11 +8,14 @@ public class Bullet : NetworkBehaviour
     private float _lifeTime;
     private float _damage;
     private bool _isAlive;
+    private bool _bulletHit;
     private NetworkObject _bulletShooter;
 
     private int _fireTick;
     private Vector3 _firePosition;
     private Vector3 _fireVelocity;
+
+    public NetworkObject BulletShooter { get => _bulletShooter;}
 
     public void Init(Vector3 position, Vector3 direction, float bulletSpeed, float lifeTime, float damage, NetworkObject BulletShooter)
     {
@@ -21,7 +24,7 @@ public class Bullet : NetworkBehaviour
         _bulletShooter = BulletShooter;
         _life = TickTimer.CreateFromSeconds(Runner, _lifeTime);
         _isAlive = true;
-
+        _bulletHit = false;
         _fireTick = Runner.Tick;
         _firePosition = position;
         _fireVelocity = direction * bulletSpeed;
@@ -50,7 +53,7 @@ public class Bullet : NetworkBehaviour
         var direction = nextPosition - previousPosition;
         var _hitMask = LayerMask.GetMask("Default");
 
-        if (Physics.Raycast(previousPosition, direction.normalized, out RaycastHit hitInfo, direction.magnitude, _hitMask))
+        if (_isAlive && Physics.Raycast(previousPosition, direction.normalized, out RaycastHit hitInfo, direction.magnitude, _hitMask))
         {
             if (hitInfo.collider.TryGetComponent<NetworkObject>(out NetworkObject obj))
             {
@@ -58,12 +61,13 @@ public class Bullet : NetworkBehaviour
                 Health playerHealth = hitInfo.collider.GetComponentInParent<Health>();
                 if (playerHealth != null)
                 {
+                    Debug.Log("Damage Applied");
                     (bool success, bool isDead) = playerHealth.ApplyDamage(_damage);
                     if (success)
                     {
                         if (isDead) Debug.Log(_bulletShooter.ToString() + " Killed a player");
-                        Runner.Despawn(Object);
                         _isAlive = false;
+                        Runner.Despawn(Object);
                     }
                 }
             }
