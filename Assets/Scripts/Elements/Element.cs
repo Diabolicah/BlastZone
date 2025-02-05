@@ -8,9 +8,10 @@ public class Element : NetworkBehaviour
     [SerializeField] private bool _isElementAoe;
     private NetworkObject _bulletShooter;
     protected static List<NetworkId> _playersHit = new List<NetworkId>();
-    protected readonly float _bulletDamage;
+    private float _bulletDamage;
 
     public float AoeRadius { get => _aoeRadius; set => _aoeRadius = value; }
+    public float BulletDamage { get => _bulletDamage; }
     public bool IsElementAoe { get => _isElementAoe; set => _isElementAoe = value; }
 
     public override void Spawned()
@@ -19,6 +20,7 @@ public class Element : NetworkBehaviour
         {
             bullet.OnTargetHit += OnTargetHit;
             bullet.OnBulletDespawn += OnBulletDespawn;
+            _bulletDamage = bullet.BulletDamage;
         }
         base.Spawned();
     }
@@ -59,7 +61,6 @@ public class Element : NetworkBehaviour
 
         foreach (PlayerRef playerRef in Runner.ActivePlayers)
         {
-            Debug.Log("Checking Players nearby");
             if (Runner.TryGetPlayerObject(playerRef, out NetworkObject playerObject))
             {
                 if (playerObject.Id == _bulletShooter.Id) continue;
