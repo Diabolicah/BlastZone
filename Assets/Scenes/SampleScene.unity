@@ -1456,6 +1456,89 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608513380}
   m_CullTransparentMesh: 1
+--- !u!1 &613957805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 613957806}
+  - component: {fileID: 613957807}
+  - component: {fileID: 613957808}
+  - component: {fileID: 613957809}
+  m_Layer: 0
+  m_Name: SC_CardManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &613957806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613957805}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 630030129}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &613957807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613957805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245b0451dd1adaa45a780ead0c0cd025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableCards:
+  - {fileID: 11400000, guid: 2f38aa1f17d072848b2829f8d5121053, type: 2}
+  - {fileID: 11400000, guid: 946b4a8def8cadc4f829a049e90e6df3, type: 2}
+  CardSelectionUI: {fileID: 1929808579}
+  CardFunctions: {fileID: 613957808}
+  pendingCardSelections: 
+--- !u!114 &613957808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613957805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a879b97ad24223468b781842177ca1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &613957809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613957805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 3933703078
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 613957807}
+  ForceRemoteRenderTimeframe: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,6 +1656,7 @@ Transform:
   - {fileID: 32436357}
   - {fileID: 231424129}
   - {fileID: 1929808576}
+  - {fileID: 613957806}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &631434751
@@ -1764,7 +1848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab:
     RawGuidValue: 6bf00b90a2bac44dc8cffbdef4bb87a6
-  levelUpUI: {fileID: 1929808578}
+  CardManager: {fileID: 613957807}
 --- !u!1 &694775148
 GameObject:
   m_ObjectHideFlags: 0
@@ -5153,8 +5237,9 @@ GameObject:
   - component: {fileID: 1929808576}
   - component: {fileID: 1929808578}
   - component: {fileID: 1929808577}
+  - component: {fileID: 1929808579}
   m_Layer: 0
-  m_Name: SC_LevelUpUI
+  m_Name: SC_CardSelectionUi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5192,7 +5277,7 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 1929808578}
+  - {fileID: 1929808579}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &1929808578
 MonoBehaviour:
@@ -5206,10 +5291,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dc1d9f187bf1448b3dc2c9d543d11c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _runner: {fileID: 0}
+  _object: {fileID: 0}
+  InvokeRpc: 0
+  ObjectIndex: 0
+  WordOffset: 0
+  WordCount: 0
+  DefaultReplicated: 1
+  <IsShowing>k__BackingField: 0
   cardButtonPrefab: {fileID: 8882353645279185054, guid: 1f92f04a5851efc478b94dd03762d7d8, type: 3}
   cardContainer: {fileID: 483559932}
   LevelUpUIContainer: {fileID: 641366272}
   levelingManager: {fileID: 0}
+--- !u!114 &1929808579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929808575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc76945f544678648b41752785042ccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardButtonPrefab: {fileID: 8882353645279185054, guid: 1f92f04a5851efc478b94dd03762d7d8, type: 3}
+  cardContainer: {fileID: 483559932}
+  cardSelectionContainer: {fileID: 641366272}
+  cardManager: {fileID: 613957807}
 --- !u!1 &1943468015
 GameObject:
   m_ObjectHideFlags: 0

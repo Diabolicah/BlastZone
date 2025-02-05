@@ -4,23 +4,23 @@ using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelUpUI : NetworkBehaviour
+public class CardSelectionUi : NetworkBehaviour
 {
     public bool IsShowing { get; private set; } = false;
 
     [SerializeField] private GameObject cardButtonPrefab;
     [SerializeField] private Transform cardContainer;
-    [SerializeField] private Transform LevelUpUIContainer;
-    public LevelingManager levelingManager;
+    [SerializeField] private Transform cardSelectionContainer;
+    public CardManager cardManager;
 
     private void Awake()
     {
-        LevelUpUIContainer.gameObject.SetActive(false);
+        cardSelectionContainer.gameObject.SetActive(false);
     }
 
     public void ShowLevelUpOptions(List<CardConfig> cardOptions)
     {
-        LevelUpUIContainer.gameObject.SetActive(true);
+        cardSelectionContainer.gameObject.SetActive(true);
         IsShowing = true;
 
         foreach (Transform child in cardContainer)
@@ -38,11 +38,10 @@ public class LevelUpUI : NetworkBehaviour
         }
     }
 
-    // Callback when a card is selected.
     private void OnCardSelected(CardConfig selectedCard)
     {
-        levelingManager.OnCardSelected(selectedCard);
-        if (levelingManager != null && levelingManager.pendingLevelUps <= 0)
+        cardManager?.OnCardSelected(selectedCard);
+        if (cardManager.pendingCardSelections.Count <= 0)
         {
             Hide();
         }
@@ -50,7 +49,7 @@ public class LevelUpUI : NetworkBehaviour
 
     public void Hide()
     {
-        LevelUpUIContainer.gameObject.SetActive(false);
+        cardSelectionContainer.gameObject.SetActive(false);
         IsShowing = false;
     }
 
