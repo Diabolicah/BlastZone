@@ -6,7 +6,7 @@ public class IceElement : Element
     
     [SerializeField] private float _slowDuration = 2f;
     [Range(-5f, -0.1f)]
-    [SerializeField] private float _slowPercentage = 2f;
+    [SerializeField] private float _slowPercentage = -0.5f;
 
     public override void ElementEffect(NetworkObject Shooter, NetworkObject target)
     {
