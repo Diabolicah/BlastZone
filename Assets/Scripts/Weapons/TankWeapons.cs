@@ -17,6 +17,10 @@ public class TankWeapons : NetworkBehaviour
     public override void Spawned()
     {
         _tankWeapon = new WeaponBullet(_weaponConfig, _shootPoint);
+        if (IsProxy)
+        {
+            WeaponIcon.gameObject.SetActive(false);
+        }
     }
 
     public override void FixedUpdateNetwork()
