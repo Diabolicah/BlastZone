@@ -11,7 +11,7 @@ public class WindElement : Element
     {
         if (Shooter.TryGetComponent<PlayerElement>(out PlayerElement playerElement))
         {
-            playerElement.useElement(new FireEffect(fireDamage, _fireDamageDuration), _windEffectDuration, Shooter, transform.position, target);
+            playerElement.useElement(new WindEffect(_windPushBackForce), _windEffectDuration, Shooter, transform.position, target);
         }
     }
 }

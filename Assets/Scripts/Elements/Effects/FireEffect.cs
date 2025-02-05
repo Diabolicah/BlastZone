@@ -6,14 +6,12 @@ using static Unity.Collections.Unicode;
 public class FireEffect : IElement
 {
     private float _fireDamage;
-    private float _fireDamageDuration;
     private float _durationBetweenFireTicks;
     private CooldownManager _fireTickManager;
 
-    public FireEffect(float fireDamage, float fireDamageDuration)
+    public FireEffect(float fireDamage)
     {
         _fireDamage = fireDamage;
-        _fireDamageDuration = fireDamageDuration;
         _durationBetweenFireTicks = 1f;
         _fireTickManager = new CooldownManager();
 
