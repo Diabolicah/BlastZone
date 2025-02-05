@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Triple Fire Bullet Weapon Config
   m_EditorClassIdentifier: 
   _bulletPrefab:
-    RawGuidValue: 54f1e59c203507f47b2882b7122727ed
+    RawGuidValue: dfb85277a4a133d45bc2d5f31d82309c
   _shootCooldown: 0.9
   _bulletSpeed: 25
   _bulletLifeTime: 3
