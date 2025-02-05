@@ -10,7 +10,7 @@ public class NetworkManager : MonoBehaviour
 {
     private NetworkRunner _runner;
 
-    [SerializeField] private string selectedGameMode = "Deathmatch";
+    [SerializeField] public static string selectedGameMode = "Deathmatch";
 
     public async Task<bool> StartMatchmaking(string gameMode)
     {
