@@ -190,7 +190,7 @@ MonoBehaviour:
   _aoeRadius: 5
   _isElementAoe: 0
   _fireDamageDuration: 5
-  _fireDamagePercentageFromBulletDamage: 0.2
+  _fireDamagePercentageFromBulletDamage: 1
 --- !u!114 &8915516477209504623
 MonoBehaviour:
   m_ObjectHideFlags: 0

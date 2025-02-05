@@ -20,7 +20,6 @@ public class Element : NetworkBehaviour
         {
             bullet.OnTargetHit += OnTargetHit;
             bullet.OnBulletDespawn += OnBulletDespawn;
-            _bulletDamage = bullet.BulletDamage;
         }
         base.Spawned();
     }
@@ -78,6 +77,9 @@ public class Element : NetworkBehaviour
     protected virtual void OnHitOrExpiredElement() {
         if (IsProxy == true) return;
         if (Runner == null || !Runner.IsRunning) return;
+        if (TryGetComponent<Bullet>(out Bullet bullet))
+            _bulletDamage = bullet.BulletDamage;
+
         foreach (NetworkId playerObject in _playersHit)
         {
             Debug.Log(playerObject.ToString() + " Got Hit!!");

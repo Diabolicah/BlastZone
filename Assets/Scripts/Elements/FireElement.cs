@@ -12,7 +12,7 @@ public class FireElement : Element
         if (Shooter.TryGetComponent<PlayerElement>(out PlayerElement playerElement))
         {
             float fireDamage = BulletDamage * _fireDamagePercentageFromBulletDamage;
-            playerElement.useElement(new FireEffect(BulletDamage, _fireDamageDuration), _fireDamageDuration, Shooter, transform.position, target);
+            playerElement.useElement(new FireEffect(fireDamage, _fireDamageDuration), _fireDamageDuration, Shooter, transform.position, target);
         }
     }
 }
