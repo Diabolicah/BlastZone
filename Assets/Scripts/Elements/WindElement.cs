@@ -5,7 +5,7 @@ public class WindElement : Element
 {
     [Range(0.1f, 1f)]
     [SerializeField] private float _windEffectDuration = 0.5f;
-    [Range(1f, 5f)]
+    [Range(1f, 25f)]
     [SerializeField] private float _windPushBackForce = 2f;
 
     public override void ElementEffect(NetworkObject Shooter, NetworkObject target)
