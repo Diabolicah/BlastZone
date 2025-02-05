@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using Fusion;
 using UnityEngine;
+using static Unity.Collections.Unicode;
 
 public class FireEffect : IElement
 {
     private float _fireDamage;
     private float _fireDamageDuration;
     private float _durationBetweenFireTicks;
-    private CooldownManager _fireDurationManager;
     private CooldownManager _fireTickManager;
 
     public FireEffect(float fireDamage, float fireDamageDuration)
@@ -15,21 +15,29 @@ public class FireEffect : IElement
         _fireDamage = fireDamage;
         _fireDamageDuration = fireDamageDuration;
         _durationBetweenFireTicks = 1f;
-        _fireDurationManager = new CooldownManager();
         _fireTickManager = new CooldownManager();
 
     }
 
-    public void activate(NetworkRunner runner, NetworkObject bulletShooter, Vector3 position, NetworkObject playersHit)
+    public void activate(NetworkRunner runner, NetworkObject bulletShooter, Vector3 position, NetworkObject playerHit)
     {
-        _fireDurationManager.ResetCooldown(runner, _fireDamageDuration);
-        while (!_fireDurationManager.IsCooldownExpiredOrNutRunning(runner))
+        if (_fireTickManager.IsCooldownExpiredOrNutRunning(runner))
         {
-            if(_fireTickManager.IsCooldownExpiredOrNutRunning(runner))
+            Debug.Log("Fire Tick");
+            Health playerHealth = playerHit.GetComponent<Health>();
+            if (playerHealth != null)
             {
-                Debug.Log("Fire Tick");
-                _fireTickManager.ResetCooldown(runner, _durationBetweenFireTicks);
+                Debug.Log("Fire Damage Applied");
+                (bool success, bool isDead) = playerHealth.ApplyDamage(_fireDamage);
+                if (success)
+                {
+                    if (isDead)
+                    {
+                        Debug.Log(bulletShooter.ToString() + " Killed a player");
+                    }
+                }
             }
+            _fireTickManager.ResetCooldown(runner, _durationBetweenFireTicks);
         }
     }
 }
