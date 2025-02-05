@@ -203,6 +203,7 @@ MonoBehaviour:
   _Exp: 0
   availableCards:
   - {fileID: 11400000, guid: 2f38aa1f17d072848b2829f8d5121053, type: 2}
+  - {fileID: 11400000, guid: 946b4a8def8cadc4f829a049e90e6df3, type: 2}
 --- !u!114 &971756849036023500
 MonoBehaviour:
   m_ObjectHideFlags: 0
