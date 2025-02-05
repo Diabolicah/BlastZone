@@ -61,17 +61,20 @@ namespace UI
         curScreen = Screens.MainMenu;
         prevScreen = Screens.MainMenu;
         unityObjects = new Dictionary<string, GameObject>();
-        GameObject[] _unityObj = GameObject.FindGameObjectsWithTag("Screen");
+        GameObject[] _unityObj = GameObject.FindGameObjectsWithTag("UnityObject");
         foreach(GameObject g in _unityObj)
         {
             if (unityObjects.ContainsKey(g.name) == false)
                 unityObjects.Add(g.name, g);
             else Debug.LogError("This key " + g.name + " Is Already inside the Dictionary!!!");
         }
+        
     }
 
     private void InitStart()
     {
+        if (unityObjects.ContainsKey("Screen_MainMenu"))
+            unityObjects["Screen_MainMenu"].SetActive(false);
         if (unityObjects.ContainsKey("Screen_Multiplayer"))
             unityObjects["Screen_Multiplayer"].SetActive(false);
         if (unityObjects.ContainsKey("Screen_Codex"))

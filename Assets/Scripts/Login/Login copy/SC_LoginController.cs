@@ -20,31 +20,31 @@ public class SC_LoginController : MonoBehaviour
     {
         SC_LoginLogic.Instance.Btn_Register_Back();
     }
-    public void Btn_Lobby_Logout()
-    {
-        SC_LoginLogic.Instance.Btn_Lobby_Logout();
-    }
-
-    public void Btn_Lobby_AddXp()
-    {
-        SC_LoginLogic.Instance.Btn_Lobby_AddXp();
-    }
-    public void Btn_Lobby_AddCurrency()
-    {
-        SC_LoginLogic.Instance.Btn_Lobby_AddCurrency();
-    }
-    public void Btn_Lobby_Play()
-    {
-        SC_LoginLogic.Instance.Btn_Lobby_Play();
-    }
-    public void Btn_SearchingOpponent_Cancel()
-    {
-        SC_LoginLogic.Instance.Btn_SearchingOpponent_Cancel();
-    }
-
-    public void Btn_SearchingOpponent_SendMessage()
-    {
-        SC_LoginLogic.Instance.Btn_SearchingOpponent_SendMessage();
-    }
+    // public void Btn_Lobby_Logout()
+    // {
+    //     SC_LoginLogic.Instance.Btn_Lobby_Logout();
+    // }
+    //
+    // public void Btn_Lobby_AddXp()
+    // {
+    //     SC_LoginLogic.Instance.Btn_Lobby_AddXp();
+    // }
+    // public void Btn_Lobby_AddCurrency()
+    // {
+    //     SC_LoginLogic.Instance.Btn_Lobby_AddCurrency();
+    // }
+    // public void Btn_Lobby_Play()
+    // {
+    //     SC_LoginLogic.Instance.Btn_Lobby_Play();
+    // }
+    // public void Btn_SearchingOpponent_Cancel()
+    // {
+    //     SC_LoginLogic.Instance.Btn_SearchingOpponent_Cancel();
+    // }
+    //
+    // public void Btn_SearchingOpponent_SendMessage()
+    // {
+    //     SC_LoginLogic.Instance.Btn_SearchingOpponent_SendMessage();
+    // }
     
 }
