@@ -4,28 +4,22 @@ using static Unity.Collections.Unicode;
 
 public class TankWeapons : NetworkBehaviour
 {
-    [SerializeField] private Transform _shootPoint; // Assign in inspector
+    [SerializeField] public Transform _shootPoint; // Assign in inspector
     [SerializeField] private BulletWeaponConfig _weaponConfig; // Assign config asset
-    [SerializeField] private TripleBulletWeaponConfig _trippleWeaponConfig; // Test Weapon need to remove later
     [SerializeField] private NetworkObject _playerNetworkObj; // Test Weapon need to remove later
 
     PlayerStatsStruct _playerStats = PlayerStatsStruct.Default;
 
     private IWeapon _tankWeapon;
-    private IWeaponFactory _weaponFactory;
 
     public override void Spawned()
     {
-        // Initialize factory with dependencies
-        //_weaponFactory = new WeaponBulletFactory(_weaponConfig, _shootPoint);
-        _weaponFactory = new WeaponTripleBulletFactory(_trippleWeaponConfig, _shootPoint);
-        _tankWeapon = _weaponFactory.CreateWeapon();
-        //add the player stats manager
+        _tankWeapon = new WeaponBullet(_weaponConfig, _shootPoint);
     }
 
     public override void FixedUpdateNetwork()
     {
-        if (Input.GetMouseButton(0) && HasInputAuthority)
+        if ((Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space)) && HasInputAuthority)
         {
             if (HasStateAuthority)
             {
@@ -37,9 +31,9 @@ public class TankWeapons : NetworkBehaviour
         }
     }
 
-    public void setTankWeapon(IWeaponFactory weaponFactory)
+    public void setTankWeapon(IWeapon weaponConfig)
     {
-        _tankWeapon = weaponFactory.CreateWeapon();
+        _tankWeapon = weaponConfig;
     }
     private void ServerFire(PlayerStatsStruct playerStats, NetworkId bulletShooterId)
     {

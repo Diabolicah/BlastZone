@@ -24,7 +24,7 @@ public class WeaponBullet : IWeapon
 
     public void fire(NetworkRunner runner, PlayerStatsStruct playerStats, NetworkId bulletShooterId)
     {
-        if (_cooldownManager.IsCooldownExpired(runner))
+        if (_cooldownManager.IsCooldownExpiredOrNutRunning(runner))
         {
             _cooldownManager.ResetCooldown(runner, _shootCooldown * playerStats.AttackSpeed); // Reset cooldown timer
             ServerShoot(runner, playerStats, runner.FindObject(bulletShooterId));
@@ -35,6 +35,8 @@ public class WeaponBullet : IWeapon
         Quaternion bulletRotation = Quaternion.LookRotation(_shootPoint.forward, Vector3.up);
         NetworkObject bullet = runner.Spawn(_bulletPrefab, _shootPoint.position, bulletRotation);
         Bullet bulletScript = bullet.GetComponent<Bullet>();
-        bulletScript.Init(_shootPoint.position, _shootPoint.forward, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage, bulletShooter);
+        float speed = _speed * playerStats.BulletSpeed;
+        float damage = _damage * playerStats.Damage;
+        bulletScript.Init(_shootPoint.position, _shootPoint.forward, speed, _bulletLifeTime, damage, bulletShooter);
     }
 }

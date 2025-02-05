@@ -39,5 +39,12 @@ public class Player : NetworkBehaviour
         Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         moveDirection.Normalize();
         _characterController.Move(moveDirection * _characterController.maxSpeed * Runner.DeltaTime);
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Debug.Log("G key was pressed.");
+            LevelingManager LM = GetComponent<LevelingManager>();
+            LM.AddExp(100f);
+        }
     }
 }

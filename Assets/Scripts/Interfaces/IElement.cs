@@ -6,5 +6,5 @@ using UnityEngine;
 
 public interface IElement
 {
-    void activate(NetworkRunner runner, NetworkId bulletShooter, Transform position, List<NetworkId> playersHit);
+    void activate(NetworkRunner runner, NetworkObject bulletShooter, Vector3 position, NetworkObject playersHit);
 }

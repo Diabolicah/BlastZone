@@ -1,14 +1,17 @@
+using System;
 using Fusion;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Bullet : NetworkBehaviour
 {
+    public event Action<NetworkObject, NetworkObject> OnTargetHit;
+    public event Action<NetworkObject> OnBulletDespawn;
+
     private TickTimer _life;
     private float _lifeTime;
     private float _damage;
-    private bool _isAlive;
-    private bool _bulletHit;
+    private bool _isBulletAlive;
     private NetworkObject _bulletShooter;
 
     private int _fireTick;
@@ -16,6 +19,7 @@ public class Bullet : NetworkBehaviour
     private Vector3 _fireVelocity;
 
     public NetworkObject BulletShooter { get => _bulletShooter;}
+    public float BulletDamage { get => _damage; }
 
     public void Init(Vector3 position, Vector3 direction, float bulletSpeed, float lifeTime, float damage, NetworkObject BulletShooter)
     {
@@ -23,8 +27,7 @@ public class Bullet : NetworkBehaviour
         _damage = damage;
         _bulletShooter = BulletShooter;
         _life = TickTimer.CreateFromSeconds(Runner, _lifeTime);
-        _isAlive = true;
-        _bulletHit = false;
+        _isBulletAlive = true;
         _fireTick = Runner.Tick;
         _firePosition = position;
         _fireVelocity = direction * bulletSpeed;
@@ -53,11 +56,11 @@ public class Bullet : NetworkBehaviour
         var direction = nextPosition - previousPosition;
         var _hitMask = LayerMask.GetMask("Default");
 
-        if (_isAlive && Physics.Raycast(previousPosition, direction.normalized, out RaycastHit hitInfo, direction.magnitude, _hitMask))
+        if (_isBulletAlive && Physics.Raycast(previousPosition, direction.normalized, out RaycastHit hitInfo, direction.magnitude, _hitMask))
         {
-            if (hitInfo.collider.TryGetComponent<NetworkObject>(out NetworkObject obj))
+            if (hitInfo.collider.TryGetComponent<NetworkObject>(out NetworkObject networkObj))
             {
-                if (obj.Id == _bulletShooter.Id) return;
+                if (networkObj.Id == _bulletShooter.Id) return;
                 Health playerHealth = hitInfo.collider.GetComponentInParent<Health>();
                 if (playerHealth != null)
                 {
@@ -65,16 +68,22 @@ public class Bullet : NetworkBehaviour
                     (bool success, bool isDead) = playerHealth.ApplyDamage(_damage);
                     if (success)
                     {
-                        if (isDead) Debug.Log(_bulletShooter.ToString() + " Killed a player");
-                        _isAlive = false;
+                        if (isDead) { 
+                            Debug.Log(_bulletShooter.ToString() + " Killed a player");
+                        }else
+                        {
+                            OnTargetHit?.Invoke(_bulletShooter, networkObj);
+                        }
+                        _isBulletAlive = false;
                         Runner.Despawn(Object);
                     }
                 }
             }
         }
 
-        if (_isAlive && _life.ExpiredOrNotRunning(Runner))
+        if (_isBulletAlive && _life.ExpiredOrNotRunning(Runner))
         {
+            OnBulletDespawn?.Invoke(_bulletShooter);
             Runner.Despawn(Object);
         }
     }

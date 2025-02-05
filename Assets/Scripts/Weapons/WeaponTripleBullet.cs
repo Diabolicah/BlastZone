@@ -31,8 +31,11 @@ public class WeaponTripleBullet : WeaponBullet
         Bullet bullet2Script = bullet2.GetComponent<Bullet>();
         Bullet bullet3Script = bullet3.GetComponent<Bullet>();
 
-        bullet1Script.Init(basePosition, baseDirection, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage, bulletShooter);
-        bullet2Script.Init(basePosition, dirRight, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage, bulletShooter);
-        bullet3Script.Init(basePosition, dirLeft, _speed * playerStats.BulletSpeed, _bulletLifeTime, _damage * playerStats.Damage, bulletShooter);
+        float speed = _speed * playerStats.BulletSpeed;
+        float damage = _damage * playerStats.Damage;
+
+        bullet1Script.Init(basePosition, baseDirection, speed, _bulletLifeTime, damage, bulletShooter);
+        bullet2Script.Init(basePosition, dirRight, speed, _bulletLifeTime, damage, bulletShooter);
+        bullet3Script.Init(basePosition, dirLeft, speed, _bulletLifeTime, damage, bulletShooter);
     }
 }
