@@ -7,7 +7,7 @@ public class Element : NetworkBehaviour
     [SerializeField] private float _aoeRadius = 5f;
     [SerializeField] private bool _isElementAoe;
     private NetworkObject _bulletShooter;
-    private List<NetworkId> _playersHit = new List<NetworkId>();
+    private List<NetworkObject> _playersHit = new List<NetworkObject>();
     private float _bulletDamage;
 
     public float AoeRadius { get => _aoeRadius; set => _aoeRadius = value; }
@@ -44,7 +44,7 @@ public class Element : NetworkBehaviour
     private void OnTargetHit(NetworkObject shooter, NetworkObject target)
     {
         _bulletShooter = shooter;
-        _playersHit.Add(target.Id);
+        _playersHit.Add(target);
     }
     private void OnBulletDespawn(NetworkObject shooter)
     {
@@ -66,9 +66,9 @@ public class Element : NetworkBehaviour
                 if (playerObject.Id == _bulletShooter.Id) continue;
                 if ((playerObject.transform.position - transform.position).sqrMagnitude <= radiusSqr)
                 {
-                    if (!_playersHit.Contains(playerObject.Id))
+                    if (!_playersHit.Contains(playerObject))
                     {
-                        _playersHit.Add(playerObject.Id);
+                        _playersHit.Add(playerObject);
                     }
                 }
             }

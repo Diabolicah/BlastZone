@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerElement : NetworkBehaviour
 {
-  public void useElement(IElement element, NetworkId elementShooter, Transform usedElementPosition,List<NetworkId> playerHits)
+  public void useElement(IElement element, NetworkObject elementShooter, Transform usedElementPosition, NetworkObject playerHits)
    {
         element.activate(Runner, elementShooter, usedElementPosition, playerHits);
    }
