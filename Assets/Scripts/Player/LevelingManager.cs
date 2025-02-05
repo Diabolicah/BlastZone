@@ -29,9 +29,23 @@ public class LevelingManager : NetworkBehaviour
 
     public void AddExp(float amount)
     {
-        if (!Object.HasStateAuthority)
-            return;
 
+        if (!Object.HasStateAuthority)
+        {
+            RPC_AddExp(amount);
+            return;
+        }
+        InternalAddExp(amount);
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    private void RPC_AddExp(float amount, RpcInfo info = default)
+    {
+        InternalAddExp(amount);
+    }
+
+    public void InternalAddExp(float amount)
+    {
         Exp += amount;
         if (Exp >= expToLevelUp)
         {
