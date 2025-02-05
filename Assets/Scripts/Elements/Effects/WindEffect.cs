@@ -18,11 +18,9 @@ public class WindEffect : IElement
     {
         if (_windPushBackManager.IsCooldownExpiredOrNotRunning(runner))
         {
-            Debug.Log("Wind Tick");
             ApplyExternalForce playerApplyForce = playerHit.GetComponent<ApplyExternalForce>();
             if (playerApplyForce != null)
             {
-                Debug.Log("Wind PushBack Applied");
                 Vector3 forceDirection = Vector3.Normalize(playerHit.transform.position - position);
                 playerApplyForce.RPC_ApplyForce(forceDirection * _pushBackForce, _pushBackDuration);
             }
