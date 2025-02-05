@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2386721432402869471}
   - component: {fileID: 669638107416217757}
   - component: {fileID: -2526664047056180360}
+  - component: {fileID: 110546857964575258}
   - component: {fileID: 971756849036023500}
   - component: {fileID: 1395887037798404361}
   - component: {fileID: 181552794897400913}
@@ -65,6 +66,7 @@ MonoBehaviour:
   - {fileID: 2386721432402869471}
   - {fileID: 669638107416217757}
   - {fileID: -2526664047056180360}
+  - {fileID: 110546857964575258}
   - {fileID: 971756849036023500}
   - {fileID: 1395887037798404361}
   ForceRemoteRenderTimeframe: 0
@@ -181,6 +183,26 @@ MonoBehaviour:
       Value: 2
   statsManager: {fileID: 669638107416217757}
   healthBarObject: {fileID: 3549399448212302878}
+--- !u!114 &110546857964575258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131662502398076607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83f296c35fe497458d3279724c32f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rank: 1
+  startingLevel: 1
+  startingExp: 0
+  expToLevelUp: 100
+  _Level: 0
+  _Exp: 0
+  availableCards:
+  - {fileID: 11400000, guid: 2f38aa1f17d072848b2829f8d5121053, type: 2}
 --- !u!114 &971756849036023500
 MonoBehaviour:
   m_ObjectHideFlags: 0
