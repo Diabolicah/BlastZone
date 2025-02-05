@@ -5,9 +5,9 @@ using UnityEngine;
 public class Element : NetworkBehaviour
 {
     [SerializeField] private float _aoeRadius = 5f;
-    [SerializeField] private bool _isElementAoe = true;
+    [SerializeField] private bool _isElementAoe = false;
     private NetworkObject _bulletShooter;
-    protected List<NetworkId> playersHit = new List<NetworkId>();
+    protected static List<NetworkId> playersHit = new List<NetworkId>();
 
     public float AoeRadius { get => _aoeRadius; set => _aoeRadius = value; }
     public bool IsElementAoe { get => _isElementAoe; set => _isElementAoe = value; }
@@ -69,7 +69,7 @@ public class Element : NetworkBehaviour
     }
 
     protected virtual void onHitOrExpiredElement() {
-        Debug.Log(playersHit.ToString());
+        //Debug.Log(playersHit.ToString());
         foreach (NetworkId playerObjec in playersHit)
         {
             Debug.Log(playerObjec.ToString() + " Got Hit!!");
