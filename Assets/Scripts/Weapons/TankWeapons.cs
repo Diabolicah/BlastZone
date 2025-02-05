@@ -5,9 +5,9 @@ using static Unity.Collections.Unicode;
 
 public class TankWeapons : NetworkBehaviour
 {
-    [SerializeField] public Transform _shootPoint; // Assign in inspector
-    [SerializeField] private BulletWeaponConfig _weaponConfig; // Assign config asset
-    [SerializeField] private NetworkObject _playerNetworkObj; // Test Weapon need to remove later
+    [SerializeField] public Transform _shootPoint;
+    [SerializeField] private BulletWeaponConfig _weaponConfig;
+    [SerializeField] private NetworkObject _playerNetworkObj;
     [SerializeField] public Image WeaponIcon;
 
     PlayerStatsStruct _playerStats = PlayerStatsStruct.Default;
@@ -21,14 +21,16 @@ public class TankWeapons : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        if ((Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space)) && HasInputAuthority)
+        if (Input.GetKey(KeyCode.Space) && HasInputAuthority)
         {
             if (HasStateAuthority)
             {
-                ServerFire(_playerStats, _playerNetworkObj.Id);//change it to the getPlayerStats from the playerStatManager
+                _playerStats = Runner.FindObject(_playerNetworkObj.Id).GetComponent<StatsManager>().Stats;
+                ServerFire(_playerStats, _playerNetworkObj.Id);
             }else
             {
-                RequestFireRpc(_playerStats, _playerNetworkObj.Id);//change it to the getPlayerStats from the playerStatManager
+                _playerStats = Runner.FindObject(_playerNetworkObj.Id).GetComponent<StatsManager>().Stats;
+                RequestFireRpc(_playerStats, _playerNetworkObj.Id);
             }
         }
     }
