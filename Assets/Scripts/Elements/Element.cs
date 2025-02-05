@@ -58,6 +58,7 @@ public class Element : NetworkBehaviour
     private void GetPlayersInRadius()
     {
         playersHit.Clear();
+        if (IsProxy == true) return;
         if (Runner == null || !Runner.IsRunning) return;
 
         float radiusSqr = _aoeRadius * _aoeRadius;
