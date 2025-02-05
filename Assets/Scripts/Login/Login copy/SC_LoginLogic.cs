@@ -109,9 +109,9 @@ public class SC_LoginLogic : NetworkBehaviour
         MainMenu_Logic.unityObjects["InputField_Login_Password"].GetComponent<TMP_InputField>().text = string.Empty;
     }
     
-    public void Btn_Lobby_AddXp()
+    public void Btn_Lobby_AddXp(int Level)
     {
-        string _value = MainMenu_Logic.unityObjects["InputField_Xp"].GetComponent<TMP_InputField>().text;
+        string _value = Level.ToString();
         if (_value.Length > 0)
         {
             Dictionary<string, object> _data = new Dictionary<string, object>();
