@@ -222,8 +222,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.011764706, g: 0.9372549, b: 0.94509804, a: 1}
-      maxColor: {r: 0.011764706, g: 0.9372549, b: 0.94509804, a: 1}
+      minColor: {r: 0.12156863, g: 0.5568628, b: 0.011764706, a: 1}
+      maxColor: {r: 0.12156863, g: 0.5568628, b: 0.011764706, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5068,7 +5068,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 0.33580115, b: 0.18382353, a: 0.19607843}
-      maxColor: {r: 0.011764706, g: 0.9372549, b: 0.94509804, a: 0.47058824}
+      maxColor: {r: 0.12156863, g: 0.5568628, b: 0.011764706, a: 0.47058824}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10075,7 +10075,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 0.55679506, g: 0.30147058, b: 1, a: 1}
-      maxColor: {r: 0.011764706, g: 0.9372549, b: 0.94509804, a: 1}
+      maxColor: {r: 0.12156863, g: 0.5568628, b: 0.011764706, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -14795,7 +14795,7 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.011764706, g: 0.9372549, b: 0.94509804, a: 1}
+      key0: {r: 0.12156863, g: 0.5568628, b: 0.011764706, a: 1}
       key1: {r: 0, g: 0, b: 0, a: 0.08235294}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -14811,8 +14811,8 @@ TrailRenderer:
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 9445
-      atime1: 54163
+      atime0: 0
+      atime1: 65535
       atime2: 0
       atime3: 0
       atime4: 0
@@ -14851,9 +14851,9 @@ GameObject:
   - component: {fileID: 136350987479803286}
   - component: {fileID: 3166255043181664586}
   - component: {fileID: 4707521510317500989}
-  - component: {fileID: 7719497222368892623}
+  - component: {fileID: 6925632920329964256}
   m_Layer: 0
-  m_Name: vfx_Projectile_Fireball02Blue
+  m_Name: WindBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15171,7 +15171,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 0.55679506, g: 0.30147058, b: 1, a: 1}
-      maxColor: {r: 0.011764705, g: 0.9368064, b: 0.94509804, a: 1}
+      maxColor: {r: 0.11783598, g: 0.5566038, b: 0.007876454, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -19862,15 +19862,15 @@ MonoBehaviour:
   m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SortKey: 1798038253
+  SortKey: 4069508743
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 3166255043181664586}
-  - {fileID: 7719497222368892623}
+  - {fileID: 6925632920329964256}
   ForceRemoteRenderTimeframe: 0
---- !u!114 &7719497222368892623
+--- !u!114 &6925632920329964256
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20104,8 +20104,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.011764706, g: 0.9372549, b: 0.94509804, a: 1}
-      maxColor: {r: 0.011764706, g: 0.9372549, b: 0.94509804, a: 1}
+      minColor: {r: 0.12156863, g: 0.5568628, b: 0.011764706, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
