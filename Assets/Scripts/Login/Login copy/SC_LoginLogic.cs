@@ -145,35 +145,7 @@ public class SC_LoginLogic : NetworkBehaviour
             }
         }
     }
-
-    // private void OnConnect(Dictionary<string, object> _Data)
-    // {
-    //     Debug.Log("OnConnect ");
-    //     if (_Data.ContainsKey("IsOpen"))
-    //     {
-    //         bool _isOpen = bool.Parse(_Data["IsOpen"].ToString());
-    //         if (_isOpen)
-    //         {
-    //             MainMenu_Logic.unityObjects["Screen_Lobby"].SetActive(false);
-    //             MainMenu_Logic.unityObjects["Screen_SearchingOpponent"].SetActive(true);
-    //         }
-    //     }
-    // }
-    // private void OnStartGame(Dictionary<string, object> _PassedVariables)
-    // {
-    //     MainMenu_Logic.unityObjects["Screen_SearchingOpponent"].SetActive(false);
-    //     MainMenu_Logic.unityObjects["Menu"].SetActive(false);
-    //     MainMenu_Logic.unityObjects["Game"].SetActive(true);
-    //
-    //     int _matchId = int.Parse(_PassedVariables["MI"].ToString());
-    //     int _maxTurnTime = int.Parse(_PassedVariables["MTT"].ToString());
-    //     int _moveCounter = int.Parse(_PassedVariables["MC"].ToString());
-    //     System.DateTime _startTime = System.DateTime.Parse(_PassedVariables["TT"].ToString());
-    //     string _curPlayerId = _PassedVariables["CP"].ToString();
-    //     List<object> players = (List<object>)_PassedVariables["Players"];
-    //     List<string> stringPlayers = players.Select(s => (string)s).ToList();
-    //     // SC_GameLogic.Instance.StartGame(_matchId, _maxTurnTime, _startTime, _curPlayerId, _moveCounter, userId, stringPlayers);
-    // }
+    
     private void OnSendMove(Dictionary<string, object> _PassedVariables)
     {
         Debug.Log(_PassedVariables.Count);
