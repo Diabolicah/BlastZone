@@ -86,7 +86,7 @@ public class Health : BaseStats
         bool isDead = (currentHealth - damage <= 0f);
         if (isDead)
         {
-            Runner.Disconnect(Runner.LocalPlayer);
+            Runner.Shutdown();
         }
         return (success, isDead);
     }
