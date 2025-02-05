@@ -44,17 +44,6 @@ public class Element : NetworkBehaviour
         _bulletShooter = shooter;
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (TryGetComponent<Bullet>(out Bullet bullet))
-    //    {
-    //        _bulletShooter = bullet.BulletShooter;
-    //        if (other.GetComponent<NetworkObject>().Id == _bulletShooter.Id)
-    //            { return; }
-    //        Debug.Log(other.gameObject);
-    //    }
-    //}
-
     private void GetPlayersInRadius()
     {
         playersHit.Clear();
