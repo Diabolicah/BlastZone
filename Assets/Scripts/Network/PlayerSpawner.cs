@@ -4,10 +4,11 @@ using UnityEngine;
 public class PlayerSpawner : SimulationBehaviour, IPlayerJoined, IPlayerLeft
 {
     [SerializeField] private NetworkPrefabRef playerPrefab;
+    [SerializeField] private CardManager CardManager;
+    [SerializeField] private StatsUIHandler StatsUIHandler;
 
     private NetworkObject localPlayerObject;
-    [SerializeField]
-    private CardManager CardManager;
+
     public void PlayerJoined(PlayerRef player)
     {
         if (player == Runner.LocalPlayer)
@@ -17,6 +18,8 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined, IPlayerLeft
             Runner.SetPlayerObject(player, networkPlayerObject);
             localPlayerObject = networkPlayerObject;
             localPlayerObject.GetComponent<LevelingManager>().cardManager = CardManager;
+
+            StatsUIHandler.Activate(localPlayerObject.GetComponent<StatsManager>());
         }
     }
 
