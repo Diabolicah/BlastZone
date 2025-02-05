@@ -61,7 +61,7 @@ public class Health : BaseStats
         {
             float currentHealth = GetStat(CURRENT_HEALTH);
             bool isDead = (currentHealth - damage <= 0f);
-
+            Runner.Disconnect(Runner.LocalPlayer);
             RPC_ApplyDamage(damage);
             return (true, isDead);
         }
