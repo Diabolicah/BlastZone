@@ -19,6 +19,7 @@ public class Bullet : NetworkBehaviour
     private Vector3 _fireVelocity;
 
     public NetworkObject BulletShooter { get => _bulletShooter;}
+    public float BulletDamage { get => _damage; }
 
     public void Init(Vector3 position, Vector3 direction, float bulletSpeed, float lifeTime, float damage, NetworkObject BulletShooter)
     {

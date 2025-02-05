@@ -5,30 +5,35 @@ using UnityEngine;
 public class Element : NetworkBehaviour
 {
     [SerializeField] private float _aoeRadius = 5f;
-    [SerializeField] private bool _isElementAoe = false;
+    [SerializeField] private bool _isElementAoe;
     private NetworkObject _bulletShooter;
-    protected static List<NetworkId> playersHit = new List<NetworkId>();
+    protected static List<NetworkId> _playersHit = new List<NetworkId>();
+    protected readonly float _bulletDamage;
 
     public float AoeRadius { get => _aoeRadius; set => _aoeRadius = value; }
     public bool IsElementAoe { get => _isElementAoe; set => _isElementAoe = value; }
 
     public override void Spawned()
     {
-        TryGetComponent<Bullet>(out Bullet bullet);
-        bullet.OnTargetHit += OnTargetHit;
-        bullet.OnBulletDespawn += OnBulletDespawn;
+        if(TryGetComponent<Bullet>(out Bullet bullet))
+        {
+            bullet.OnTargetHit += OnTargetHit;
+            bullet.OnBulletDespawn += OnBulletDespawn;
+        }
         base.Spawned();
     }
 
     public override void Despawned(NetworkRunner runner, bool hasState)
     {
         if (_isElementAoe)
+        {
             GetPlayersInRadius();
+        }
         
-        if (playersHit.Count > 0)
+        if (_playersHit.Count > 0)
         {
             onHitOrExpiredElement();
-            playersHit.Clear();
+            _playersHit.Clear();
         }
 
         base.Despawned(runner, hasState);
@@ -37,7 +42,7 @@ public class Element : NetworkBehaviour
     private void OnTargetHit(NetworkObject shooter, NetworkObject target)
     {
         _bulletShooter = shooter;
-        playersHit.Add(target.Id);
+        _playersHit.Add(target.Id);
     }
     private void OnBulletDespawn(NetworkObject shooter)
     {
@@ -46,7 +51,7 @@ public class Element : NetworkBehaviour
 
     private void GetPlayersInRadius()
     {
-        playersHit.Clear();
+        _playersHit.Clear();
         if (IsProxy == true) return;
         if (Runner == null || !Runner.IsRunning) return;
 
@@ -54,14 +59,15 @@ public class Element : NetworkBehaviour
 
         foreach (PlayerRef playerRef in Runner.ActivePlayers)
         {
+            Debug.Log("Checking Players nearby");
             if (Runner.TryGetPlayerObject(playerRef, out NetworkObject playerObject))
             {
                 if (playerObject.Id == _bulletShooter.Id) continue;
                 if ((playerObject.transform.position - transform.position).sqrMagnitude <= radiusSqr)
                 {
-                    if (!playersHit.Contains(playerObject.Id))
+                    if (!_playersHit.Contains(playerObject.Id))
                     {
-                        playersHit.Add(playerObject.Id);
+                        _playersHit.Add(playerObject.Id);
                     }
                 }
             }
@@ -69,8 +75,7 @@ public class Element : NetworkBehaviour
     }
 
     protected virtual void onHitOrExpiredElement() {
-        //Debug.Log(playersHit.ToString());
-        foreach (NetworkId playerObjec in playersHit)
+        foreach (NetworkId playerObjec in _playersHit)
         {
             Debug.Log(playerObjec.ToString() + " Got Hit!!");
         }
