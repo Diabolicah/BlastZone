@@ -72,7 +72,7 @@ namespace UI
 
     private void InitStart()
     {
-        if (unityObjects.ContainsKey("Screen_Multiplayer"))
+        if (unityObjects.ContainsKey("Screen_Multiplayer") && !PlayerPrefs.HasKey("Restart"))
             unityObjects["Screen_Multiplayer"].SetActive(false);
         if (unityObjects.ContainsKey("Screen_Codex"))
             unityObjects["Screen_Codex"].SetActive(false);

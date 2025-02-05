@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 using static UI.MainMenu_Logic;
+using UnityEngine.SceneManagement;
 
 public class GameOver_Logic : MonoBehaviour
 {
@@ -23,36 +24,12 @@ public class GameOver_Logic : MonoBehaviour
 
     public async void Restart()
     {
-        if (_networkManager != null)
-        {
-            RestarthButton.GetComponent<Button>().interactable = false;
-            MainMenuButton.GetComponent<Button>().interactable = false;
-            RestartloadingText.text = "Loading" + NetworkManager.selectedGameMode + " ...";
-            bool success = await _networkManager.StartMatchmaking(NetworkManager.selectedGameMode);
-            if (success)
-            {
-                unityObjects["Screen_GameOver"].gameObject.SetActive(false);
-                // unityObjects["Screen_Game"].gameObject.SetActive(true);
-            }
-            else
-            {
-                RestarthButton.GetComponent<Button>().interactable = true;
-                MainMenuButton.GetComponent<Button>().interactable = true;
-                RestartloadingText.text = "Failed to Restart " + NetworkManager.selectedGameMode;
-                Debug.LogError("Failed to Restart" +  NetworkManager.selectedGameMode);
-            }
-        }
-        else
-        {
-            Debug.LogError("NetworkManager is not assigned!");
-        }
+        PlayerPrefs.SetInt("Restart", 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     
     public void BackToMainMenu()
     {
-        unityObjects["Screen_GameOver"].gameObject.SetActive(false);
-        unityObjects["Screen_MainMenu"].gameObject.SetActive(true);
-        unityObjects["Screen_Game"].gameObject.SetActive(false);
-        unityObjects["Img_Background"].gameObject.SetActive(true);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

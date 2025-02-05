@@ -182,9 +182,9 @@ MonoBehaviour:
   _defaultStats:
     _items:
     - Key: MaxHealth
-      Value: 100
+      Value: 25
     - Key: CurrentHealth
-      Value: 100
+      Value: 25
     - Key: HealthRegenRate
       Value: 0.5
   _baseStats:
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb39c57bb8adbb42a5f641c48632d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XpValue: 10
+  XpValue: 50
 --- !u!1 &2198870952358858629
 GameObject:
   m_ObjectHideFlags: 0
