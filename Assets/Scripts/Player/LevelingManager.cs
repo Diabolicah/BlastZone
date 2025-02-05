@@ -18,6 +18,8 @@ public class LevelingManager : NetworkBehaviour
 
     public event Action<List<CardConfig>> OnLevelUp;
 
+    public int pendingLevelUps = 0;
+
     private void Start()
     {
         if (Object.HasStateAuthority)
@@ -47,20 +49,27 @@ public class LevelingManager : NetworkBehaviour
     public void InternalAddExp(float amount)
     {
         Exp += amount;
-        if (Exp >= expToLevelUp)
+        while (Exp >= expToLevelUp)
         {
-            LevelUp();
+            pendingLevelUps++;
+            Exp -= expToLevelUp;
+            Level++;
+        }
+
+        if (pendingLevelUps > 0 && levelUpUI != null && !levelUpUI.IsShowing)
+        {
+            ShowLevelUpOptionsForNextLevel();
         }
     }
 
-    private void LevelUp()
+    private void ShowLevelUpOptionsForNextLevel()
     {
-        Level++;
-        Exp -= expToLevelUp;
         List<CardConfig> cardOptions = GetRandomCardOptions(3);
-        Debug.Log("Leveling up! Level: " + Level);
-        levelUpUI?.ShowLevelUpOptions(cardOptions);
+        Debug.Log($"Leveling up! Level: {Level}, Pending level-ups: {pendingLevelUps}");
+        levelUpUI.ShowLevelUpOptions(cardOptions);
+        OnLevelUp?.Invoke(cardOptions);
     }
+
 
     private List<CardConfig> GetRandomCardOptions(int count)
     {
@@ -75,6 +84,16 @@ public class LevelingManager : NetworkBehaviour
             }
         }
         return options;
+    }
+
+    public void OnCardSelected(CardConfig selectedCard)
+    {
+        ApplyCardEffect(selectedCard);
+        pendingLevelUps--;
+        if (pendingLevelUps > 0)
+        {
+            ShowLevelUpOptionsForNextLevel();
+        }
     }
 
     public void ApplyCardEffect(CardConfig selectedCard)
@@ -94,22 +113,19 @@ public class LevelingManager : NetworkBehaviour
                         case "Movement Speed":
                             currentStats.MovementSpeed += 0.1f;
                             break;
+                            // Add other stat effects as needed.
                     }
                     stats.UpdateStats(currentStats);
                 }
                 break;
-
             case CardConfig.CardType.Ability:
-                // Change equipped weapon or ability
-                // Your custom logic here.
+                // Change equipped weapon or ability.
                 break;
-
             case CardConfig.CardType.Element:
-                // Change element type or trigger elemental effect
+                // Change element type or trigger elemental effect.
                 break;
-
             case CardConfig.CardType.Temporary:
-                // Apply a temporary buff
+                // Apply a temporary buff.
                 break;
         }
     }

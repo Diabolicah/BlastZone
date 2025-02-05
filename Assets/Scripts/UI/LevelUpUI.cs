@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class LevelUpUI : NetworkBehaviour
 {
+    public bool IsShowing { get; private set; } = false;
+
     [SerializeField] private GameObject cardButtonPrefab;
     [SerializeField] private Transform cardContainer;
     [SerializeField] private Transform LevelUpUIContainer;
@@ -37,7 +39,17 @@ public class LevelUpUI : NetworkBehaviour
     // Callback when a card is selected.
     private void OnCardSelected(CardConfig selectedCard)
     {
-        levelingManager.ApplyCardEffect(selectedCard);
-        LevelUpUIContainer.gameObject.SetActive(false);
+        levelingManager.OnCardSelected(selectedCard);
+        if (levelingManager != null && levelingManager.pendingLevelUps <= 0)
+        {
+            Hide();
+        }
     }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+        IsShowing = false;
+    }
+
 }
