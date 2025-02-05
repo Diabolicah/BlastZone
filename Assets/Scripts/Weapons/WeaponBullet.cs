@@ -24,7 +24,7 @@ public class WeaponBullet : IWeapon
 
     public void fire(NetworkRunner runner, PlayerStatsStruct playerStats, NetworkId bulletShooterId)
     {
-        if (_cooldownManager.IsCooldownExpired(runner))
+        if (_cooldownManager.IsCooldownExpiredOrNutRunning(runner))
         {
             _cooldownManager.ResetCooldown(runner, _shootCooldown * playerStats.AttackSpeed); // Reset cooldown timer
             ServerShoot(runner, playerStats, runner.FindObject(bulletShooterId));

@@ -9,7 +9,6 @@ public class FireElement : Element
 
     public override void ElementEffect(NetworkObject Shooter, NetworkObject target)
     {
-        Debug.Log("ElementEffect");
         if (Shooter.TryGetComponent<PlayerElement>(out PlayerElement playerElement))
         {
             float fireDamage = BulletDamage * _fireDamagePercentageFromBulletDamage;

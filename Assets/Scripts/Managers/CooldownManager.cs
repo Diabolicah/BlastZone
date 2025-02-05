@@ -5,7 +5,7 @@ public class CooldownManager
 {
     private TickTimer _shootCooldownTimer;
 
-    public bool IsCooldownExpired(NetworkRunner runner){
+    public bool IsCooldownExpiredOrNutRunning(NetworkRunner runner){
         return _shootCooldownTimer.ExpiredOrNotRunning(runner);
     }
 
