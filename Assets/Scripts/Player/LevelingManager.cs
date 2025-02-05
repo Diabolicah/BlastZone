@@ -6,7 +6,7 @@ using Fusion;
 public class LevelingManager : NetworkBehaviour
 {
     [SerializeField] public int Rank = 1;
-    [SerializeField] private int startingLevel = 1;
+    [SerializeField] private int startingLevel = 0;
     [SerializeField] private float startingExp = 0f;
     [SerializeField] public float expToLevelUp = 100f;
     [NonSerialized] public CardManager cardManager;
