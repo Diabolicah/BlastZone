@@ -7,8 +7,16 @@ public class FireEffect : IElement
     private float _fireDamage;
     private float _fireDamageDuration;
     private CooldownManager _fireDurationManager;
+
+    public FireEffect(float fireDamage, float fireDamageDuration)
+    {
+        _fireDamage = fireDamage;
+        _fireDamageDuration = fireDamageDuration;
+        _fireDurationManager = new CooldownManager();
+    }
+
     public void activate(NetworkRunner runner, NetworkObject bulletShooter, Transform position, NetworkObject playersHit)
     {
-        throw new System.NotImplementedException();
+        Debug.Log(playersHit.ToString() + " Is On Fire");
     }
 }
