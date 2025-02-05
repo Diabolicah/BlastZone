@@ -7,7 +7,7 @@ public class Element : NetworkBehaviour
     [SerializeField] private float _aoeRadius = 5f;
     [SerializeField] private bool _isElementAoe;
     private NetworkObject _bulletShooter;
-    protected static List<NetworkId> _playersHit = new List<NetworkId>();
+    private List<NetworkId> _playersHit = new List<NetworkId>();
     private float _bulletDamage;
 
     public float AoeRadius { get => _aoeRadius; set => _aoeRadius = value; }
@@ -34,7 +34,7 @@ public class Element : NetworkBehaviour
         
         if (_playersHit.Count > 0)
         {
-            onHitOrExpiredElement();
+            OnHitOrExpiredElement();
             _playersHit.Clear();
         }
 
@@ -75,10 +75,13 @@ public class Element : NetworkBehaviour
         }
     }
 
-    protected virtual void onHitOrExpiredElement() {
-        foreach (NetworkId playerObjec in _playersHit)
+    protected virtual void OnHitOrExpiredElement() {
+        foreach (NetworkId playerObject in _playersHit)
         {
-            Debug.Log(playerObjec.ToString() + " Got Hit!!");
+            Debug.Log(playerObject.ToString() + " Got Hit!!");
+            ElementEffect(_bulletShooter, Runner.FindObject(playerObject));
         }
     }
+
+    public virtual void ElementEffect(NetworkObject Shooter, NetworkObject target) { }
 }
