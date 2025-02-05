@@ -15,7 +15,7 @@ public class FireEffect : IElement
         _fireDurationManager = new CooldownManager();
     }
 
-    public void activate(NetworkRunner runner, NetworkObject bulletShooter, Transform position, NetworkObject playersHit)
+    public void activate(NetworkRunner runner, NetworkObject bulletShooter, Vector3 position, NetworkObject playersHit)
     {
         Debug.Log(playersHit.ToString() + " Is On Fire");
     }
