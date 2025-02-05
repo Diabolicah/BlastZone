@@ -1,5 +1,6 @@
 using System;
 using Fusion;
+using UI;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UI;
@@ -85,10 +86,17 @@ public class Health : BaseStats
         bool success = true;
         bool isDead = (currentHealth - damage <= 0f);
         if (isDead)
-        {
-            Runner.Disconnect(Runner.LocalPlayer);
+        {   
+            DisconnectPlayer();
         }
         return (success, isDead);
+    }
+
+    private void DisconnectPlayer()
+    {
+        int Level = Object.GetComponent<LevelingManager>().Level;
+        Runner.Shutdown();
+        MainMenu_Logic.unityObjects["Screen_GameOver"].SetActive(true);
     }
 
     public void ApplyHealing(float healing)
