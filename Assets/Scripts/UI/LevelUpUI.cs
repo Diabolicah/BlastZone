@@ -21,6 +21,8 @@ public class LevelUpUI : NetworkBehaviour
     public void ShowLevelUpOptions(List<CardConfig> cardOptions)
     {
         LevelUpUIContainer.gameObject.SetActive(true);
+        IsShowing = true;
+
         foreach (Transform child in cardContainer)
         {
             Destroy(child.gameObject);
@@ -48,7 +50,7 @@ public class LevelUpUI : NetworkBehaviour
 
     public void Hide()
     {
-        gameObject.SetActive(false);
+        LevelUpUIContainer.gameObject.SetActive(false);
         IsShowing = false;
     }
 
