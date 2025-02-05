@@ -19,6 +19,7 @@ public abstract class BaseStats : NetworkBehaviour
 
     [Networked, Capacity(16), SerializeField]
     private NetworkDictionary<string, float> defaultStats { get; } = default;
+    [Networked, Capacity(16), SerializeField]
     private NetworkDictionary<string, float> baseStats { get; } = default;
 
     public event Action<string, float, float> OnStatChanged;
