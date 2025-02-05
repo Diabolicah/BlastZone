@@ -88,4 +88,9 @@ public class CardFunctions : MonoBehaviour
         IWeapon tripleBulletWeapon = new WeaponTripleBullet((TripleBulletWeaponConfig) card.GetWeaponConfig(), tankWeapons._shootPoint);
         tankWeapons.setTankWeapon(tripleBulletWeapon);
     }
+
+    public void ActivateMovementSpeedTemporary(CardConfig card, StatsManager statsManager)
+    {
+        statsManager.GetComponent<MovementSpeed>().ApplyTemporaryModifier(-0.5f, 5f);
+    }
 }
