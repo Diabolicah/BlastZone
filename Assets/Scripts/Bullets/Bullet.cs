@@ -11,7 +11,7 @@ public class Bullet : NetworkBehaviour
     private TickTimer _life;
     private float _lifeTime;
     private float _damage;
-    private bool _isAlive;
+    private bool _isBulletAlive;
     private NetworkObject _bulletShooter;
 
     private int _fireTick;
@@ -27,7 +27,7 @@ public class Bullet : NetworkBehaviour
         _damage = damage;
         _bulletShooter = BulletShooter;
         _life = TickTimer.CreateFromSeconds(Runner, _lifeTime);
-        _isAlive = true;
+        _isBulletAlive = true;
         _fireTick = Runner.Tick;
         _firePosition = position;
         _fireVelocity = direction * bulletSpeed;
@@ -56,7 +56,7 @@ public class Bullet : NetworkBehaviour
         var direction = nextPosition - previousPosition;
         var _hitMask = LayerMask.GetMask("Default");
 
-        if (_isAlive && Physics.Raycast(previousPosition, direction.normalized, out RaycastHit hitInfo, direction.magnitude, _hitMask))
+        if (_isBulletAlive && Physics.Raycast(previousPosition, direction.normalized, out RaycastHit hitInfo, direction.magnitude, _hitMask))
         {
             if (hitInfo.collider.TryGetComponent<NetworkObject>(out NetworkObject networkObj))
             {
@@ -68,16 +68,20 @@ public class Bullet : NetworkBehaviour
                     (bool success, bool isDead) = playerHealth.ApplyDamage(_damage);
                     if (success)
                     {
-                        if (isDead) Debug.Log(_bulletShooter.ToString() + " Killed a player");
-                        _isAlive = false;
-                        OnTargetHit?.Invoke(_bulletShooter, networkObj);
+                        if (isDead) { 
+                            Debug.Log(_bulletShooter.ToString() + " Killed a player");
+                        }else
+                        {
+                            OnTargetHit?.Invoke(_bulletShooter, networkObj);
+                        }
+                        _isBulletAlive = false;
                         Runner.Despawn(Object);
                     }
                 }
             }
         }
 
-        if (_isAlive && _life.ExpiredOrNotRunning(Runner))
+        if (_isBulletAlive && _life.ExpiredOrNotRunning(Runner))
         {
             OnBulletDespawn?.Invoke(_bulletShooter);
             Runner.Despawn(Object);
