@@ -1,14 +1,16 @@
+using System;
 using Fusion;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Bullet : NetworkBehaviour
 {
+    public event Action<NetworkObject> OnTargetHit;
+
     private TickTimer _life;
     private float _lifeTime;
     private float _damage;
     private bool _isAlive;
-    private bool _bulletHit;
     private NetworkObject _bulletShooter;
 
     private int _fireTick;
@@ -24,7 +26,6 @@ public class Bullet : NetworkBehaviour
         _bulletShooter = BulletShooter;
         _life = TickTimer.CreateFromSeconds(Runner, _lifeTime);
         _isAlive = true;
-        _bulletHit = false;
         _fireTick = Runner.Tick;
         _firePosition = position;
         _fireVelocity = direction * bulletSpeed;
@@ -55,9 +56,9 @@ public class Bullet : NetworkBehaviour
 
         if (_isAlive && Physics.Raycast(previousPosition, direction.normalized, out RaycastHit hitInfo, direction.magnitude, _hitMask))
         {
-            if (hitInfo.collider.TryGetComponent<NetworkObject>(out NetworkObject obj))
+            if (hitInfo.collider.TryGetComponent<NetworkObject>(out NetworkObject networkObj))
             {
-                if (obj.Id == _bulletShooter.Id) return;
+                if (networkObj.Id == _bulletShooter.Id) return;
                 Health playerHealth = hitInfo.collider.GetComponentInParent<Health>();
                 if (playerHealth != null)
                 {
@@ -67,6 +68,7 @@ public class Bullet : NetworkBehaviour
                     {
                         if (isDead) Debug.Log(_bulletShooter.ToString() + " Killed a player");
                         _isAlive = false;
+                        OnTargetHit?.Invoke(networkObj);
                         Runner.Despawn(Object);
                     }
                 }
