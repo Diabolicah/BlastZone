@@ -25,7 +25,7 @@ public class TankWeapons : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        if (Input.GetMouseButton(0) && HasInputAuthority)
+        if ((Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space)) && HasInputAuthority)
         {
             if (HasStateAuthority)
             {
