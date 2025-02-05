@@ -71,6 +71,12 @@ public class Health : BaseStats
         }
     }
 
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    private void RPC_ApplyDamage(float damage, RpcInfo info = default)
+    {
+        ApplyDamageInternal(damage);
+    }
+
     private (bool, bool) ApplyDamageInternal(float damage)
     {
         float currentHealth = GetStat(CURRENT_HEALTH);
@@ -104,12 +110,6 @@ public class Health : BaseStats
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    private void RPC_ApplyDamage(float damage, RpcInfo info = default)
-    {
-        ApplyDamageInternal(damage);
-    }
-
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     private void RPC_ApplyHealing(float healing, RpcInfo info = default)
     {
         ApplyHealingInternal(healing);
@@ -119,14 +119,12 @@ public class Health : BaseStats
     {
         if (oldStats.Health != newStats.Health)
         {
-            ResetToDefault(CURRENT_HEALTH);
-            ApplyMultiplier(CURRENT_HEALTH, newStats.Health);
+            ApplyDefaultMultiplierAndReset(CURRENT_HEALTH, newStats.Health);
         }
 
         if (oldStats.HealthRegen != newStats.HealthRegen)
         {
-            ResetToDefault(HEALTH_REGEN_RATE);
-            ApplyMultiplier(HEALTH_REGEN_RATE, newStats.HealthRegen);
+            ApplyDefaultMultiplierAndReset(HEALTH_REGEN_RATE, newStats.HealthRegen);
         }
     }
 }

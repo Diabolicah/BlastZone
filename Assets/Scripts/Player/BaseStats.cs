@@ -4,6 +4,13 @@ using UnityEngine;
 using System.Collections.Generic;
 using static UnityEngine.Rendering.DebugUI;
 using Unity.VisualScripting;
+using System.Collections;
+
+public struct TempMultiplier
+{
+    public float multiplier;
+    public float expireTime;
+}
 
 public abstract class BaseStats : NetworkBehaviour
 {
@@ -20,6 +27,9 @@ public abstract class BaseStats : NetworkBehaviour
 
     private Dictionary<string, float> cachedStats = new Dictionary<string, float>();
     private ChangeDetector _changeDetector;
+
+    private Dictionary<string, List<TempMultiplier>> activeTempMultipliers = new Dictionary<string, List<TempMultiplier>>();
+
 
     public override void Spawned()
     {
@@ -84,6 +94,33 @@ public abstract class BaseStats : NetworkBehaviour
         }
     }
 
+    protected void SetDefaultStat(string statName, float value)
+    {
+        if (!Object.HasStateAuthority)
+            return;
+        if (defaultStats.ContainsKey(statName))
+        {
+            defaultStats.Set(statName, value);
+        }
+    }
+
+    protected void ApplyDefaultMultiplierAndReset(string statName, float multiplier)
+    {
+        if (!Object.HasStateAuthority)
+            return;
+        if (defaultStats.TryGet(statName, out float defaultValue))
+        {
+            float newValue = defaultValue * multiplier;
+            SetDefaultStat(statName, newValue);
+            ResetToDefault(statName);
+            if (activeTempMultipliers.TryGetValue(statName, out List<TempMultiplier> multiplierList))
+            {
+                activeTempMultipliers.Remove(statName);
+            }
+        }
+
+    }
+
     protected float GetStat(string statName)
     {
         if (Stats.TryGet(statName, out float value))
@@ -93,14 +130,64 @@ public abstract class BaseStats : NetworkBehaviour
         throw new KeyNotFoundException($"Stat {statName} not found.");
     }
 
-    protected void ApplyMultiplier(string statName, float multiplier)
+    protected void ApplyTemporaryMultiplier(string statName, float multiplier, float duration)
     {
         if (!Object.HasStateAuthority)
             return;
-        float oldValue = GetStat(statName);
-        float newValue = oldValue * multiplier;
-        Stats.Set(statName, newValue);
+
+        float currentTime = Runner.SimulationTime;
+        float expireTime = currentTime + duration;
+        TempMultiplier newEntry = new TempMultiplier { multiplier = multiplier, expireTime = expireTime };
+
+        if (!activeTempMultipliers.TryGetValue(statName, out List<TempMultiplier> multiplierList))
+        {
+            multiplierList = new List<TempMultiplier>();
+            activeTempMultipliers[statName] = multiplierList;
+        }
+        multiplierList.Add(newEntry);
+
+        float effectiveMultiplier = 1f;
+        foreach (var entry in multiplierList)
+        {
+            effectiveMultiplier *= entry.multiplier;
+        }
+
+        float baseValue = defaultStats.TryGet(statName, out float defVal) ? defVal : GetStat(statName);
+        float newEffectiveValue = baseValue * effectiveMultiplier;
+        SetStat(statName, newEffectiveValue);
+
+        StartCoroutine(RemoveTempMultiplierAfter(statName, newEntry, duration));
     }
+
+    private IEnumerator RemoveTempMultiplierAfter(string statName, TempMultiplier entry, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (!Object.HasStateAuthority)
+            yield break;
+
+        if (activeTempMultipliers.TryGetValue(statName, out List<TempMultiplier> multiplierList))
+        {
+            multiplierList.RemoveAll(e => e.expireTime <= Time.time);
+
+            if (multiplierList.Count == 0)
+            {
+                activeTempMultipliers.Remove(statName);
+            }
+
+            float effectiveMultiplier = 1f;
+            foreach (var e in multiplierList)
+            {
+                effectiveMultiplier *= e.multiplier;
+            }
+
+            float baseValue = defaultStats.TryGet(statName, out float defVal) ? defVal : GetStat(statName);
+            float newEffectiveValue = baseValue * effectiveMultiplier;
+            SetStat(statName, newEffectiveValue);
+        }
+    }
+
+
 
     protected virtual void OnStatManagerChange(PlayerStatsStruct oldPlayerStats, PlayerStatsStruct newPlayerStats)
     {
