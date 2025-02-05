@@ -14,7 +14,7 @@ public class LevelingManager : NetworkBehaviour
 
     [SerializeField] private List<CardConfig> availableCards;
 
-    [SerializeField] private LevelUpUI levelUpUI;
+    private LevelUpUI levelUpUI;
 
     public event Action<List<CardConfig>> OnLevelUp;
 
@@ -24,6 +24,8 @@ public class LevelingManager : NetworkBehaviour
         {
             Level = startingLevel;
             Exp = startingExp;
+
+            levelUpUI = FindFirstObjectByType<LevelUpUI>();
         }
     }
 
@@ -58,7 +60,7 @@ public class LevelingManager : NetworkBehaviour
         Level++;
         Exp -= expToLevelUp;
         List<CardConfig> cardOptions = GetRandomCardOptions(3);
-        levelUpUI.ShowLevelUpOptions(cardOptions);
+        levelUpUI?.ShowLevelUpOptions(cardOptions);
     }
 
     private List<CardConfig> GetRandomCardOptions(int count)
