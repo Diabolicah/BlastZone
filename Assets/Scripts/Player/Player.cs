@@ -14,8 +14,6 @@ public class Player : NetworkBehaviour
         if (_movementSpeed != null)
         {
             _movementSpeed.OnStatChanged += HandleStatsChanged;
-            HandleStatsChanged("MaxSpeed", 0, _movementSpeed.GetStat("MaxSpeed"));
-            HandleStatsChanged("Acceleration", 0, _movementSpeed.GetStat("Acceleration"));
         }
     }
 

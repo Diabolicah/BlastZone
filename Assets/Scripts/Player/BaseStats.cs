@@ -153,11 +153,11 @@ public abstract class BaseStats : NetworkBehaviour
         float effectiveMultiplier = 1f;
         foreach (var entry in multiplierList)
         {
-            effectiveMultiplier *= entry.multiplier;
+            effectiveMultiplier += entry.multiplier;
         }
 
         float baseValue = baseStats.TryGet(statName, out float defVal) ? defVal : GetStat(statName);
-        float newEffectiveValue = baseValue * effectiveMultiplier;
+        float newEffectiveValue = baseValue * (1+effectiveMultiplier);
         SetStat(statName, newEffectiveValue);
 
         StartCoroutine(RemoveTempMultiplierAfter(statName, newEntry, duration));
@@ -182,11 +182,11 @@ public abstract class BaseStats : NetworkBehaviour
             float effectiveMultiplier = 1f;
             foreach (var e in multiplierList)
             {
-                effectiveMultiplier *= e.multiplier;
+                effectiveMultiplier += e.multiplier;
             }
 
             float baseValue = baseStats.TryGet(statName, out float defVal) ? defVal : GetStat(statName);
-            float newEffectiveValue = baseValue * effectiveMultiplier;
+            float newEffectiveValue = baseValue * (1+effectiveMultiplier);
             SetStat(statName, newEffectiveValue);
         }
     }
