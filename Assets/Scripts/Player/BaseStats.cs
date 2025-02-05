@@ -157,7 +157,7 @@ public abstract class BaseStats : NetworkBehaviour
         }
 
         float baseValue = baseStats.TryGet(statName, out float defVal) ? defVal : GetStat(statName);
-        float newEffectiveValue = baseValue * effectiveMultiplier;
+        float newEffectiveValue = baseValue * (1+effectiveMultiplier);
         SetStat(statName, newEffectiveValue);
 
         StartCoroutine(RemoveTempMultiplierAfter(statName, newEntry, duration));
@@ -186,7 +186,7 @@ public abstract class BaseStats : NetworkBehaviour
             }
 
             float baseValue = baseStats.TryGet(statName, out float defVal) ? defVal : GetStat(statName);
-            float newEffectiveValue = baseValue * effectiveMultiplier;
+            float newEffectiveValue = baseValue * (1+effectiveMultiplier);
             SetStat(statName, newEffectiveValue);
         }
     }
