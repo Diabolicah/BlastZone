@@ -14,7 +14,7 @@ public class LevelingManager : NetworkBehaviour
     [Networked] public float Exp { get; set; }
 
     public event Action<float, float, int> OnStatsChanged;
-
+    private DeathXpValue deathXpValue;
     private void Start()
     {
         if (Object.HasStateAuthority)
@@ -22,6 +22,7 @@ public class LevelingManager : NetworkBehaviour
             Level = startingLevel;
             Exp = startingExp;
         }
+        deathXpValue = GetComponent<DeathXpValue>();
     }
 
     public void AddExp(float amount = 5) => RPC_AddExp(amount);
@@ -35,6 +36,10 @@ public class LevelingManager : NetworkBehaviour
             cardManager?.AddCardSelection(Rank);
             Exp -= expToLevelUp;
             Level++;
+            if (deathXpValue != null)
+            {
+                deathXpValue.XpValue += 5;
+            }
         }
         OnStatsChanged?.Invoke(Exp, expToLevelUp, Level);
     }
