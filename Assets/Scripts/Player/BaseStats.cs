@@ -136,6 +136,7 @@ public abstract class BaseStats : NetworkBehaviour
 
     public void ApplyTemporaryMultiplier(string statName, float multiplier, float duration)
     {
+        Debug.Log($"Applying temp multiplier {multiplier} to {statName} for {duration} seconds");
         if (!Object.HasStateAuthority)
             return;
 
@@ -157,7 +158,8 @@ public abstract class BaseStats : NetworkBehaviour
         }
 
         float baseValue = baseStats.TryGet(statName, out float defVal) ? defVal : GetStat(statName);
-        float newEffectiveValue = baseValue * (1+effectiveMultiplier);
+        float newEffectiveValue = baseValue * effectiveMultiplier;
+        Debug.Log($"Setting {statName} to {newEffectiveValue}");
         SetStat(statName, newEffectiveValue);
 
         StartCoroutine(RemoveTempMultiplierAfter(statName, newEntry, duration));
@@ -184,9 +186,9 @@ public abstract class BaseStats : NetworkBehaviour
             {
                 effectiveMultiplier += e.multiplier;
             }
-
+            
             float baseValue = baseStats.TryGet(statName, out float defVal) ? defVal : GetStat(statName);
-            float newEffectiveValue = baseValue * (1+effectiveMultiplier);
+            float newEffectiveValue = baseValue * effectiveMultiplier;
             SetStat(statName, newEffectiveValue);
         }
     }
