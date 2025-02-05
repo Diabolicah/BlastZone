@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Element : NetworkBehaviour
 {
-    [SerializeField] private float _aoeRadius = 2f;
+    [SerializeField] private float _aoeRadius = 5f;
     [SerializeField] private bool _isElementAoe = true;
     private NetworkObject _bulletShooter;
     protected List<NetworkId> playersHit = new List<NetworkId>();
