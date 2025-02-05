@@ -6,6 +6,7 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined, IPlayerLeft
     [SerializeField] private NetworkPrefabRef playerPrefab;
     [SerializeField] private CardManager CardManager;
     [SerializeField] private StatsUIHandler StatsUIHandler;
+    [SerializeField] private LevelUIHandler LevelUIHandler;
 
     private NetworkObject localPlayerObject;
 
@@ -20,6 +21,7 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined, IPlayerLeft
             localPlayerObject.GetComponent<LevelingManager>().cardManager = CardManager;
 
             StatsUIHandler.Activate(localPlayerObject.GetComponent<StatsManager>());
+            LevelUIHandler.Activate(localPlayerObject.GetComponent<LevelingManager>());
         }
     }
 

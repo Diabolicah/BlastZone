@@ -6,12 +6,14 @@ using Fusion;
 public class LevelingManager : NetworkBehaviour
 {
     [SerializeField] public int Rank = 1;
-    [SerializeField] private int startingLevel = 1;
+    [SerializeField] private int startingLevel = 0;
     [SerializeField] private float startingExp = 0f;
-    [SerializeField] private float expToLevelUp = 100f;
+    [SerializeField] public float expToLevelUp = 100f;
     [NonSerialized] public CardManager cardManager;
     [Networked] public int Level { get; set; }
     [Networked] public float Exp { get; set; }
+
+    public event Action<float, float, int> OnStatsChanged;
 
     private void Start()
     {
@@ -34,5 +36,6 @@ public class LevelingManager : NetworkBehaviour
             Exp -= expToLevelUp;
             Level++;
         }
+        OnStatsChanged?.Invoke(Exp, expToLevelUp, Level);
     }
 }

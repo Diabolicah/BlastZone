@@ -45,7 +45,7 @@ public class Player : NetworkBehaviour
         {
             Debug.Log("G key was pressed.");
             LevelingManager LM = GetComponent<LevelingManager>();
-            LM.AddExp(100f);
+            LM.AddExp(25f);
         }
     }
 }
