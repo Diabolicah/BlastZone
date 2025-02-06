@@ -82,7 +82,6 @@ public class Element : NetworkBehaviour
 
         foreach (NetworkId playerObject in _playersHit)
         {
-            Debug.Log(playerObject.ToString() + " Got Hit!!");
             ElementEffect(_bulletShooter, Runner.FindObject(playerObject));
         }
     }

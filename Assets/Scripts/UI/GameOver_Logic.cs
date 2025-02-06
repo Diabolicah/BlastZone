@@ -1,10 +1,5 @@
 using UnityEngine;
-using Fusion;
 using TMPro;
-using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.UI;
-using static UI.MainMenu_Logic;
 using UnityEngine.SceneManagement;
 
 public class GameOver_Logic : MonoBehaviour

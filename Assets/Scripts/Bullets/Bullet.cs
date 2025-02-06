@@ -64,7 +64,6 @@ public class Bullet : NetworkBehaviour
                 Health playerHealth = hitInfo.collider.GetComponentInParent<Health>();
                 if (playerHealth != null)
                 {
-                    Debug.Log("Damage Applied");
                     (bool success, bool isDead) = playerHealth.ApplyDamage(_damage);
                     if (success)
                     {
