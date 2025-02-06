@@ -27,10 +27,20 @@ namespace UI
             if (PlayerPrefs.HasKey("Restart"))
             {
                 PlayerPrefs.DeleteKey("Restart");
-                unityObjects["Screen_Multiplayer"].gameObject.SetActive(true);
-                unityObjects["Img_Background"].gameObject.SetActive(true);
-                unityObjects["Screen_MainMenu"].gameObject.SetActive(false);
-                ChooseGameMode(PlayerPrefs.GetString("GameMode"));
+                if (PlayerPrefs.HasKey("GameMode"))
+                {
+                    unityObjects["Screen_Multiplayer"].gameObject.SetActive(true);
+                    unityObjects["Img_Background"].gameObject.SetActive(true);
+                    unityObjects["Screen_Login"].gameObject.SetActive(false);
+                    ChooseGameMode(PlayerPrefs.GetString("GameMode"));
+                }
+                else
+                {
+                    unityObjects["Screen_MainMenu"].gameObject.SetActive(true);
+                    unityObjects["Img_Background"].gameObject.SetActive(true);
+                    unityObjects["Screen_Login"].gameObject.SetActive(false);
+                }
+
             }
         }
         

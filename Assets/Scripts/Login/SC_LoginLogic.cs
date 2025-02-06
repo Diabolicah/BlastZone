@@ -223,6 +223,7 @@ public class SC_LoginLogic : NetworkBehaviour
                 MainMenu_Logic.unityObjects["Screen_MainMenu"].SetActive(true);
                 MainMenu_Logic.unityObjects["Txt_Error"].GetComponent<TextMeshProUGUI>().text = "Logged in!";
                 PLayerName = UserName;
+                PlayerPrefs.SetString("PlayerName", UserName);
             }
             else MainMenu_Logic.unityObjects["Txt_Error"].GetComponent<TextMeshProUGUI>().text = "Failed to log in";
         }
