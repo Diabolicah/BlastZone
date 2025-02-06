@@ -53,7 +53,7 @@ public class Player : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
             LevelingManager LM = GetComponent<LevelingManager>();
-            LM.AddExp(25f);
+            LM.AddExp(100f);
         }
     }
 }
