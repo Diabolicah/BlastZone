@@ -6,6 +6,7 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined, IPlayerLeft
     [SerializeField] private NetworkPrefabRef playerPrefab;
     [SerializeField] private CardManager CardManager;
     [SerializeField] private StatsUIHandler StatsUIHandler;
+    [SerializeField] private LevelUIHandler LevelUIHandler;
 
     private NetworkObject localPlayerObject;
 
@@ -13,7 +14,8 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined, IPlayerLeft
     {
         if (player == Runner.LocalPlayer)
         {
-            Vector3 spawnPosition = new Vector3((player.RawEncoded % Runner.Config.Simulation.PlayerCount) * 3, 1, 0);
+            Vector2 randomPoint = Random.insideUnitCircle * 25f;
+            Vector3 spawnPosition = new Vector3(randomPoint.x, 1, randomPoint.y);
             NetworkObject networkPlayerObject = Runner.Spawn(playerPrefab, spawnPosition, Quaternion.identity, player);
             Runner.SetPlayerObject(player, networkPlayerObject);
             localPlayerObject = networkPlayerObject;
@@ -21,6 +23,7 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined, IPlayerLeft
 
             StatsUIHandler.Activate(localPlayerObject.GetComponent<StatsManager>());
             localPlayerObject.GetComponent<Player>().Username = SC_LoginLogic.PLayerName;
+            LevelUIHandler.Activate(localPlayerObject.GetComponent<LevelingManager>());
         }
     }
 

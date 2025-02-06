@@ -40,11 +40,8 @@ public class CardSelectionUi : NetworkBehaviour
 
     private void OnCardSelected(CardConfig selectedCard)
     {
+        Hide();
         cardManager?.OnCardSelected(selectedCard);
-        if (cardManager.pendingCardSelections.Count <= 0)
-        {
-            Hide();
-        }
     }
 
     public void Hide()

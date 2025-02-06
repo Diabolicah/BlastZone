@@ -1,3 +1,4 @@
+using System.Runtime.Serialization;
 using Fusion;
 using TMPro;
 using Unity.VisualScripting;
@@ -12,7 +13,7 @@ public class StatsUIHandler : MonoBehaviour
     [SerializeField] private TextMeshProUGUI BulletSpeedText;
     [SerializeField] private TextMeshProUGUI MoveSpeedText;
 
-    [DoNotSerialize] public StatsManager statsManager;
+    [HideInInspector] public StatsManager statsManager;
 
     public void Activate(StatsManager statsManager)
     {
