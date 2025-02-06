@@ -95,7 +95,7 @@ public class Health : BaseStats
     private void DisconnectPlayer()
     {
         int Level = Object.GetComponent<LevelingManager>().Level;
-        Runner.Shutdown(false);
+        Runner.Shutdown();
         MainMenu_Logic.unityObjects["Screen_GameOver"].SetActive(true);
     }
 

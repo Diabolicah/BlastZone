@@ -1,10 +1,7 @@
 using System.Collections.Generic;
-using Fusion;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class CardSelectionUi : NetworkBehaviour
+public class CardSelectionUi : MonoBehaviour
 {
     public bool IsShowing { get; private set; } = false;
 

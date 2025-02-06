@@ -16,6 +16,6 @@ MonoBehaviour:
     RawGuidValue: b6ba549aadd1d4bbb94ac175a426cfa9
   _shootCooldown: 0.7
   _bulletSpeed: 25
-  _bulletLifeTime: 5
+  _bulletLifeTime: 3
   _damage: 7
   _spreadAngle: 15

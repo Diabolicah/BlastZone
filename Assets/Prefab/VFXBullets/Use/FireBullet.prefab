@@ -19898,8 +19898,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _aoeRadius: 5
   _isElementAoe: 0
-  _fireDamageDuration: 5
-  _fireDamagePercentageFromBulletDamage: 0.5
+  _fireDamageDuration: 3
+  _fireDamagePercentageFromBulletDamage: 0.35
 --- !u!1 &1739691434595618
 GameObject:
   m_ObjectHideFlags: 0

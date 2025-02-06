@@ -1,8 +1,5 @@
-using System.Collections.Generic;
 using Fusion;
-using NUnit.Framework;
 using UnityEngine;
-using static UnityEditor.Rendering.FilterWindow;
 
 public class PlayerElement : NetworkBehaviour
 {
