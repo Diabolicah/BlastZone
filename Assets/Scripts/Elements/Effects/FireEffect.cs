@@ -1,8 +1,5 @@
-using System.Collections.Generic;
 using Fusion;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using static Unity.Collections.Unicode;
 
 public class FireEffect : IElement
 {
