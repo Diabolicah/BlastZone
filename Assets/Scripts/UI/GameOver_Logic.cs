@@ -26,8 +26,7 @@ public class GameOver_Logic : MonoBehaviour
     public void BackToMainMenu()
     {
         PlayerPrefs.SetInt("Restart", 1);
-        if (PlayerPrefs.HasKey("GameMode"))
-            PlayerPrefs.DeleteKey("GameMode");
+        PlayerPrefs.SetInt("IsMainMenu", 1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

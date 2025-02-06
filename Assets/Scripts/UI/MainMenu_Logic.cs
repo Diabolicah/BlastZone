@@ -72,7 +72,7 @@ namespace UI
 
     private void InitStart()
     {
-        if (unityObjects.ContainsKey("Screen_MainMenu") && !PlayerPrefs.HasKey("Restart"))
+        if (unityObjects.ContainsKey("Screen_MainMenu") && !PlayerPrefs.HasKey("IsMainMenu"))
             unityObjects["Screen_MainMenu"].SetActive(false);
         if (unityObjects.ContainsKey("Screen_Multiplayer") && !PlayerPrefs.HasKey("Restart"))
             unityObjects["Screen_Multiplayer"].SetActive(false);
@@ -88,7 +88,12 @@ namespace UI
             unityObjects["Screen_Game"].SetActive(false);
         if (unityObjects.ContainsKey("Screen_GameOver"))
             unityObjects["Screen_GameOver"].SetActive(false);
-        
+        if (PlayerPrefs.HasKey("IsMainMenu"))
+            {
+                PlayerPrefs.DeleteKey("IsMainMenu");
+                unityObjects["Screen_MainMenu"].SetActive(true);
+                unityObjects["Screen_Login"].SetActive(true) ;
+            }
     }
 
     public void ChangeScreen(Screens _ToScreen)

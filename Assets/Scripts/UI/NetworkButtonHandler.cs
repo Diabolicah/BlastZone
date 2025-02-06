@@ -34,13 +34,6 @@ namespace UI
                     unityObjects["Screen_Login"].gameObject.SetActive(false);
                     ChooseGameMode(PlayerPrefs.GetString("GameMode"));
                 }
-                else
-                {
-                    unityObjects["Screen_MainMenu"].gameObject.SetActive(true);
-                    unityObjects["Img_Background"].gameObject.SetActive(true);
-                    unityObjects["Screen_Login"].gameObject.SetActive(false);
-                }
-
             }
         }
         
