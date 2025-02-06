@@ -1,0 +1,174 @@
+C:/Projects/LobbyServerShenkar/bin/Debug/net6.0/appsettings.Development.json
+C:/Projects/LobbyServerShenkar/bin/Debug/net6.0/appsettings.json
+C:/Projects/LobbyServerShenkar/bin/Debug/net6.0/LobbyServerShenkar.exe
+C:/Projects/LobbyServerShenkar/bin/Debug/net6.0/LobbyServerShenkar.deps.json
+C:/Projects/LobbyServerShenkar/bin/Debug/net6.0/LobbyServerShenkar.runtimeconfig.json
+C:/Projects/LobbyServerShenkar/bin/Debug/net6.0/LobbyServerShenkar.dll
+C:/Projects/LobbyServerShenkar/bin/Debug/net6.0/LobbyServerShenkar.pdb
+C:/Projects/LobbyServerShenkar/bin/Debug/net6.0/Microsoft.OpenApi.dll
+C:/Projects/LobbyServerShenkar/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll
+C:/Projects/LobbyServerShenkar/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+C:/Projects/LobbyServerShenkar/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/LobbyServerShenkar.csproj.AssemblyReference.cache
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/LobbyServerShenkar.GeneratedMSBuildEditorConfig.editorconfig
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/LobbyServerShenkar.AssemblyInfoInputs.cache
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/LobbyServerShenkar.AssemblyInfo.cs
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/LobbyServerShenkar.csproj.CoreCompileInputs.cache
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/LobbyServerShenkar.MvcApplicationPartsAssemblyInfo.cs
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/LobbyServerShenkar.MvcApplicationPartsAssemblyInfo.cache
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/staticwebassets/msbuild.LobbyServerShenkar.Microsoft.AspNetCore.StaticWebAssets.props
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/staticwebassets/msbuild.build.LobbyServerShenkar.props
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.LobbyServerShenkar.props
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.LobbyServerShenkar.props
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/staticwebassets.pack.json
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/staticwebassets.build.json
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/staticwebassets.development.json
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/scopedcss/bundle/LobbyServerShenkar.styles.css
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/LobbyServerShenkar.csproj.CopyComplete
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/LobbyServerShenkar.dll
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/refint/LobbyServerShenkar.dll
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/LobbyServerShenkar.pdb
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/LobbyServerShenkar.genruntimeconfig.cache
+C:/Projects/LobbyServerShenkar/obj/Debug/net6.0/ref/LobbyServerShenkar.dll
+C:/Projects/LobbyServerShenkar/bin/Debug/net6.0/Pipelines.Sockets.Unofficial.dll
+C:/Projects/LobbyServerShenkar/bin/Debug/net6.0/StackExchange.Redis.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/bin/Debug/net6.0/appsettings.json
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/bin/Debug/net6.0/appsettings.Development.json
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/bin/Debug/net6.0/LobbyServerShenkar
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/bin/Debug/net6.0/LobbyServerShenkar.deps.json
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/bin/Debug/net6.0/LobbyServerShenkar.runtimeconfig.json
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/bin/Debug/net6.0/LobbyServerShenkar.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/bin/Debug/net6.0/LobbyServerShenkar.pdb
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/bin/Debug/net6.0/Microsoft.OpenApi.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/bin/Debug/net6.0/Pipelines.Sockets.Unofficial.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/bin/Debug/net6.0/StackExchange.Redis.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/LobbyServerShenkar.csproj.AssemblyReference.cache
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/LobbyServerShenkar.GeneratedMSBuildEditorConfig.editorconfig
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/LobbyServerShenkar.AssemblyInfoInputs.cache
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/LobbyServerShenkar.AssemblyInfo.cs
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/LobbyServerShenkar.csproj.CoreCompileInputs.cache
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/LobbyServerShenkar.MvcApplicationPartsAssemblyInfo.cs
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/LobbyServerShenkar.MvcApplicationPartsAssemblyInfo.cache
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/staticwebassets/msbuild.LobbyServerShenkar.Microsoft.AspNetCore.StaticWebAssets.props
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/staticwebassets/msbuild.build.LobbyServerShenkar.props
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.LobbyServerShenkar.props
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.LobbyServerShenkar.props
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/staticwebassets.pack.json
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/staticwebassets.build.json
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/staticwebassets.development.json
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/scopedcss/bundle/LobbyServerShenkar.styles.css
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/LobbyServerShenkar.csproj.CopyComplete
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/LobbyServerShenkar.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/refint/LobbyServerShenkar.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/LobbyServerShenkar.pdb
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/LobbyServerShenkar.genruntimeconfig.cache
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw1/hw1_server/obj/Debug/net6.0/ref/LobbyServerShenkar.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/bin/Debug/net6.0/appsettings.json
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/bin/Debug/net6.0/appsettings.Development.json
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/bin/Debug/net6.0/LobbyServerShenkar
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/bin/Debug/net6.0/LobbyServerShenkar.deps.json
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/bin/Debug/net6.0/LobbyServerShenkar.runtimeconfig.json
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/bin/Debug/net6.0/LobbyServerShenkar.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/bin/Debug/net6.0/LobbyServerShenkar.pdb
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/bin/Debug/net6.0/Microsoft.OpenApi.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/bin/Debug/net6.0/Pipelines.Sockets.Unofficial.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/bin/Debug/net6.0/StackExchange.Redis.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/LobbyServerShenkar.csproj.AssemblyReference.cache
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/LobbyServerShenkar.GeneratedMSBuildEditorConfig.editorconfig
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/LobbyServerShenkar.AssemblyInfoInputs.cache
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/LobbyServerShenkar.AssemblyInfo.cs
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/LobbyServerShenkar.csproj.CoreCompileInputs.cache
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/LobbyServerShenkar.MvcApplicationPartsAssemblyInfo.cs
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/LobbyServerShenkar.MvcApplicationPartsAssemblyInfo.cache
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/staticwebassets/msbuild.LobbyServerShenkar.Microsoft.AspNetCore.StaticWebAssets.props
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/staticwebassets/msbuild.build.LobbyServerShenkar.props
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.LobbyServerShenkar.props
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.LobbyServerShenkar.props
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/staticwebassets.pack.json
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/staticwebassets.build.json
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/staticwebassets.development.json
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/scopedcss/bundle/LobbyServerShenkar.styles.css
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/LobbyServerShenkar.csproj.CopyComplete
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/LobbyServerShenkar.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/refint/LobbyServerShenkar.dll
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/LobbyServerShenkar.pdb
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/LobbyServerShenkar.genruntimeconfig.cache
+/Users/orihytner/Shenkar/Year3_SemA/פיתוח שרת משחקים/HW/hw2/hw2_server/obj/Debug/net6.0/ref/LobbyServerShenkar.dll
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/bin/Debug/net6.0/appsettings.Development.json
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/bin/Debug/net6.0/appsettings.json
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/bin/Debug/net6.0/LobbyServerShenkar
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/bin/Debug/net6.0/LobbyServerShenkar.deps.json
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/bin/Debug/net6.0/LobbyServerShenkar.runtimeconfig.json
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/bin/Debug/net6.0/LobbyServerShenkar.dll
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/bin/Debug/net6.0/LobbyServerShenkar.pdb
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/bin/Debug/net6.0/Microsoft.OpenApi.dll
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/bin/Debug/net6.0/Pipelines.Sockets.Unofficial.dll
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/bin/Debug/net6.0/StackExchange.Redis.dll
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/LobbyServerShenkar.csproj.AssemblyReference.cache
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/LobbyServerShenkar.GeneratedMSBuildEditorConfig.editorconfig
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/LobbyServerShenkar.AssemblyInfoInputs.cache
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/LobbyServerShenkar.AssemblyInfo.cs
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/LobbyServerShenkar.csproj.CoreCompileInputs.cache
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/LobbyServerShenkar.MvcApplicationPartsAssemblyInfo.cs
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/LobbyServerShenkar.MvcApplicationPartsAssemblyInfo.cache
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/staticwebassets/msbuild.LobbyServerShenkar.Microsoft.AspNetCore.StaticWebAssets.props
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/staticwebassets/msbuild.build.LobbyServerShenkar.props
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.LobbyServerShenkar.props
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.LobbyServerShenkar.props
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/staticwebassets.pack.json
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/staticwebassets.build.json
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/staticwebassets.development.json
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/scopedcss/bundle/LobbyServerShenkar.styles.css
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/LobbyServerShenkar.csproj.CopyComplete
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/LobbyServerShenkar.dll
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/refint/LobbyServerShenkar.dll
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/LobbyServerShenkar.pdb
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/LobbyServerShenkar.genruntimeconfig.cache
+/Users/orihytner/Shenkar/Year3_SemA/שיטות בהנדסת תוכנה/Login/BLastZone_ServerLogin/obj/Debug/net6.0/ref/LobbyServerShenkar.dll
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\bin\Debug\net6.0\appsettings.Development.json
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\bin\Debug\net6.0\appsettings.json
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\bin\Debug\net6.0\LobbyServerShenkar.staticwebassets.endpoints.json
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\bin\Debug\net6.0\LobbyServerShenkar.exe
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\bin\Debug\net6.0\LobbyServerShenkar.deps.json
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\bin\Debug\net6.0\LobbyServerShenkar.runtimeconfig.json
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\bin\Debug\net6.0\LobbyServerShenkar.dll
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\bin\Debug\net6.0\LobbyServerShenkar.pdb
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\bin\Debug\net6.0\Microsoft.OpenApi.dll
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\bin\Debug\net6.0\Pipelines.Sockets.Unofficial.dll
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\bin\Debug\net6.0\StackExchange.Redis.dll
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\LobbyServerShenkar.csproj.AssemblyReference.cache
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\LobbyServerShenkar.GeneratedMSBuildEditorConfig.editorconfig
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\LobbyServerShenkar.AssemblyInfoInputs.cache
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\LobbyServerShenkar.AssemblyInfo.cs
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\LobbyServerShenkar.csproj.CoreCompileInputs.cache
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\LobbyServerShenkar.MvcApplicationPartsAssemblyInfo.cs
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\LobbyServerShenkar.MvcApplicationPartsAssemblyInfo.cache
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\scopedcss\bundle\LobbyServerShenkar.styles.css
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\staticwebassets.build.json
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\staticwebassets.development.json
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\staticwebassets.build.endpoints.json
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\staticwebassets\msbuild.LobbyServerShenkar.Microsoft.AspNetCore.StaticWebAssets.props
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\staticwebassets\msbuild.LobbyServerShenkar.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\staticwebassets\msbuild.build.LobbyServerShenkar.props
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.LobbyServerShenkar.props
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.LobbyServerShenkar.props
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\staticwebassets.pack.json
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\staticwebassets.upToDateCheck.txt
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\LobbySer.761E67B7.Up2Date
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\LobbyServerShenkar.dll
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\refint\LobbyServerShenkar.dll
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\LobbyServerShenkar.pdb
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\LobbyServerShenkar.genruntimeconfig.cache
+E:\UserData\Downloads\BLastZone_ServerLogin\BLastZone_ServerLogin\obj\Debug\net6.0\ref\LobbyServerShenkar.dll
