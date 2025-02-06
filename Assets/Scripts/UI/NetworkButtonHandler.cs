@@ -27,7 +27,7 @@ namespace UI
             if (PlayerPrefs.HasKey("Restart"))
             {
                 PlayerPrefs.DeleteKey("Restart");
-                if (PlayerPrefs.HasKey("GameMode"))
+                if (PlayerPrefs.HasKey("GameMode") && !PlayerPrefs.HasKey("IsMainMenu"))
                 {
                     unityObjects["Screen_Multiplayer"].gameObject.SetActive(true);
                     unityObjects["Img_Background"].gameObject.SetActive(true);
