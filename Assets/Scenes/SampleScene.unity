@@ -4733,7 +4733,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1341913194}
-  - component: {fileID: 1341913195}
   - component: {fileID: 1341913196}
   m_Layer: 0
   m_Name: SC_StatsUI
@@ -4757,24 +4756,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 630030129}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1341913195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1341913193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SortKey: 990924684
-  ObjectInterest: 1
-  Flags: 262145
-  NestedObjects: []
-  NetworkedBehaviours: []
-  ForceRemoteRenderTimeframe: 0
 --- !u!114 &1341913196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6897,7 +6878,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1929808576}
-  - component: {fileID: 1929808577}
   - component: {fileID: 1929808579}
   m_Layer: 0
   m_Name: SC_CardSelectionUi
@@ -6921,25 +6901,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 630030129}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1929808577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1929808575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SortKey: 3337889153
-  ObjectInterest: 1
-  Flags: 262145
-  NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 1929808579}
-  ForceRemoteRenderTimeframe: 0
 --- !u!114 &1929808579
 MonoBehaviour:
   m_ObjectHideFlags: 0
