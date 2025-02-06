@@ -161,7 +161,7 @@ public abstract class BaseStats : NetworkBehaviour
         float newEffectiveValue = baseValue * effectiveMultiplier;
         SetStat(statName, newEffectiveValue);
 
-        StartCoroutine(RemoveTempMultiplierAfter(statName, newEntry, duration));
+        StartCoroutine(RemoveTempMultiplierAfter(statName, newEntry, duration + 0.1f));
     }
 
     private IEnumerator RemoveTempMultiplierAfter(string statName, TempMultiplier entry, float delay)
