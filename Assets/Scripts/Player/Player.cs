@@ -1,10 +1,14 @@
+using System;
 using Fusion;
+using TMPro;
 using UnityEngine;
 
 public class Player : NetworkBehaviour
 {
     private NetworkCharacterController _characterController;
     private MovementSpeed _movementSpeed;
+    [SerializeField] private TextMeshProUGUI _Playerusername;
+    [Networked] public string Username { get; set; }
  
     public override void Spawned()
     {
@@ -15,6 +19,11 @@ public class Player : NetworkBehaviour
         {
             _movementSpeed.OnStatChanged += HandleStatsChanged;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        _Playerusername.text = Username;
     }
 
     private void OnDisable()

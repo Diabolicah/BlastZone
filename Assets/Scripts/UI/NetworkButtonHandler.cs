@@ -38,6 +38,7 @@ namespace UI
         {
             if (_networkManager != null)
             {
+                unityObjects["Txt_Error"].GetComponent<TextMeshProUGUI>().text = "";
                 DeathmatchButton.GetComponent<Button>().interactable = false;
                 TeamDeathmatchButton.GetComponent<Button>().interactable = false;
                 DeathmatchText.color = Color.gray;
