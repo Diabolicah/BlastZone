@@ -92,7 +92,7 @@ namespace UI
             {
                 PlayerPrefs.DeleteKey("IsMainMenu");
                 unityObjects["Screen_MainMenu"].SetActive(true);
-                unityObjects["Screen_Login"].SetActive(true) ;
+                unityObjects["Screen_Login"].SetActive(false) ;
             }
     }
 
