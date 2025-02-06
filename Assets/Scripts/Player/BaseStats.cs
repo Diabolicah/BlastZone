@@ -94,7 +94,6 @@ public abstract class BaseStats : NetworkBehaviour
 
         if (!Mathf.Approximately(oldValue, newValue))
         {
-            float newEffectiveValue = Mathf.Max(newValue, 0.1f);
             Stats.Set(statName, newValue);
         }
     }
@@ -126,7 +125,7 @@ public abstract class BaseStats : NetworkBehaviour
 
     }
 
-    public float GetStat(string statName)
+    protected float GetStat(string statName)
     {
         if (Stats.TryGet(statName, out float value))
         {
@@ -135,7 +134,7 @@ public abstract class BaseStats : NetworkBehaviour
         throw new KeyNotFoundException($"Stat {statName} not found.");
     }
 
-    public void ApplyTemporaryMultiplier(string statName, float multiplier, float duration)
+    protected void ApplyTemporaryMultiplier(string statName, float multiplier, float duration)
     {
         if (!Object.HasStateAuthority)
             return;
@@ -154,7 +153,7 @@ public abstract class BaseStats : NetworkBehaviour
         float effectiveMultiplier = 1f;
         foreach (var entry in multiplierList)
         {
-            effectiveMultiplier += entry.multiplier;
+            effectiveMultiplier *= entry.multiplier;
         }
 
         float baseValue = baseStats.TryGet(statName, out float defVal) ? defVal : GetStat(statName);
@@ -183,11 +182,11 @@ public abstract class BaseStats : NetworkBehaviour
             float effectiveMultiplier = 1f;
             foreach (var e in multiplierList)
             {
-                effectiveMultiplier += e.multiplier;
+                effectiveMultiplier *= e.multiplier;
             }
-            
+
             float baseValue = baseStats.TryGet(statName, out float defVal) ? defVal : GetStat(statName);
-            float newEffectiveValue =  baseValue * effectiveMultiplier;
+            float newEffectiveValue = baseValue * effectiveMultiplier;
             SetStat(statName, newEffectiveValue);
         }
     }

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e1bbd5f41332b744ae9ed66b05fe081, type: 3}
-  m_Name: Wind Bullet Weapon Config
+  m_Name: Fire Bullet Weapon Config
   m_EditorClassIdentifier: 
   _bulletPrefab:
-    RawGuidValue: b6ba549aadd1d4bbb94ac175a426cfa9
+    RawGuidValue: dfb85277a4a133d45bc2d5f31d82309c
   _shootCooldown: 0.7
   _bulletSpeed: 25
-  _bulletLifeTime: 5
+  _bulletLifeTime: 3
   _damage: 7

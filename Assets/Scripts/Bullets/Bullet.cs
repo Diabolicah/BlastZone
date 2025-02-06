@@ -56,7 +56,7 @@ public class Bullet : NetworkBehaviour
         var direction = nextPosition - previousPosition;
         var _hitMask = LayerMask.GetMask("Default");
 
-        if (_isBulletAlive && Physics.SphereCast(previousPosition, 0.8f, direction.normalized, out RaycastHit hitInfo, direction.magnitude, _hitMask))
+        if (_isBulletAlive && Physics.Raycast(previousPosition, direction.normalized, out RaycastHit hitInfo, direction.magnitude, _hitMask))
         {
             if (hitInfo.collider.TryGetComponent<NetworkObject>(out NetworkObject networkObj))
             {
@@ -68,12 +68,9 @@ public class Bullet : NetworkBehaviour
                     (bool success, bool isDead) = playerHealth.ApplyDamage(_damage);
                     if (success)
                     {
-                        if (isDead) {
-                            LevelingManager LM = _bulletShooter.GetComponent<LevelingManager>();
-                            DeathXpValue dxv = hitInfo.collider.GetComponent<DeathXpValue>();
-                            LM.AddExp(dxv.XpValue);
-                        }
-                        else
+                        if (isDead) { 
+                            Debug.Log(_bulletShooter.ToString() + " Killed a player");
+                        }else
                         {
                             OnTargetHit?.Invoke(_bulletShooter, networkObj);
                         }

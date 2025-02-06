@@ -19,7 +19,7 @@ public class PlayerElement : NetworkBehaviour
     }
     public override void FixedUpdateNetwork()
     {
-        if (_elementDurationManager.IsCooldownExpiredOrNotRunning(Runner))
+        if (_elementDurationManager.IsCooldownExpiredOrNutRunning(Runner))
         {
             _isElementUsed = false;
         }

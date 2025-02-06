@@ -1,18 +1,19 @@
 using System.Collections.Generic;
 using Fusion;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using static Unity.Collections.Unicode;
 
 public class FireEffect : IElement
 {
     private float _fireDamage;
+    private float _fireDamageDuration;
     private float _durationBetweenFireTicks;
     private CooldownManager _fireTickManager;
 
-    public FireEffect(float fireDamage)
+    public FireEffect(float fireDamage, float fireDamageDuration)
     {
         _fireDamage = fireDamage;
+        _fireDamageDuration = fireDamageDuration;
         _durationBetweenFireTicks = 1f;
         _fireTickManager = new CooldownManager();
 
@@ -20,19 +21,19 @@ public class FireEffect : IElement
 
     public void activate(NetworkRunner runner, NetworkObject bulletShooter, Vector3 position, NetworkObject playerHit)
     {
-        if (_fireTickManager.IsCooldownExpiredOrNotRunning(runner))
+        if (_fireTickManager.IsCooldownExpiredOrNutRunning(runner))
         {
+            Debug.Log("Fire Tick");
             Health playerHealth = playerHit.GetComponent<Health>();
             if (playerHealth != null)
             {
+                Debug.Log("Fire Damage Applied");
                 (bool success, bool isDead) = playerHealth.ApplyDamage(_fireDamage);
                 if (success)
                 {
                     if (isDead)
                     {
-                        LevelingManager LM = bulletShooter.GetComponent<LevelingManager>();
-                        DeathXpValue dxv = playerHit.GetComponent<DeathXpValue>();
-                        LM.AddExp(dxv.XpValue);
+                        Debug.Log(bulletShooter.ToString() + " Killed a player");
                     }
                 }
             }

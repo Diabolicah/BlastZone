@@ -32,27 +32,6 @@ public class CardFunctions : MonoBehaviour
             case "Triple Bullet Weapon":
                 ActivateTripleBulletWeaponCard(card, tankWeapons);
                 break;
-
-            case "Fire Bullet Weapon":
-                ActivateFireBulletWeaponCard(card, tankWeapons);
-                break;
-            case "Triple Fire Bullet Weapon":
-                ActivateTripleFireBulletWeaponCard(card, tankWeapons);
-                break;
-
-            case "Ice Bullet Weapon":
-                ActivateIceBulletWeaponCard(card, tankWeapons);
-                break;
-            case "Triple Ice Bullet Weapon":
-                ActivateTripleIceBulletWeaponCard(card, tankWeapons);
-                break;
-
-            case "Wind Bullet Weapon":
-                ActivateWindBulletWeaponCard(card, tankWeapons);
-                break;
-            case "Triple Wind Bullet Weapon":
-                ActivateTripleWindBulletWeaponCard(card, tankWeapons);
-                break;
         }
     }
 
@@ -101,56 +80,12 @@ public class CardFunctions : MonoBehaviour
     public void ActivateBulletWeaponCard(CardConfig card, TankWeapons tankWeapons)
     {
         IWeapon bulletWeapon = new WeaponBullet(card.GetWeaponConfig(), tankWeapons._shootPoint);
-        tankWeapons.WeaponIcon.sprite = card.GetImage();
         tankWeapons.setTankWeapon(bulletWeapon);
     }
 
     public void ActivateTripleBulletWeaponCard(CardConfig card, TankWeapons tankWeapons)
     {
         IWeapon tripleBulletWeapon = new WeaponTripleBullet((TripleBulletWeaponConfig) card.GetWeaponConfig(), tankWeapons._shootPoint);
-        tankWeapons.WeaponIcon.sprite = card.GetImage();
-        tankWeapons.setTankWeapon(tripleBulletWeapon);
-    }
-
-    public void ActivateFireBulletWeaponCard(CardConfig card, TankWeapons tankWeapons)
-    {
-        IWeapon bulletWeapon = new WeaponBullet(card.GetWeaponConfig(), tankWeapons._shootPoint);
-        tankWeapons.WeaponIcon.sprite = card.GetImage();
-        tankWeapons.setTankWeapon(bulletWeapon);
-    }
-
-    public void ActivateTripleFireBulletWeaponCard(CardConfig card, TankWeapons tankWeapons)
-    {
-        IWeapon tripleBulletWeapon = new WeaponTripleBullet((TripleBulletWeaponConfig)card.GetWeaponConfig(), tankWeapons._shootPoint);
-        tankWeapons.WeaponIcon.sprite = card.GetImage();
-        tankWeapons.setTankWeapon(tripleBulletWeapon);
-    }
-
-    public void ActivateIceBulletWeaponCard(CardConfig card, TankWeapons tankWeapons)
-    {
-        IWeapon bulletWeapon = new WeaponBullet(card.GetWeaponConfig(), tankWeapons._shootPoint);
-        tankWeapons.WeaponIcon.sprite = card.GetImage();
-        tankWeapons.setTankWeapon(bulletWeapon);
-    }
-
-    public void ActivateTripleIceBulletWeaponCard(CardConfig card, TankWeapons tankWeapons)
-    {
-        IWeapon tripleBulletWeapon = new WeaponTripleBullet((TripleBulletWeaponConfig)card.GetWeaponConfig(), tankWeapons._shootPoint);
-        tankWeapons.WeaponIcon.sprite = card.GetImage();
-        tankWeapons.setTankWeapon(tripleBulletWeapon);
-    }
-
-    public void ActivateWindBulletWeaponCard(CardConfig card, TankWeapons tankWeapons)
-    {
-        IWeapon bulletWeapon = new WeaponBullet(card.GetWeaponConfig(), tankWeapons._shootPoint);
-        tankWeapons.WeaponIcon.sprite = card.GetImage();
-        tankWeapons.setTankWeapon(bulletWeapon);
-    }
-
-    public void ActivateTripleWindBulletWeaponCard(CardConfig card, TankWeapons tankWeapons)
-    {
-        IWeapon tripleBulletWeapon = new WeaponTripleBullet((TripleBulletWeaponConfig)card.GetWeaponConfig(), tankWeapons._shootPoint);
-        tankWeapons.WeaponIcon.sprite = card.GetImage();
         tankWeapons.setTankWeapon(tripleBulletWeapon);
     }
 }

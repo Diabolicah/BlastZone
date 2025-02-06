@@ -9,19 +9,20 @@ public class Player : NetworkBehaviour
     private NetworkCharacterController _characterController;
     private StatsManager _statsManager;
 
+    [SerializeField] private float baseMaxSpeed = 4f;
+    [SerializeField] private float baseAcceleration = 20f;
     [SerializeField] private TextMeshProUGUI _Playerusername;
     [Networked] public string Username { get; set; }
 
-    private MovementSpeed _movementSpeed;
- 
     public override void Spawned()
     {
         _characterController = GetComponent<NetworkCharacterController>();
-        _movementSpeed = GetComponent<MovementSpeed>();
+        _statsManager = GetComponent<StatsManager>();
 
-        if (_movementSpeed != null)
+        if (_statsManager != null)
         {
-            _movementSpeed.OnStatChanged += HandleStatsChanged;
+            _statsManager.OnStatsChanged += HandleStatsChanged;
+            HandleStatsChanged(_statsManager.Stats, _statsManager.Stats);
         }
         
     }
@@ -33,20 +34,15 @@ public class Player : NetworkBehaviour
 
     private void OnDisable()
     {
-        if (_movementSpeed != null)
-            _movementSpeed.OnStatChanged -= HandleStatsChanged;
+        if (_statsManager != null)
+            _statsManager.OnStatsChanged -= HandleStatsChanged;
     }
 
-    private void HandleStatsChanged(string StatName, float oldStat, float newStat)
+    private void HandleStatsChanged(PlayerStatsStruct oldStats, PlayerStatsStruct newStats)
     {
-        if (StatName == "MaxSpeed")
-        {
-            _characterController.maxSpeed = newStat;
-        }
-        else if (StatName == "Acceleration")
-        {
-            _characterController.acceleration = newStat;
-        }
+        float multiplier = newStats.MovementSpeed;
+        _characterController.maxSpeed = baseMaxSpeed * multiplier;
+        _characterController.acceleration = baseAcceleration * multiplier;
     }
 
     public override void FixedUpdateNetwork()
@@ -57,8 +53,9 @@ public class Player : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.G))
         {
+            Debug.Log("G key was pressed.");
             LevelingManager LM = GetComponent<LevelingManager>();
-            LM.AddExp(25f);
+            LM.AddExp(100f);
         }
     }
 }

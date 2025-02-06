@@ -23,26 +23,17 @@ namespace UI
             DeathmatchText = DeathmatchButton.GetComponentInChildren<TextMeshProUGUI>();
             TeamDeathmatchText = TeamDeathmatchButton.GetComponentInChildren<TextMeshProUGUI>();
             _networkManager = FindFirstObjectByType<NetworkManager>();
-
-            if (PlayerPrefs.HasKey("Restart"))
-            {
-                PlayerPrefs.DeleteKey("Restart");
-                unityObjects["Screen_Multiplayer"].gameObject.SetActive(true);
-                unityObjects["Img_Background"].gameObject.SetActive(true);
-                unityObjects["Screen_MainMenu"].gameObject.SetActive(false);
-                ChooseGameMode(PlayerPrefs.GetString("GameMode"));
-            }
         }
         
-        public async void ChooseGameMode(string gameMode)
+        public async void PlayDeathmatch()
         {
             if (_networkManager != null)
             {
                 DeathmatchButton.GetComponent<Button>().interactable = false;
                 TeamDeathmatchButton.GetComponent<Button>().interactable = false;
                 DeathmatchText.color = Color.gray;
-                loadingText.text = "Loading" + gameMode + " ...";
-                bool success = await _networkManager.StartMatchmaking(gameMode);
+                loadingText.text = "Loading Deathmatch ...";
+                bool success = await _networkManager.StartMatchmaking("Deathmatch");
                 if (success)
                 {
                     unityObjects["Screen_Multiplayer"].gameObject.SetActive(false);
@@ -54,8 +45,38 @@ namespace UI
                     DeathmatchButton.GetComponent<Button>().interactable = true;
                     TeamDeathmatchButton.GetComponent<Button>().interactable = true;
                     DeathmatchText.color = Color.white;
-                    loadingText.text = "Failed to connect to " + gameMode;
-                    Debug.LogError("Failed to start matchmaking for" +  gameMode);
+                    loadingText.text = "Failed to connect to deathmatch";
+                    Debug.LogError("Failed to start matchmaking for Deathmatch");
+                }
+            }
+            else
+            {
+                Debug.LogError("NetworkManager is not assigned!");
+            }
+        }
+        
+        public async void PlayTeamDeathmatch()
+        {
+            if (_networkManager != null)
+            {
+                DeathmatchButton.GetComponent<Button>().interactable = false;
+                TeamDeathmatchButton.GetComponent<Button>().interactable = false;
+                TeamDeathmatchText.color = Color.gray;
+                loadingText.text = "Loading Team Deathmatch ...";
+                bool success = await _networkManager.StartMatchmaking("TeamDeathmatch");
+                if(success)
+                {
+                    unityObjects["Screen_Multiplayer"].gameObject.SetActive(false);
+                    unityObjects["Img_Background"].gameObject.SetActive(false);
+                    unityObjects["Screen_Game"].gameObject.SetActive(true);
+                }
+                else
+                {
+                    DeathmatchButton.GetComponent<Button>().interactable = true;
+                    TeamDeathmatchButton.GetComponent<Button>().interactable = true;
+                    TeamDeathmatchText.color = Color.white;
+                    loadingText.text = "Failed to connect to team deathmatch";
+                    Debug.LogError("Failed to start matchmaking for Team Deathmatch");
                 }
             }
             else

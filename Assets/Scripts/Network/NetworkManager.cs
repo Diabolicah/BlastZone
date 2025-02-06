@@ -10,12 +10,11 @@ public class NetworkManager : MonoBehaviour
 {
     private NetworkRunner _runner;
 
-    [SerializeField] public static string selectedGameMode = "Deathmatch";
+    [SerializeField] private string selectedGameMode = "Deathmatch";
 
     public async Task<bool> StartMatchmaking(string gameMode)
     {
         selectedGameMode = gameMode;
-        PlayerPrefs.SetString("GameMode", selectedGameMode);
 
         // Create the Fusion runner if not already created.
         _runner = gameObject.AddComponent<NetworkRunner>();
