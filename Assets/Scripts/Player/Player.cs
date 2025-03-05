@@ -3,15 +3,42 @@ using Fusion;
 using TMPro;
 using UnityEngine;
 
-public class Player : NetworkBehaviour
+public class Player : NetworkBehaviour, IAfterSpawned
 {
     private NetworkCharacterController _characterController;
     private MovementSpeed _movementSpeed;
     [SerializeField] private TextMeshProUGUI _Playerusername;
+    
     [Networked] public string Username { get; set; }
  
+    [SerializeField]
+    private GameObject TankHead;
+    [SerializeField]
+    private GameObject tankCanon;
+    [SerializeField]
+    private GameObject tankBody;
+    [SerializeField]
+    private GameObject tankWheelsCover;
+    [SerializeField]
+    private GameObject tankChains;
+    
+    private Renderer tankHeadRenderer;
+    private Renderer tankCanonRenderer;
+    private Renderer tankBodyRenderer;
+    private Renderer tankWheelsCoverRenderer;
+    private Renderer tankChainsRenderer;
+    
+    public void Start()
+    {
+
+    }
     public override void Spawned()
     {
+        tankHeadRenderer = TankHead.GetComponent<Renderer>();
+        tankCanonRenderer = tankCanon.GetComponent<Renderer>();
+        tankBodyRenderer = tankBody.GetComponent<Renderer>();
+        tankWheelsCoverRenderer = tankWheelsCover.GetComponent<Renderer>();
+        tankChainsRenderer = tankChains.GetComponent<Renderer>();
         _characterController = GetComponent<NetworkCharacterController>();
         _movementSpeed = GetComponent<MovementSpeed>();
 
@@ -21,9 +48,46 @@ public class Player : NetworkBehaviour
         }
     }
 
+    public void AfterSpawned()
+    {
+        
+        if (HasStateAuthority)
+        {
+            if (PlayerPrefs.HasKey("Head"))
+            {
+                tankHeadRenderer.material.color = ChangeColor(PlayerPrefs.GetString("Head"));
+            }
+            if (PlayerPrefs.HasKey("Canon"))
+            {
+                tankCanonRenderer.material.color = ChangeColor(PlayerPrefs.GetString("Canon"));
+            }
+            if (PlayerPrefs.HasKey("Body"))
+            {
+                tankBodyRenderer.material.color = ChangeColor(PlayerPrefs.GetString("Body"));
+            }
+            if (PlayerPrefs.HasKey("WheelsCover"))
+            {
+                tankWheelsCoverRenderer.material.color = ChangeColor(PlayerPrefs.GetString("WheelsCover"));
+            }
+            if (PlayerPrefs.HasKey("Chains"))
+            {
+                tankChainsRenderer.material.color = ChangeColor(PlayerPrefs.GetString("Chains"));
+            }
+        }
+    }
+
     private void FixedUpdate()
     {
         _Playerusername.text = Username;
+    }
+    
+    private Color ChangeColor(string color)
+    {
+        Debug.Log("color"+color);
+        Color _newColor;
+        ColorUtility.TryParseHtmlString(color, out _newColor);
+        Debug.Log("_newColor"+_newColor);
+        return _newColor;
     }
 
     private void OnDisable()

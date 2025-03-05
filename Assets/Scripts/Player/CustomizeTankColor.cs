@@ -24,6 +24,7 @@ public class CustomizeTankColor : MonoBehaviour
     
     private Color _newColor;
     
+
     public void Start()
     {
         tankHeadRenderer = tankHead.GetComponent<Renderer>();
@@ -36,31 +37,32 @@ public class CustomizeTankColor : MonoBehaviour
     // Methods for changing the color of each tank part.
     public void ChangeTankHeadColor(string color)
     {
-        ChangeColor(tankHeadRenderer, color);
+        ChangeColor(tankHeadRenderer, color, "Head");
     }
     
     public void ChangeTankCanonColor(string color)
     {
-        ChangeColor(tankCanonRenderer, color);
+        ChangeColor(tankCanonRenderer, color, "Canon");
     }
     
     public void ChangeTankBodyColor(string color)
     {
-        ChangeColor(tankBodyRenderer, color);
+        ChangeColor(tankBodyRenderer, color, "Body");
     }
     
     public void ChangeTankWheelsCoverColor(string color)
     {
-        ChangeColor(tankWheelsCoverRenderer, color);
+        ChangeColor(tankWheelsCoverRenderer, color,"WheelsCover");
     }
 
     public void ChangeTankChainsColor(string color)
     {
-        ChangeColor(tankChainsRenderer, color);
+        ChangeColor(tankChainsRenderer, color, "Chains");
     }
     // Shared method for applying the chosen color using a switch statement.
-    private void ChangeColor(Renderer renderer, string color)
+    private void ChangeColor(Renderer renderer, string color, string part)
     {
+        Debug.Log("cus color:" + color);
         switch (color.ToLower())
         {
             case "red":
@@ -83,5 +85,6 @@ public class CustomizeTankColor : MonoBehaviour
                 break;
         }
         renderer.material.color = _newColor;
+        PlayerPrefs.SetString(part, $"#{ColorUtility.ToHtmlStringRGBA(_newColor)}");
     }
 }

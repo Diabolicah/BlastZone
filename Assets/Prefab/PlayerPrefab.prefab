@@ -136,6 +136,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Playerusername: {fileID: 1841535213239932803}
   _Username: 
+  TankHead: {fileID: 6388564794387280376}
+  tankCanon: {fileID: 8184253499220295457}
+  tankBody: {fileID: 1934861392300125826}
+  tankWheelsCover: {fileID: 1206866964226066297}
+  tankChains: {fileID: 1876471149960837477}
 --- !u!114 &2386721432402869471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,8 +949,33 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6f7152d4af6d4ae58eedbb7c624fefb, type: 3}
+--- !u!1 &1206866964226066297 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -956215440823763315, guid: e6f7152d4af6d4ae58eedbb7c624fefb, type: 3}
+  m_PrefabInstance: {fileID: 7063174750485215732}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1876471149960837477 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -571991706736344943, guid: e6f7152d4af6d4ae58eedbb7c624fefb, type: 3}
+  m_PrefabInstance: {fileID: 7063174750485215732}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1934861392300125826 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -513566298177317002, guid: e6f7152d4af6d4ae58eedbb7c624fefb, type: 3}
+  m_PrefabInstance: {fileID: 7063174750485215732}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6388564794387280376 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4995110090543937524, guid: e6f7152d4af6d4ae58eedbb7c624fefb, type: 3}
+  m_PrefabInstance: {fileID: 7063174750485215732}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7318289462965870111 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e6f7152d4af6d4ae58eedbb7c624fefb, type: 3}
+  m_PrefabInstance: {fileID: 7063174750485215732}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8184253499220295457 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1409977639806437077, guid: e6f7152d4af6d4ae58eedbb7c624fefb, type: 3}
   m_PrefabInstance: {fileID: 7063174750485215732}
   m_PrefabAsset: {fileID: 0}
