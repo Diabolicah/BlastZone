@@ -1,45 +1,87 @@
 using System;
 using UnityEngine;
-using  UnityEngine.UI;
+using UnityEngine.UI;
 
 public class CustomizeTankColor : MonoBehaviour
 {
     [SerializeField]
+    private GameObject tankHead;
+    [SerializeField]
+    private GameObject tankCanon;
+    [SerializeField]
     private GameObject tankBody;
+    [SerializeField]
+    private GameObject tankWheelsCover;
+    [SerializeField]
+    private GameObject tankChains;
     
+    private Renderer tankHeadRenderer;
+    private Renderer tankCanonRenderer;
     private Renderer tankBodyRenderer;
-    private Color _newtankBodyColor;
+    private Renderer tankWheelsCoverRenderer;
+    private Renderer tankChainsRenderer;
+    
+    
+    private Color _newColor;
     
     public void Start()
     {
+        tankHeadRenderer = tankHead.GetComponent<Renderer>();
+        tankCanonRenderer = tankCanon.GetComponent<Renderer>();
         tankBodyRenderer = tankBody.GetComponent<Renderer>();
+        tankWheelsCoverRenderer = tankWheelsCover.GetComponent<Renderer>();
+        tankChainsRenderer = tankChains.GetComponent<Renderer>();
     }
     
-    public void ChangeBodyColor(string color)
+    // Methods for changing the color of each tank part.
+    public void ChangeTankHeadColor(string color)
     {
-        switch (color)
+        ChangeColor(tankHeadRenderer, color);
+    }
+    
+    public void ChangeTankCanonColor(string color)
+    {
+        ChangeColor(tankCanonRenderer, color);
+    }
+    
+    public void ChangeTankBodyColor(string color)
+    {
+        ChangeColor(tankBodyRenderer, color);
+    }
+    
+    public void ChangeTankWheelsCoverColor(string color)
+    {
+        ChangeColor(tankWheelsCoverRenderer, color);
+    }
+
+    public void ChangeTankChainsColor(string color)
+    {
+        ChangeColor(tankChainsRenderer, color);
+    }
+    // Shared method for applying the chosen color using a switch statement.
+    private void ChangeColor(Renderer renderer, string color)
+    {
+        switch (color.ToLower())
         {
             case "red":
-                _newtankBodyColor = new Color(1, 0, 0);
-                break;
-            case "green":
-                _newtankBodyColor = new Color(0, 1, 0);
-                break;
-            case "blue":
-                _newtankBodyColor = new Color(0, 0, 1);
+                _newColor = new Color(1, 0, 0);
                 break;
             case "yellow":
-                _newtankBodyColor = new Color(1, 1, 0);
+                _newColor = new Color(1, 1, 0);
+                break;
+            case "green":
+                _newColor = new Color(0, 1, 0);
+                break;
+            case "blue":
+                _newColor = new Color(0.37f, 0.5f, 1);
+                break;
+            case "pink":
+                _newColor = new Color(1, 0.5f, 0.9f);
                 break;
             default:
-                _newtankBodyColor = new Color(1, 1, 1);
+                _newColor = new Color(1, 1, 1);
                 break;
         }
-        
-        tankBodyRenderer.material.color = _newtankBodyColor;
+        renderer.material.color = _newColor;
     }
 }
-
-
-// _newtankBodyColor = new Color(r, g, b);
-// tankBodyRenderer.material.color = _newtankBodyColor;
