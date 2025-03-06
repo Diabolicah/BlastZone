@@ -1,7 +1,9 @@
 using System;
 using Fusion;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using ColorUtility = UnityEngine.ColorUtility;
 
 public class Player : NetworkBehaviour, IAfterSpawned
 {
@@ -10,6 +12,13 @@ public class Player : NetworkBehaviour, IAfterSpawned
     [SerializeField] private TextMeshProUGUI _Playerusername;
     
     [Networked] public string Username { get; set; }
+    [Networked] public string TankHeadColor { get; set; }
+    [Networked] public string tankCanonColor { get; set; }
+    [Networked] public string tankBodyColor { get; set; }
+    [Networked] public string tankWheelsCoverColor { get; set; }
+    [Networked] public string tankChainsColor { get; set; }
+    
+    
  
     [SerializeField]
     private GameObject TankHead;
@@ -28,10 +37,7 @@ public class Player : NetworkBehaviour, IAfterSpawned
     private Renderer tankWheelsCoverRenderer;
     private Renderer tankChainsRenderer;
     
-    public void Start()
-    {
 
-    }
     public override void Spawned()
     {
         tankHeadRenderer = TankHead.GetComponent<Renderer>();
@@ -46,33 +52,54 @@ public class Player : NetworkBehaviour, IAfterSpawned
         {
             _movementSpeed.OnStatChanged += HandleStatsChanged;
         }
-    }
-
-    public void AfterSpawned()
-    {
         
         if (HasStateAuthority)
         {
             if (PlayerPrefs.HasKey("Head"))
             {
-                tankHeadRenderer.material.color = ChangeColor(PlayerPrefs.GetString("Head"));
+                TankHeadColor = PlayerPrefs.GetString("Head");
             }
             if (PlayerPrefs.HasKey("Canon"))
             {
-                tankCanonRenderer.material.color = ChangeColor(PlayerPrefs.GetString("Canon"));
+                tankCanonColor = PlayerPrefs.GetString("Canon");
             }
             if (PlayerPrefs.HasKey("Body"))
             {
-                tankBodyRenderer.material.color = ChangeColor(PlayerPrefs.GetString("Body"));
+                tankBodyColor = PlayerPrefs.GetString("Body");
             }
+
             if (PlayerPrefs.HasKey("WheelsCover"))
             {
-                tankWheelsCoverRenderer.material.color = ChangeColor(PlayerPrefs.GetString("WheelsCover"));
+                tankWheelsCoverColor = PlayerPrefs.GetString("WheelsCover");
             }
             if (PlayerPrefs.HasKey("Chains"))
             {
-                tankChainsRenderer.material.color = ChangeColor(PlayerPrefs.GetString("Chains"));
+                tankChainsColor = PlayerPrefs.GetString("Chains");
             }
+        }
+    }
+
+    public void AfterSpawned()
+    {
+        if (TankHeadColor != "")
+        {
+            tankHeadRenderer.material.color = ChangeColor(TankHeadColor);
+        }
+        if (tankCanonColor != "")
+        {
+            tankCanonRenderer.material.color = ChangeColor(tankCanonColor);
+        }
+        if (tankBodyColor != "")
+        {
+            tankBodyRenderer.material.color = ChangeColor(tankBodyColor);
+        }
+        if (tankWheelsCoverColor != "")
+        {
+            tankWheelsCoverRenderer.material.color = ChangeColor(tankWheelsCoverColor);
+        }
+        if (tankChainsColor != "")
+        {
+            tankChainsRenderer.material.color = ChangeColor(tankChainsColor);
         }
     }
 

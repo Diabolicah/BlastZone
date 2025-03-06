@@ -66,13 +66,13 @@ public class CustomizeTankColor : MonoBehaviour
         switch (color.ToLower())
         {
             case "red":
-                _newColor = new Color(1, 0, 0);
+                _newColor = new Color(0.94f, 0.27f, 0.27f);
                 break;
             case "yellow":
-                _newColor = new Color(1, 1, 0);
+                _newColor = new Color(0.95f, 0.93f, 0.32f);
                 break;
             case "green":
-                _newColor = new Color(0, 1, 0);
+                _newColor = new Color(0.36f, 0.78f, 0.24f);
                 break;
             case "blue":
                 _newColor = new Color(0.37f, 0.5f, 1);
