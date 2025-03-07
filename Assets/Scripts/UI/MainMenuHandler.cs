@@ -39,6 +39,10 @@ namespace UI
                 }
                 else
                 {
+                    if (_ScreenName == "Customization")
+                    {
+                        unityObjects["TankColorModel"].SetActive(true);
+                    }
                     Flag = 1;
                     Screens _toScreen = (Screens)Enum.Parse(typeof(Screens), _ScreenName);
                     curMenuLogic.ChangeScreen(_toScreen);
