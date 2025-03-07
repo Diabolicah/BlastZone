@@ -16,7 +16,14 @@ public class NetworkManager : MonoBehaviour
     {
         selectedGameMode = gameMode;
         PlayerPrefs.SetString("GameMode", selectedGameMode);
-        
+
+        var customProps = new Dictionary<string, SessionProperty>();
+        int rank = 0;
+        int.TryParse(SC_LoginLogic.PlayerRank, out rank);
+        if (rank > 0)
+        {
+            customProps["rank"] = (int)Math.Floor((double)rank / 5);
+        }
 
         // Create the Fusion runner if not already created.
         _runner = gameObject.AddComponent<NetworkRunner>();
@@ -26,7 +33,8 @@ public class NetworkManager : MonoBehaviour
             GameMode = GameMode.Shared,
             SessionName = selectedGameMode,
             Scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex),
-            SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
+            SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
+            SessionProperties = customProps
         };
 
         var result = await _runner.StartGame(args);
