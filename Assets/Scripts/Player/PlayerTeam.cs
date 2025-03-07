@@ -12,7 +12,6 @@ public class PlayerTeam : NetworkBehaviour
         {
             if (NetworkManager.selectedGameMode == "TeamDeathmatch")
             {
-                Debug.Log("Assigning team");
                 AssignTeam();
             }
             else
@@ -35,12 +34,9 @@ public class PlayerTeam : NetworkBehaviour
             }
             if (Runner.TryGetPlayerObject(playerRef, out NetworkObject playerObject))
             {
-                Debug.Log(playerObject.Id);
                 PlayerTeam pScript = playerObject.GetComponent<PlayerTeam>();
-                Debug.Log(pScript);
                 if (pScript != null)
                 {
-                    Debug.Log(pScript.Team);
                     if (pScript.Team == 1) team1Count++;
                     if (pScript.Team == 2) team2Count++;
                 }
