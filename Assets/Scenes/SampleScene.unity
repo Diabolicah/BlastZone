@@ -1749,6 +1749,7 @@ GameObject:
   m_Component:
   - component: {fileID: 154097521}
   - component: {fileID: 154097523}
+  - component: {fileID: 154097524}
   m_Layer: 0
   m_Name: SC_TeamManager
   m_TagString: Untagged
@@ -1783,6 +1784,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f1009e7e3238e48be01053abfd0a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &154097524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154097520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 1906497416
+  ObjectInterest: 1
+  Flags: 131073
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 154097523}
+  ForceRemoteRenderTimeframe: 0
 --- !u!1 &169689229
 GameObject:
   m_ObjectHideFlags: 0
