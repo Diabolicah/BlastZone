@@ -62,7 +62,7 @@ public class Player : NetworkBehaviour, IAfterSpawned
         {
             Team = 0;
         }
-
+        
         if (HasStateAuthority)
         {
             Username = PlayerPrefs.HasKey("PlayerName") ? PlayerPrefs.GetString("PlayerName") : SC_LoginLogic.PlayerName;
@@ -71,10 +71,7 @@ public class Player : NetworkBehaviour, IAfterSpawned
             {
                 levelingManager.Rank = PlayerPrefs.HasKey("Rank") ? PlayerPrefs.GetInt("Rank") : SC_LoginLogic.PlayerRank != "" ? int.Parse(SC_LoginLogic.PlayerRank) : 1;
             }
-        }
-        
-        if (HasStateAuthority)
-        {
+
             if (PlayerPrefs.HasKey("Head"))
             {
                 TankHeadColor = PlayerPrefs.GetString("Head");
