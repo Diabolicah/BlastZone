@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\UserData\\Downloads\\BLastZone_ServerLogin\\BLastZone_ServerLogin\\LobbyServerShenkar.csproj": {}
+    "D:\\OneDrive\\Documents\\Development\\BlastZone\\BlastZone\\BlastZone_Server\\LobbyServerShenkar.csproj": {}
   },
   "projects": {
-    "E:\\UserData\\Downloads\\BLastZone_ServerLogin\\BLastZone_ServerLogin\\LobbyServerShenkar.csproj": {
+    "D:\\OneDrive\\Documents\\Development\\BlastZone\\BlastZone\\BlastZone_Server\\LobbyServerShenkar.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\UserData\\Downloads\\BLastZone_ServerLogin\\BLastZone_ServerLogin\\LobbyServerShenkar.csproj",
+        "projectUniqueName": "D:\\OneDrive\\Documents\\Development\\BlastZone\\BlastZone\\BlastZone_Server\\LobbyServerShenkar.csproj",
         "projectName": "LobbyServerShenkar",
-        "projectPath": "E:\\UserData\\Downloads\\BLastZone_ServerLogin\\BLastZone_ServerLogin\\LobbyServerShenkar.csproj",
+        "projectPath": "D:\\OneDrive\\Documents\\Development\\BlastZone\\BlastZone\\BlastZone_Server\\LobbyServerShenkar.csproj",
         "packagesPath": "C:\\Users\\scrip\\.nuget\\packages\\",
-        "outputPath": "E:\\UserData\\Downloads\\BLastZone_ServerLogin\\BLastZone_ServerLogin\\obj\\",
+        "outputPath": "D:\\OneDrive\\Documents\\Development\\BlastZone\\BlastZone\\BlastZone_Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\VisualStudioShared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\scrip\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net6.0": {
@@ -86,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
