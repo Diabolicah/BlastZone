@@ -54,14 +54,7 @@ public class Player : NetworkBehaviour, IAfterSpawned
             _movementSpeed.OnStatChanged += HandleStatsChanged;
         }
 
-        if (NetworkManager.selectedGameMode == "TeamDeathmatch")
-        {
-            Team = SC_TeamManager.Instance.GetTeam();
-        }
-        else
-        {
-            Team = 0;
-        }
+        Team = 0;
         
         if (HasStateAuthority)
         {
@@ -100,6 +93,12 @@ public class Player : NetworkBehaviour, IAfterSpawned
     {
         _Playerusername.text = Username;
         _Playerusername.color = Color.white;
+
+        if (HasStateAuthority && NetworkManager.selectedGameMode == "TeamDeathmatch")
+        {
+            Team = SC_TeamManager.Instance.GetTeam();
+        }
+
         if (Team == 1)
         {
             _Playerusername.color = Color.blue;
