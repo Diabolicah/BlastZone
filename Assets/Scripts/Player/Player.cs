@@ -91,6 +91,9 @@ public class Player : NetworkBehaviour, IAfterSpawned
         _PlayerUsername.text = Username;
         int Team = GetComponent<PlayerTeam>().Team;
 
+        if(!HasStateAuthority)
+            _PlayerUsername.color = Team == 1 ? Color.blue : Team == 2 ? Color.red : Color.white;
+
         if (TankHeadColor != "")
         {
             tankHeadRenderer.material.color = ChangeColor(TankHeadColor);
