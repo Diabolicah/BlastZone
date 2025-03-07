@@ -17,7 +17,7 @@ public class FireEffect : IElement
 
     public void activate(NetworkRunner runner, NetworkObject bulletShooter, Vector3 position, NetworkObject playerHit)
     {
-        if (_fireTickManager.IsCooldownExpiredOrNotRunning(runner))
+        if (_fireTickManager.IsCooldownExpiredOrNotRunning(runner) && playerHit != null)
         {
             Health playerHealth = playerHit.GetComponent<Health>();
             if (playerHealth != null)
