@@ -21,7 +21,7 @@ public class NetworkManager : MonoBehaviour
             rank = (int)Math.Floor((double)rank / 5);
         }
 
-        selectedGameMode = gameMode + rank.ToString();
+        selectedGameMode = gameMode;
         PlayerPrefs.SetString("GameMode", selectedGameMode);
 
 
@@ -31,7 +31,7 @@ public class NetworkManager : MonoBehaviour
         StartGameArgs args = new StartGameArgs
         {
             GameMode = GameMode.Shared,
-            SessionName = selectedGameMode,
+            SessionName = selectedGameMode + rank.ToString(),
             Scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex),
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
         };
