@@ -48,37 +48,6 @@ public class SC_LoginServerApi : MonoBehaviour
         }
     }
 
-    private IEnumerator ServerGetRequestIEnumerator(string _Uri)
-    {
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(_Uri))
-        {
-            yield return webRequest.SendWebRequest();
-            if (webRequest.result != UnityWebRequest.Result.ConnectionError &&
-                webRequest.result != UnityWebRequest.Result.ProtocolError)
-            {
-                Debug.Log("<color=green>Response: </color>" + webRequest.downloadHandler.text);
-                Dictionary<string, object> _res = (Dictionary<string, object>)MiniJSON.Json.Deserialize(webRequest.downloadHandler.text);
-                if (OnGeneralResponse != null)
-                    OnGeneralResponse(_res);
-            }
-        }
-    }
-    private IEnumerator ServerPostRequestIEnumerator(string _Uri, WWWForm _Form)
-    {
-        using (UnityWebRequest webRequest = UnityWebRequest.Post(_Uri, _Form))
-        {
-            yield return webRequest.SendWebRequest();
-            if (webRequest.result != UnityWebRequest.Result.ConnectionError &&
-                webRequest.result != UnityWebRequest.Result.ProtocolError)
-            {
-                Debug.Log("<color=green>Response: </color>" + webRequest.downloadHandler.text);
-                Dictionary<string, object> _res = (Dictionary<string, object>)MiniJSON.Json.Deserialize(webRequest.downloadHandler.text);
-                if (OnGeneralResponse != null)
-                    OnGeneralResponse(_res);
-            }
-        }
-    }
-
     private IEnumerator ServerMethodRequestIEnumerator(RequestMethod _Method, string _Uri, string _PostData)
     {
         using (UnityWebRequest webRequest = GetUnityWebRequest(_Method, _Uri, _PostData))
@@ -115,13 +84,6 @@ public class SC_LoginServerApi : MonoBehaviour
         return new UnityWebRequest(_Uri);
     }
 
-    private void GeneralPostRequest(string _Path, Dictionary<string, object> _Data)
-    {
-        WWWForm form = new WWWForm();
-        form.AddField("Data", MiniJSON.Json.Serialize(_Data));
-        StartCoroutine(ServerPostRequestIEnumerator(_Path, form));
-    }
-
     public void Register(Dictionary<string, object> _Data)
     {
         Debug.Log("<color=blue>Login: </color>" + uri + "/Register");
@@ -136,19 +98,6 @@ public class SC_LoginServerApi : MonoBehaviour
     {
         Debug.Log("<color=blue>cashIn: </color>" + currentUri + "/addXp");
         StartCoroutine(ServerMethodRequestIEnumerator(RequestMethod.Post, uri + "/addXp", MiniJSON.Json.Serialize(_Data)));
-        // GeneralPostRequest(currentUri + "/addXp", _Data);
     }
-    public void AddCurrency(Dictionary<string, object> _Data)
-    {
-        Debug.Log("<color=blue>cashIn: </color>" + currentUri + "/addCurrency");
-        StartCoroutine(ServerMethodRequestIEnumerator(RequestMethod.Post, uri + "/addCurrency", MiniJSON.Json.Serialize(_Data)));
-      //  GeneralPostRequest(currentUri + "/addCurrency", _Data);
-    }
-    public void SearchingOpponent(string _UserId)
-    {
-        Debug.Log("<color=blue>SearchingOpponent: </color>" + currentUri + "/SearchingOpponent");
-        StartCoroutine(ServerMethodRequestIEnumerator(RequestMethod.Get, uri + "/SearchingOpponent/" + _UserId , string.Empty));
-    }
-
 }
 
