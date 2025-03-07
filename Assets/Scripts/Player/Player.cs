@@ -9,7 +9,7 @@ public class Player : NetworkBehaviour, IAfterSpawned
 {
     private NetworkCharacterController _characterController;
     private MovementSpeed _movementSpeed;
-    [SerializeField] private TextMeshProUGUI _Playerusername;
+    [SerializeField] private TextMeshProUGUI _PlayerUsername;
     
     [Networked] public string Username { get; set; }
     [Networked] public string TankHeadColor { get; set; }
@@ -88,9 +88,8 @@ public class Player : NetworkBehaviour, IAfterSpawned
 
     public void AfterSpawned()
     {
-        _Playerusername.text = Username;
+        _PlayerUsername.text = Username;
         int Team = GetComponent<PlayerTeam>().Team;
-        _Playerusername.color = Team == 1 ? Color.blue : Team == 2 ? Color.red : Color.white;
 
         if (TankHeadColor != "")
         {

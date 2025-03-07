@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c78530ec0f8c49168e4d21f1853c723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Playerusername: {fileID: 1841535213239932803}
+  _PlayerUsername: {fileID: 1841535213239932803}
   _Username: 
   _TankHeadColor: 
   _tankCanonColor: 
@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Team: 0
+  _PlayerUsername: {fileID: 1841535213239932803}
 --- !u!114 &2386721432402869471
 MonoBehaviour:
   m_ObjectHideFlags: 0
