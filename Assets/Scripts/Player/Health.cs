@@ -1,10 +1,12 @@
 using System;
+using System.Collections.Generic;
 using Fusion;
 using UI;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UI;
 using static Unity.Collections.Unicode;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Health : BaseStats
 {
@@ -95,6 +97,10 @@ public class Health : BaseStats
     private void DisconnectPlayer()
     {
         int Level = Object.GetComponent<LevelingManager>().Level;
+        Dictionary<string, object> _data = new Dictionary<string, object>();
+        _data.Add("Email", GetComponent<Player>().Username);
+        _data.Add("XpAmount", Level);
+        SC_LoginServerApi.Instance.AddXp(_data);
         Runner.Shutdown();
         MainMenu_Logic.unityObjects["Screen_GameOver"].SetActive(true);
     }
