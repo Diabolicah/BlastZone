@@ -87,16 +87,13 @@ public class Health : BaseStats
         bool isDead = (currentHealth - damage <= 0f);
         if (isDead)
         {   
-            DisconnectPlayer();
+            OnDeath();
         }
         return (success, isDead);
     }
 
-    private void DisconnectPlayer()
-    {
-        int Level = Object.GetComponent<LevelingManager>().Level;
-        Runner.Shutdown();
-        MainMenu_Logic.unityObjects["Screen_GameOver"].SetActive(true);
+    protected virtual void OnDeath() {
+        Debug.Log("Object is Dead");    
     }
 
     public void ApplyHealing(float healing)
