@@ -33,7 +33,7 @@ namespace LobbyServerShenkar.Controllers
                 _xpRedisService.SetPlayerXp(email, curXp.ToString());
                 result.Add("IsSuccess", true);
                 result.Add("CurrentXp", curXp);
-                result.Add("Level", curLevel);
+                result.Add("Rank", curLevel);
             }
             else
             {
