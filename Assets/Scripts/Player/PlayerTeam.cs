@@ -12,7 +12,7 @@ public class PlayerTeam : NetworkBehaviour
         {
             if (NetworkManager.selectedGameMode == "TeamDeathmatch")
             {
-                //AssignTeam();
+                AssignTeam();
             }
             else
             {
