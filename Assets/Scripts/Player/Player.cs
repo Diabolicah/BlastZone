@@ -11,6 +11,7 @@ public class Player : NetworkBehaviour, IAfterSpawned
     private MovementSpeed _movementSpeed;
     [SerializeField] private TextMeshProUGUI _Playerusername;
     
+    [Networked] public PlayerRef PlayerRefs { get; set; }
     [Networked] public string Username { get; set; }
     [Networked] public string TankHeadColor { get; set; }
     [Networked] public string tankCanonColor { get; set; }
@@ -40,6 +41,8 @@ public class Player : NetworkBehaviour, IAfterSpawned
 
     public override void Spawned()
     {
+        Runner.SetPlayerObject(PlayerRefs, Object);
+
         tankHeadRenderer = TankHead.GetComponent<Renderer>();
         tankCanonRenderer = tankCanon.GetComponent<Renderer>();
         tankBodyRenderer = tankBody.GetComponent<Renderer>();
@@ -52,7 +55,7 @@ public class Player : NetworkBehaviour, IAfterSpawned
         {
             _movementSpeed.OnStatChanged += HandleStatsChanged;
         }
-        
+
         if (HasStateAuthority)
         {
             Username = PlayerPrefs.HasKey("PlayerName") ? PlayerPrefs.GetString("PlayerName") : SC_LoginLogic.PlayerName;
