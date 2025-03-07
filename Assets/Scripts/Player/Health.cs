@@ -8,9 +8,9 @@ using static Unity.Collections.Unicode;
 
 public class Health : BaseStats
 {
-    private string CURRENT_HEALTH = "CurrentHealth";
-    private string MAX_HEALTH = "MaxHealth";
-    private string HEALTH_REGEN_RATE = "HealthRegenRate";
+    protected string CURRENT_HEALTH = "CurrentHealth";
+    protected string MAX_HEALTH = "MaxHealth";
+    protected string HEALTH_REGEN_RATE = "HealthRegenRate";
 
     [SerializeField] private GameObject healthBarObject;
 
