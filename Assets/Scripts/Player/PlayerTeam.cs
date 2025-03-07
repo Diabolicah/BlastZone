@@ -26,11 +26,13 @@ public class PlayerTeam : NetworkBehaviour
         int team1Count = 0;
         int team2Count = 0;
 
-        foreach (var playerRef in Runner.ActivePlayers)
+        foreach (PlayerRef playerRef in Runner.ActivePlayers)
         {
-            NetworkObject playerObject = Runner.GetPlayerObject(playerRef);
-
-            if (playerObject != null)
+            if (playerRef == Runner.LocalPlayer)
+            {
+                continue;
+            }
+            if (Runner.TryGetPlayerObject(playerRef, out NetworkObject playerObject))
             {
                 PlayerTeam pScript = playerObject.GetComponent<PlayerTeam>();
                 if (pScript != null)
