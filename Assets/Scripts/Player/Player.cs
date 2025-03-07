@@ -98,6 +98,17 @@ public class Player : NetworkBehaviour, IAfterSpawned
 
     public void AfterSpawned()
     {
+        _Playerusername.text = Username;
+        _Playerusername.color = Color.white;
+        if (Team == 1)
+        {
+            _Playerusername.color = Color.blue;
+        }
+        else if (Team == 2)
+        {
+            _Playerusername.color = Color.red;
+        }
+
         if (TankHeadColor != "")
         {
             tankHeadRenderer.material.color = ChangeColor(TankHeadColor);
@@ -117,20 +128,6 @@ public class Player : NetworkBehaviour, IAfterSpawned
         if (tankChainsColor != "")
         {
             tankChainsRenderer.material.color = ChangeColor(tankChainsColor);
-        }
-    }
-
-    public void AfterSpawned()
-    {
-        _Playerusername.text = Username;
-        _Playerusername.color = Color.white;
-        if (Team == 1)
-        {
-            _Playerusername.color = Color.blue;
-        }
-        else if (Team == 2)
-        {
-            _Playerusername.color = Color.red;
         }
     }
     
