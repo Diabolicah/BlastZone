@@ -24,8 +24,6 @@ public class NetworkManager : MonoBehaviour
         selectedGameMode = gameMode;
         PlayerPrefs.SetString("GameMode", selectedGameMode);
 
-        Debug.Log(selectedGameMode + rank.ToString());
-
         _runner = gameObject.AddComponent<NetworkRunner>();
 
         StartGameArgs args = new StartGameArgs
