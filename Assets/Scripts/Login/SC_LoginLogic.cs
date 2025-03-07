@@ -13,7 +13,6 @@ public class SC_LoginLogic : NetworkBehaviour
     // public Dictionary<string, GameObject> unityObjects;
     private string UserName = string.Empty;
     private string userId = string.Empty;
-    private string tempMatchId = "";
     public static string PlayerName = "";
     public static string PlayerRank = "";
     #region Singleton
