@@ -116,10 +116,8 @@ public class Player : NetworkBehaviour, IAfterSpawned
     
     private Color ChangeColor(string color)
     {
-        Debug.Log("color"+color);
         Color _newColor;
         ColorUtility.TryParseHtmlString(color, out _newColor);
-        Debug.Log("_newColor"+_newColor);
         return _newColor;
     }
 
