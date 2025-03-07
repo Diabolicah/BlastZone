@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7888848812287710610}
   - component: {fileID: 2386721432402869471}
   - component: {fileID: 669638107416217757}
-  - component: {fileID: -2526664047056180360}
+  - component: {fileID: 4748261902260525605}
   - component: {fileID: -7359917461957357260}
   - component: {fileID: 110546857964575258}
   - component: {fileID: 971756849036023500}
@@ -70,7 +70,7 @@ MonoBehaviour:
   - {fileID: -7888848812287710610}
   - {fileID: 2386721432402869471}
   - {fileID: 669638107416217757}
-  - {fileID: -2526664047056180360}
+  - {fileID: 4748261902260525605}
   - {fileID: -7359917461957357260}
   - {fileID: 110546857964575258}
   - {fileID: 971756849036023500}
@@ -136,6 +136,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Playerusername: {fileID: 1841535213239932803}
   _Username: 
+  _Team: 0
+  _TankHeadColor: 
+  _tankCanonColor: 
+  _tankBodyColor: 
+  _tankWheelsCoverColor: 
+  _tankChainsColor: 
   TankHead: {fileID: 6388564794387280376}
   tankCanon: {fileID: 8184253499220295457}
   tankBody: {fileID: 1934861392300125826}
@@ -172,7 +178,7 @@ MonoBehaviour:
     AttackSpeed: 1
     BulletSpeed: 1
     MovementSpeed: 1
---- !u!114 &-2526664047056180360
+--- !u!114 &4748261902260525605
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,7 +187,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 131662502398076607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5be4d7a517dcc40b7664148edfc2b0, type: 3}
+  m_Script: {fileID: 11500000, guid: a6bca6e08a3468242b77e0c0a8c3b5ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _Stats:
