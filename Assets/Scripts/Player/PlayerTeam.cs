@@ -26,21 +26,14 @@ public class PlayerTeam : NetworkBehaviour
         int team1Count = 0;
         int team2Count = 0;
 
-        foreach (PlayerRef playerRef in Runner.ActivePlayers)
+        PlayerTeam[] allPlayers = FindObjectsByType<PlayerTeam>(FindObjectsSortMode.None);
+
+        foreach (PlayerTeam pScript in allPlayers)
         {
-            if (playerRef == Runner.LocalPlayer)
-            {
-                continue;
-            }
-            if (Runner.TryGetPlayerObject(playerRef, out NetworkObject playerObject))
-            {
-                PlayerTeam pScript = playerObject.GetComponent<PlayerTeam>();
-                if (pScript != null)
-                {
-                    if (pScript.Team == 1) team1Count++;
-                    if (pScript.Team == 2) team2Count++;
-                }
-            }
+             if (pScript == this) continue;
+
+            if (pScript.Team == 1) team1Count++;
+            if (pScript.Team == 2) team2Count++;
         }
 
         if (team1Count > team2Count)
