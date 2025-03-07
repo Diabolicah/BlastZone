@@ -12,7 +12,6 @@ public class Player : NetworkBehaviour, IAfterSpawned
     [SerializeField] private TextMeshProUGUI _Playerusername;
     
     [Networked] public string Username { get; set; }
-    [Networked] public int Team { get; set; }
     [Networked] public string TankHeadColor { get; set; }
     [Networked] public string tankCanonColor { get; set; }
     [Networked] public string tankBodyColor { get; set; }
@@ -53,8 +52,6 @@ public class Player : NetworkBehaviour, IAfterSpawned
         {
             _movementSpeed.OnStatChanged += HandleStatsChanged;
         }
-
-        Team = 0;
         
         if (HasStateAuthority)
         {
@@ -92,21 +89,8 @@ public class Player : NetworkBehaviour, IAfterSpawned
     public void AfterSpawned()
     {
         _Playerusername.text = Username;
-        _Playerusername.color = Color.white;
-
-        if (HasStateAuthority && NetworkManager.selectedGameMode == "TeamDeathmatch")
-        {
-            Team = SC_TeamManager.Instance.GetTeam();
-        }
-
-        if (Team == 1)
-        {
-            _Playerusername.color = Color.blue;
-        }
-        else if (Team == 2)
-        {
-            _Playerusername.color = Color.red;
-        }
+        int Team = GetComponent<PlayerTeam>().Team;
+        _Playerusername.color = Team == 1 ? Color.blue : Team == 2 ? Color.red : Color.white;
 
         if (TankHeadColor != "")
         {
