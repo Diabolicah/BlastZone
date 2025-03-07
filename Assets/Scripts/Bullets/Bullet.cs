@@ -61,9 +61,11 @@ public class Bullet : NetworkBehaviour
             if (hitInfo.collider.TryGetComponent<NetworkObject>(out NetworkObject networkObj))
             {
                 if (networkObj.Id == _bulletShooter.Id) return;
-                Debug.Log(networkObj.GetComponent<Player>().Team);
-                Debug.Log(_bulletShooter.GetComponent<Player>().Team);
-                if (networkObj.GetComponent<Player>() && networkObj.GetComponent<Player>().Team == _bulletShooter.GetComponent<Player>().Team) return;
+                PlayerTeam objectTeam = networkObj.GetComponent<PlayerTeam>();
+                PlayerTeam shooterTeam = _bulletShooter.GetComponent<PlayerTeam>();
+                Debug.Log(objectTeam.Team);
+                Debug.Log(shooterTeam.Team);
+                if (objectTeam.Team > 0 && objectTeam.Team == shooterTeam.Team) return;
                 Health playerHealth = hitInfo.collider.GetComponentInParent<Health>();
                 if (playerHealth != null)
                 {
