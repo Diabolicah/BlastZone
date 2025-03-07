@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FYU1fBvjb7g=",
+  "dgSpecHash": "oQ76FDR1974=",
   "success": true,
-  "projectFilePath": "E:\\UserData\\Downloads\\BLastZone_ServerLogin\\BLastZone_ServerLogin\\LobbyServerShenkar.csproj",
+  "projectFilePath": "D:\\OneDrive\\Documents\\Development\\BlastZone\\BlastZone\\BlastZone_Server\\LobbyServerShenkar.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\scrip\\.nuget\\packages\\azure.core\\1.40.0\\azure.core.1.40.0.nupkg.sha512",
     "C:\\Users\\scrip\\.nuget\\packages\\azure.identity\\1.12.0\\azure.identity.1.12.0.nupkg.sha512",

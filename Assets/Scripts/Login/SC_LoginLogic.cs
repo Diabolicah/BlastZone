@@ -14,8 +14,8 @@ public class SC_LoginLogic : NetworkBehaviour
     private string UserName = string.Empty;
     private string userId = string.Empty;
     private string tempMatchId = "";
-    public static string PLayerName = "";
-    public static string PLayerRank = "";
+    public static string PlayerName = "";
+    public static string PlayerRank = "";
     #region Singleton
     static SC_LoginLogic instance;
     public static SC_LoginLogic Instance
@@ -222,8 +222,11 @@ public class SC_LoginLogic : NetworkBehaviour
                 MainMenu_Logic.unityObjects["Screen_Login"].SetActive(false);
                 MainMenu_Logic.unityObjects["Screen_MainMenu"].SetActive(true);
                 MainMenu_Logic.unityObjects["Txt_Error"].GetComponent<TextMeshProUGUI>().text = "Logged in!";
-                PLayerName = UserName;
+                PlayerName = UserName;
                 PlayerPrefs.SetString("PlayerName", UserName);
+                PlayerRank = _Data["Rank"].ToString();
+                PlayerPrefs.SetString("PlayerRank", PlayerRank);
+                Debug.Log("PlayerName " + PlayerName + "PlayerRank " + PlayerRank);
             }
             else MainMenu_Logic.unityObjects["Txt_Error"].GetComponent<TextMeshProUGUI>().text = "Failed to log in";
         }
