@@ -1,6 +1,7 @@
 using Fusion;
 using UnityEngine;
 using System.Collections;
+using System.Linq;
 using TMPro;
 
 public class PlayerTeam : NetworkBehaviour, IAfterSpawned
@@ -15,7 +16,7 @@ public class PlayerTeam : NetworkBehaviour, IAfterSpawned
         {
             if (NetworkManager.selectedGameMode == "TeamDeathmatch")
             {
-                StartCoroutine(AssignTeamNextFrame());
+                StartCoroutine(WaitUntilPlayersSpawned());
             }
             else
             {
@@ -23,10 +24,29 @@ public class PlayerTeam : NetworkBehaviour, IAfterSpawned
             }
         }
     }
-
-    private IEnumerator AssignTeamNextFrame()
+    private IEnumerator WaitUntilPlayersSpawned()
     {
-        yield return null;
+        int maxFramesToWait = 100;
+        int framesWaited = 0;
+
+        while (true)
+        {
+            int totalPlayerTeams = FindObjectsByType<PlayerTeam>(FindObjectsSortMode.None).Length;
+            int activePlayers = Runner.ActivePlayers.Count();
+            if (totalPlayerTeams >= activePlayers)
+            {
+                break;
+            }
+
+            framesWaited++;
+            if (framesWaited > maxFramesToWait)
+            {
+                Debug.LogWarning("[Server] WaitUntilPlayersSpawned gave up after too many frames. Proceeding anyway.");
+                break;
+            }
+
+            yield return null;
+        }
 
         AssignTeam();
     }
