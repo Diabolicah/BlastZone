@@ -120,6 +120,7 @@
     <Compile Include="Assets\Scripts\Network\InputHandler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
+    <Compile Include="Assets\Tests\EditMode\PlayerHealthTests.cs" />
     <Compile Include="Assets\Scripts\UI\MainMenu_Logic.cs" />
     <Compile Include="Assets\Scripts\Elements\Effects\FireEffect.cs" />
     <Compile Include="Assets\Scripts\Player\Health.cs" />
