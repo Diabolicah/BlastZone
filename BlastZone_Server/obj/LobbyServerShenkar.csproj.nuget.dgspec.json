@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\OneDrive\\Documents\\Development\\BlastZone\\BlastZone\\BlastZone_Server\\LobbyServerShenkar.csproj": {}
+    "C:\\Users\\Julio\\Documents\\Developments\\UnityProjects\\BlastZone\\BlastZone_Server\\LobbyServerShenkar.csproj": {}
   },
   "projects": {
-    "D:\\OneDrive\\Documents\\Development\\BlastZone\\BlastZone\\BlastZone_Server\\LobbyServerShenkar.csproj": {
+    "C:\\Users\\Julio\\Documents\\Developments\\UnityProjects\\BlastZone\\BlastZone_Server\\LobbyServerShenkar.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OneDrive\\Documents\\Development\\BlastZone\\BlastZone\\BlastZone_Server\\LobbyServerShenkar.csproj",
+        "projectUniqueName": "C:\\Users\\Julio\\Documents\\Developments\\UnityProjects\\BlastZone\\BlastZone_Server\\LobbyServerShenkar.csproj",
         "projectName": "LobbyServerShenkar",
-        "projectPath": "D:\\OneDrive\\Documents\\Development\\BlastZone\\BlastZone\\BlastZone_Server\\LobbyServerShenkar.csproj",
-        "packagesPath": "C:\\Users\\scrip\\.nuget\\packages\\",
-        "outputPath": "D:\\OneDrive\\Documents\\Development\\BlastZone\\BlastZone\\BlastZone_Server\\obj\\",
+        "projectPath": "C:\\Users\\Julio\\Documents\\Developments\\UnityProjects\\BlastZone\\BlastZone_Server\\LobbyServerShenkar.csproj",
+        "packagesPath": "C:\\Users\\Julio\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Julio\\Documents\\Developments\\UnityProjects\\BlastZone\\BlastZone_Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\VisualStudioShared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\scrip\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Julio\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
