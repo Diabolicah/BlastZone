@@ -64,6 +64,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\GabrielAguiarProductions\Scripts\UniqueProjectiles\CameraShakeSimpleScript.cs" />
     <Compile Include="Assets\Scripts\UI\CardSelectionUi.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerTeam.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponTripleBullet.cs" />
     <Compile Include="Assets\Scripts\Player\LevelingManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
@@ -88,7 +89,6 @@
     <Compile Include="Assets\Scripts\Player\MovementSpeed.cs" />
     <Compile Include="Assets\Scripts\Elements\Effects\WindEffect.cs" />
     <Compile Include="Assets\Scripts\Elements\PlayerElement.cs" />
-    <Compile Include="Assets\Scripts\Managers\SC_TeamManager.cs" />
     <Compile Include="Assets\Scripts\Configs\CardConfig.cs" />
     <Compile Include="Assets\Scripts\Network\NetworkManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />

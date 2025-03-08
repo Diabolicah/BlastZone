@@ -14,19 +14,24 @@ public class NetworkManager : MonoBehaviour
 
     public async Task<bool> StartMatchmaking(string gameMode)
     {
+        int rank = 0;
+        int.TryParse(SC_LoginLogic.PlayerRank, out rank);
+        if (rank > 0)
+        {
+            rank = (int)Math.Floor((double)rank / 5);
+        }
+
         selectedGameMode = gameMode;
         PlayerPrefs.SetString("GameMode", selectedGameMode);
-        
 
-        // Create the Fusion runner if not already created.
         _runner = gameObject.AddComponent<NetworkRunner>();
 
         StartGameArgs args = new StartGameArgs
         {
             GameMode = GameMode.Shared,
-            SessionName = selectedGameMode,
+            SessionName = selectedGameMode + rank.ToString(),
             Scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex),
-            SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
+            SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
         };
 
         var result = await _runner.StartGame(args);

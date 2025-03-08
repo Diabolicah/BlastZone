@@ -9,10 +9,9 @@ public class Player : NetworkBehaviour, IAfterSpawned
 {
     private NetworkCharacterController _characterController;
     private MovementSpeed _movementSpeed;
-    [SerializeField] private TextMeshProUGUI _Playerusername;
+    [SerializeField] private TextMeshProUGUI _PlayerUsername;
     
     [Networked] public string Username { get; set; }
-    [Networked] public int Team { get; set; }
     [Networked] public string TankHeadColor { get; set; }
     [Networked] public string tankCanonColor { get; set; }
     [Networked] public string tankBodyColor { get; set; }
@@ -53,15 +52,6 @@ public class Player : NetworkBehaviour, IAfterSpawned
         {
             _movementSpeed.OnStatChanged += HandleStatsChanged;
         }
-
-        if (NetworkManager.selectedGameMode == "TeamDeathmatch")
-        {
-            Team = SC_TeamManager.Instance.GetTeam();
-        }
-        else
-        {
-            Team = 0;
-        }
         
         if (HasStateAuthority)
         {
@@ -98,16 +88,11 @@ public class Player : NetworkBehaviour, IAfterSpawned
 
     public void AfterSpawned()
     {
-        _Playerusername.text = Username;
-        _Playerusername.color = Color.white;
-        if (Team == 1)
-        {
-            _Playerusername.color = Color.blue;
-        }
-        else if (Team == 2)
-        {
-            _Playerusername.color = Color.red;
-        }
+        _PlayerUsername.text = Username;
+        int Team = GetComponent<PlayerTeam>().Team;
+
+        if(!HasStateAuthority)
+            _PlayerUsername.color = Team == 1 ? Color.blue : Team == 2 ? Color.red : Color.white;
 
         if (TankHeadColor != "")
         {
@@ -133,10 +118,8 @@ public class Player : NetworkBehaviour, IAfterSpawned
     
     private Color ChangeColor(string color)
     {
-        Debug.Log("color"+color);
         Color _newColor;
         ColorUtility.TryParseHtmlString(color, out _newColor);
-        Debug.Log("_newColor"+_newColor);
         return _newColor;
     }
 

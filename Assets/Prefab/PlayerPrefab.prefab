@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4083394951992882268}
   - component: {fileID: 5840779349211882538}
   - component: {fileID: -7888848812287710610}
+  - component: {fileID: 4655960485459448576}
   - component: {fileID: 2386721432402869471}
   - component: {fileID: 669638107416217757}
   - component: {fileID: 4748261902260525605}
@@ -68,6 +69,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 5840779349211882538}
   - {fileID: -7888848812287710610}
+  - {fileID: 4655960485459448576}
   - {fileID: 2386721432402869471}
   - {fileID: 669638107416217757}
   - {fileID: 4748261902260525605}
@@ -134,9 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c78530ec0f8c49168e4d21f1853c723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Playerusername: {fileID: 1841535213239932803}
+  _PlayerUsername: {fileID: 1841535213239932803}
   _Username: 
-  _Team: 0
   _TankHeadColor: 
   _tankCanonColor: 
   _tankBodyColor: 
@@ -147,6 +148,20 @@ MonoBehaviour:
   tankBody: {fileID: 1934861392300125826}
   tankWheelsCover: {fileID: 1206866964226066297}
   tankChains: {fileID: 1876471149960837477}
+--- !u!114 &4655960485459448576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131662502398076607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1efe160e9eb97274e9f81ac980376bbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Team: 0
+  _PlayerUsername: {fileID: 1841535213239932803}
 --- !u!114 &2386721432402869471
 MonoBehaviour:
   m_ObjectHideFlags: 0

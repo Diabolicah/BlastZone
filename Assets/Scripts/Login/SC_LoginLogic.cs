@@ -13,7 +13,6 @@ public class SC_LoginLogic : NetworkBehaviour
     // public Dictionary<string, GameObject> unityObjects;
     private string UserName = string.Empty;
     private string userId = string.Empty;
-    private string tempMatchId = "";
     public static string PlayerName = "";
     public static string PlayerRank = "";
     #region Singleton
@@ -201,9 +200,7 @@ public class SC_LoginLogic : NetworkBehaviour
         }
     }
     private void LoginResponse(Dictionary<string, object> _Data)
-    {
-        Debug.Log("RegisterResponse " + _Data.Count);
-        
+    {        
         MainMenu_Logic.unityObjects["Txt_Error"].GetComponent<TextMeshProUGUI>().text = string.Empty;
         if (_Data.ContainsKey("ErrorCode"))
         {
@@ -216,7 +213,6 @@ public class SC_LoginLogic : NetworkBehaviour
             {
                 userId = _Data["UserId"].ToString();
                 UserName = MainMenu_Logic.unityObjects["InputField_Login_Username"].GetComponent<TMP_InputField>().text;
-                Debug.Log("UserName" + UserName +"userId " + userId);
                 if (MainMenu_Logic.unityObjects.ContainsKey("UserId"))
                     MainMenu_Logic.unityObjects["UserId"].GetComponent<TextMeshProUGUI>().text = userId;
                 MainMenu_Logic.unityObjects["Screen_Login"].SetActive(false);
@@ -226,7 +222,6 @@ public class SC_LoginLogic : NetworkBehaviour
                 PlayerPrefs.SetString("PlayerName", UserName);
                 PlayerRank = _Data["Rank"].ToString();
                 PlayerPrefs.SetString("PlayerRank", PlayerRank);
-                Debug.Log("PlayerName " + PlayerName + "PlayerRank " + PlayerRank);
             }
             else MainMenu_Logic.unityObjects["Txt_Error"].GetComponent<TextMeshProUGUI>().text = "Failed to log in";
         }

@@ -36,14 +36,15 @@ public class CardManager : NetworkBehaviour
     private List<CardConfig> GetRandomCardOptions(int rank)
     {
         List<CardConfig> cardList = GetAvailableCards(rank);
-        if (cardList.Count < 0)
+        Debug.Log("Available cards for rank " + rank + ": " + cardList.Count);
+        if (cardList.Count <= 0)
             throw new System.Exception("No cards available for rank " + rank);
 
         List<CardConfig> selectedCard = new List<CardConfig>();
         while (selectedCard.Count < CardCountPerSelection)
         {
-            int index = UnityEngine.Random.Range(0, availableCards.Count);
-            selectedCard.Add(availableCards[index]);
+            int index = UnityEngine.Random.Range(0, cardList.Count);
+            selectedCard.Add(cardList[index]);
         }
         return selectedCard;
     }

@@ -17,7 +17,7 @@ public class GameOver_Logic : MonoBehaviour
         MainMenuButton = GameObject.Find("Btn_MainMenu");
     }
 
-    public async void Restart()
+    public void Restart()
     {
         PlayerPrefs.SetInt("Restart", 1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
