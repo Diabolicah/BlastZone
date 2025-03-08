@@ -12,7 +12,6 @@ public class FireEffect : IElement
         _fireDamage = fireDamage;
         _durationBetweenFireTicks = 1f;
         _fireTickManager = new CooldownManager();
-
     }
 
     public void activate(NetworkRunner runner, NetworkObject bulletShooter, Vector3 position, NetworkObject playerHit)

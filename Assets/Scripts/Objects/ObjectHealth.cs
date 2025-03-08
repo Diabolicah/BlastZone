@@ -14,6 +14,7 @@ public class ObjectHealth : Health
     }
     protected override void OnDeath()
     {
+        base.OnDeath();
         GetComponent<RespawnObject>()?.Activate();
     }
 }

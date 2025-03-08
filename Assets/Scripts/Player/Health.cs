@@ -13,6 +13,7 @@ public class Health : BaseStats
     protected string HEALTH_REGEN_RATE = "HealthRegenRate";
 
     [SerializeField] private GameObject healthBarObject;
+    public event Action OnObjectDeath;
 
     public override void Spawned()
     {
@@ -94,7 +95,7 @@ public class Health : BaseStats
 
     protected virtual void OnDeath()
     {
-        Debug.Log("Object is Dead");
+        OnObjectDeath?.Invoke();
     }
 
     public void ApplyHealing(float healing)

@@ -12,7 +12,7 @@ public class WindElement : Element
     {
         if (Shooter.TryGetComponent<PlayerElement>(out PlayerElement playerElement))
         {
-            playerElement.useElement(new WindEffect(_speedBoostPercentage, _windEffectDuration), _windEffectDuration, Shooter, transform.position, target);
+            playerElement.UseElement(new WindEffect(_speedBoostPercentage, _windEffectDuration), _windEffectDuration, Shooter, transform.position, target);
         }
     }
 }

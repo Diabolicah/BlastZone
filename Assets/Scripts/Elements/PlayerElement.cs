@@ -28,13 +28,27 @@ public class PlayerElement : NetworkBehaviour
     }
 
 
-    public void useElement(IElement element, float elementDuration,NetworkObject elementShooter, Vector3 usedElementPosition, NetworkObject playerHit)
+    public void UseElement(IElement element, float elementDuration,NetworkObject elementShooter, Vector3 usedElementPosition, NetworkObject playerHit)
     {
         _element = element;
         _elementShooter = elementShooter;
         _usedElementPosition = usedElementPosition;
         _playerHit = playerHit;
         _isElementUsed = true;
+
+        if (_playerHit.TryGetComponent<Health>(out Health health))
+        {
+            health.OnObjectDeath += DeActivateElement;
+        }
         _elementDurationManager.ResetCooldown(Runner, elementDuration);
+    }
+
+    private void DeActivateElement()
+    {
+        _isElementUsed = false;
+        if (_playerHit.TryGetComponent<Health>(out Health health))
+        {
+            health.OnObjectDeath -= DeActivateElement;
+        }
     }
 }

@@ -12,7 +12,7 @@ public class IceElement : Element
     {
         if (Shooter.TryGetComponent<PlayerElement>(out PlayerElement playerElement))
         {
-            playerElement.useElement(new IceEffect(_slowPercentage, _slowDuration), _slowDuration, Shooter, transform.position, target);
+            playerElement.UseElement(new IceEffect(_slowPercentage, _slowDuration), _slowDuration, Shooter, transform.position, target);
         }
     }
 }
