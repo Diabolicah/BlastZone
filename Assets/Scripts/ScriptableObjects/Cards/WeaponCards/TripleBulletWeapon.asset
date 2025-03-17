@@ -15,6 +15,6 @@ MonoBehaviour:
   Title: Triple Bullet Weapon
   Description: Swap to Bullet Weapon
   Image: {fileID: 8195546375236113275, guid: 6ec89016a0353434db2ed0ef89299703, type: 3}
-  MinimumRank: 0
+  MinimumRank: 1
   type: 1
   weaponConfig: {fileID: 11400000, guid: 383d1fd9a135e498f92e8f5168f791e7, type: 2}

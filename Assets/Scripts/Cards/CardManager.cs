@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using Fusion;
+using TMPro;
 using UnityEngine;
 
 public class CardManager : NetworkBehaviour
 {
-    [SerializeField] private List<CardConfig> availableCards;
+    [SerializeField] public List<CardConfig> availableCards;
     [SerializeField] private CardSelectionUi CardSelectionUI;
     [SerializeField] private CardFunctions CardFunctions;
 
@@ -36,7 +37,6 @@ public class CardManager : NetworkBehaviour
     private List<CardConfig> GetRandomCardOptions(int rank)
     {
         List<CardConfig> cardList = GetAvailableCards(rank);
-        Debug.Log("Available cards for rank " + rank + ": " + cardList.Count);
         if (cardList.Count <= 0)
             throw new System.Exception("No cards available for rank " + rank);
 

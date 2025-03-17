@@ -15,6 +15,6 @@ MonoBehaviour:
   Title: Triple Wind Bullet Weapon
   Description: Swap to Triple Wind Bullet Weapon  (SpeedBoost the user)
   Image: {fileID: -3050506591624099959, guid: 87be21159c17ec648b6c811aa086fff6, type: 3}
-  MinimumRank: 0
+  MinimumRank: 1
   type: 2
   weaponConfig: {fileID: 11400000, guid: 9d1cd59929833714bacee382e450bdf4, type: 2}

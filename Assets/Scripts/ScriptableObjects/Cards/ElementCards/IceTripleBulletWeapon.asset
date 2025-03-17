@@ -15,6 +15,6 @@ MonoBehaviour:
   Title: Triple Ice Bullet Weapon
   Description: Swap to Triple Ice Bullet Weapon (Slows the target)
   Image: {fileID: -6321551011866491434, guid: 43d00eb9bb927224e94c22567824e1e1, type: 3}
-  MinimumRank: 0
+  MinimumRank: 5
   type: 2
   weaponConfig: {fileID: 11400000, guid: 45c4b73dc5e74ab4aa61f41540dfbdb1, type: 2}

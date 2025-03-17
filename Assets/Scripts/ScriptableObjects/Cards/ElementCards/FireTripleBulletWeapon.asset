@@ -15,6 +15,6 @@ MonoBehaviour:
   Title: Triple Fire Bullet Weapon
   Description: Swap to Triple Fire Bullet Weapon (Burns the target)
   Image: {fileID: 3642315201441995485, guid: c8dd1ddd716109b4f9fc761a7b33bb22, type: 3}
-  MinimumRank: 0
+  MinimumRank: 3
   type: 2
   weaponConfig: {fileID: 11400000, guid: 70285d21a6c47da4fa111c3f444c1571, type: 2}

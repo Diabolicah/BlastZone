@@ -12,20 +12,8 @@ namespace UI
     {
         #region Variables
         public MainMenu_Logic curMenuLogic;
-
+        public CardCodexUI cardCodexUI;
         #endregion
-
-
-        private void Start()
-        {
-            InitStart();
-        }
-
-        private void InitStart()
-        {
-
-            // unityObjects["Btn_Play"].GetComponent<Button>().interactable = false;
-        }
 
         #region Logic
         public void Btn_ChangeScreen(string _ScreenName)
@@ -42,6 +30,16 @@ namespace UI
                     if (_ScreenName == "Customization")
                     {
                         unityObjects["TankColorModel"].SetActive(true);
+                    }
+                    if (_ScreenName == "Codex")
+                    {
+                        int rank = 0;
+                        bool isRankInt= int.TryParse(PlayerPrefs.GetString("PlayerRank"), out rank);
+                        if (!isRankInt)
+                        {
+                            rank = 0;
+                        }
+                        cardCodexUI.AggregateCodex(rank, cardCodexUI.cardManager.availableCards);
                     }
                     Flag = 1;
                     Screens _toScreen = (Screens)Enum.Parse(typeof(Screens), _ScreenName);

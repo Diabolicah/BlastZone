@@ -8,6 +8,8 @@ public class CardButton : MonoBehaviour
     [SerializeField] private Image cardImage;
     [SerializeField] private TextMeshProUGUI descriptionText;
     [SerializeField] private TextMeshProUGUI type;
+    [SerializeField] private TextMeshProUGUI minimumRank;
+
     private CardConfig cardConfig;
     private System.Action<CardConfig> onCardSelected;
 
@@ -19,6 +21,7 @@ public class CardButton : MonoBehaviour
         if (cardImage != null) cardImage.sprite = config.GetImage();
         if (descriptionText != null) descriptionText.text = config.GetDescription();
         if (type != null) type.text = config.GetCardType().ToString();
+        if (minimumRank != null) minimumRank.text = config.GetMinimumRank().ToString();
     }
 
     public void OnButtonClicked()

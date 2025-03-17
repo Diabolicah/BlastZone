@@ -15,6 +15,6 @@ MonoBehaviour:
   Title: Ice Bullet Weapon
   Description: Swap to Ice Bullet Weapon (Slows the target)
   Image: {fileID: 3011583500638733201, guid: bd5c34a2f4aedbf489bbf95871d19bd9, type: 3}
-  MinimumRank: 0
+  MinimumRank: 4
   type: 2
   weaponConfig: {fileID: 11400000, guid: 62decb8518738b64eb778f7c798929aa, type: 2}
