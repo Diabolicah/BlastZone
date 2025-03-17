@@ -12,7 +12,7 @@ namespace UI
     {
         public enum Screens
     {
-        MainMenu, Options, Multiplayer, Codex, Customization, ChooseCard, Game , GameOver
+        MainMenu, Multiplayer, Codex, Customization, ChooseCard, Game , GameOver
     };
 
     #region Variables
@@ -80,8 +80,6 @@ namespace UI
             unityObjects["Screen_Codex"].SetActive(false);
         if (unityObjects.ContainsKey("Screen_Customization"))
             unityObjects["Screen_Customization"].SetActive(false);
-        if (unityObjects.ContainsKey("Screen_Options"))
-            unityObjects["Screen_Options"].SetActive(false);
         if (unityObjects.ContainsKey("Screen_ChooseCard"))
             unityObjects["Screen_ChooseCard"].SetActive(false);
         if (unityObjects.ContainsKey("Screen_Game"))
