@@ -3032,7 +3032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curEnvironment: 0
-  uri: https://localhost:7201/api
+  uri: https://localhost:5001/api
   uriDev: http://52.51.66.123:8080/gamelobby
 --- !u!4 &260585500
 Transform:
