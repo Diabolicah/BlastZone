@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LobbyServerShenkar")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2c0edbd0cd2aeb631e0f2d4d53ef34d52a1dc4b8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+07cf8ae8c43f816c6ebfb52bbb4f654a65d16415")]
 [assembly: System.Reflection.AssemblyProductAttribute("LobbyServerShenkar")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LobbyServerShenkar")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
