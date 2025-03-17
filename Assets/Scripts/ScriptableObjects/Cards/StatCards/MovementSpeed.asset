@@ -15,5 +15,6 @@ MonoBehaviour:
   Title: Movement Speed
   Description: Gain 10% movement speed
   Image: {fileID: 5297214435932668050, guid: d4cf6ce52c27818499e1e94cbc208f8e, type: 3}
-  MinimumRank: 0
+  MinimumRank: 1
   type: 0
+  weaponConfig: {fileID: 0}

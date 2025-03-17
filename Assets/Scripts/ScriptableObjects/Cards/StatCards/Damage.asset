@@ -15,5 +15,6 @@ MonoBehaviour:
   Title: Damage
   Description: Gain 10% Damage
   Image: {fileID: -8086850440826228858, guid: 9f1e347911e026648ab68fa49221b494, type: 3}
-  MinimumRank: 0
+  MinimumRank: 1
   type: 0
+  weaponConfig: {fileID: 0}

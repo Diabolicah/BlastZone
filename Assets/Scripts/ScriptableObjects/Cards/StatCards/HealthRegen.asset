@@ -17,3 +17,4 @@ MonoBehaviour:
   Image: {fileID: -3607980786603053648, guid: 45d820694ac7b7343bfc910f6b1a0387, type: 3}
   MinimumRank: 0
   type: 0
+  weaponConfig: {fileID: 0}
